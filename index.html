@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find Local Hub | Coming Soon</title>
     
+    <link rel="icon" href="https://i.postimg.cc/pTDhnmhn/Chat-GPT-Image-Feb-7-2026-10-56-33-AM.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
@@ -21,6 +23,11 @@
             /* FIND LOCAL COLORS */
             --accent-green: #39FF14; 
             --accent-blue: #00D4FF;
+
+            /* TAP ENGAGE BRAND COLORS (For Footer Animation) */
+            --te-purple: #9D00FF;
+            --te-blue-dark: #0055FF;
+            --te-blue-light: #00D4FF;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -122,11 +129,32 @@
             margin-top: auto; 
             font-size: 12px;
             color: var(--text-dim);
-            opacity: 0.5;
             padding-top: 40px;
             border-top: 1px solid rgba(255,255,255,0.05);
             width: 100%;
             max-width: 600px;
+        }
+
+        /* ANIMATED FOOTER LINK (Tap Engage Colors) */
+        .footer-link {
+            font-weight: 700;
+            text-decoration: none;
+            
+            /* The Purple/Blue Animation */
+            background: linear-gradient(
+                90deg, 
+                var(--te-purple) 0%, 
+                var(--te-blue-dark) 25%, 
+                var(--te-blue-light) 50%, 
+                var(--te-blue-dark) 75%, 
+                var(--te-purple) 100%
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            animation: gradientFlow 3s linear infinite;
         }
     </style>
 </head>
@@ -147,7 +175,7 @@
     </a>
 
     <div class="footer">
-        &copy; 2026 Find Local Hub. Powered by Tap Engage Solutions.
+        &copy; 2026 Find Local Hub. Powered by <a href="https://tapengagesolutions.co.uk" class="footer-link">Tap Engage Solutions</a>.
     </div>
 
 </body>
