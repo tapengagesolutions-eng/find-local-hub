@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#ffffff">
-    <title>Find Local | System Testing</title>
+    <title>Find Local | Founding Member</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,30 +38,15 @@
             color: var(--text-main);
             line-height: 1.5;
             padding-top: 0;
+            padding-bottom: 50px;
         }
 
-        .test-banner {
-            background-color: #FFD700;
-            color: #000;
-            text-align: center;
-            padding: 12px 15px; 
-            font-weight: 700;
-            font-size: 11px;
-            text-transform: uppercase;
-            line-height: 1.4;
-            position: relative;
-            z-index: 10001;
-        }
-
+        /* === BRANDING & ANIMATIONS === */
         .brand-strip { 
-            width: 100%; 
-            height: 6px; 
+            width: 100%; height: 6px; 
             background-color: var(--brand-purple); 
             animation: colorPulse 6s ease-in-out infinite; 
-            position: -webkit-sticky;
-            position: sticky;
-            top: 0;
-            z-index: 10000;
+            position: sticky; top: 0; z-index: 10000;
         }
 
         @keyframes colorPulse {
@@ -70,17 +55,23 @@
             66% { background-color: var(--neon-green); box-shadow: 0 2px 15px rgba(57, 255, 20, 0.4); }
             100% { background-color: var(--brand-purple); box-shadow: 0 2px 15px rgba(128, 0, 255, 0.4); } 
         }
-        @keyframes textColorPulse {
-            0% { color: var(--brand-purple); } 33% { color: var(--electric-blue); } 66% { color: var(--neon-green); } 100% { color: var(--brand-purple); } 
+        @keyframes pulseBtn {
+            0% { box-shadow: 0 0 0 0 rgba(57, 255, 20, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(57, 255, 20, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(57, 255, 20, 0); }
+        }
+
+        /* === LANDING PAGE STYLES === */
+        .test-banner {
+            background-color: #FFD700; color: #000; text-align: center;
+            padding: 12px 15px; font-weight: 700; font-size: 11px; text-transform: uppercase;
+            position: relative; z-index: 10001;
         }
 
         .hero { padding: 30px 20px 20px; text-align: center; }
-        .agency-logo { max-width: 220px; height: auto; margin-bottom: 20px; display: inline-block; mix-blend-mode: multiply; filter: contrast(1.1); }
+        .agency-logo { max-width: 220px; height: auto; margin-bottom: 20px; mix-blend-mode: multiply; filter: contrast(1.1); }
         
-        .fast-track-btn { display: inline-block; margin-top: 15px; background: white; border: 2px solid var(--brand-purple); color: var(--brand-purple); padding: 12px 24px; border-radius: 50px; font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; text-decoration: none; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .fast-track-btn:active { transform: scale(0.96); background: #f3e5ff; }
-
-        .pill-badge { display: inline-block; padding: 6px 12px; background-color: var(--brand-purple); animation: colorPulse 6s ease-in-out infinite; color: white; border-radius: 50px; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; margin-top: 5px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .pill-badge { display: inline-block; padding: 6px 12px; background-color: var(--brand-purple); animation: colorPulse 6s ease-in-out infinite; color: white; border-radius: 50px; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
         .urgency-alert { display: inline-block; color: #333; font-size: 12px; font-weight: 700; background: #fff; border: 1px solid #ddd; padding: 5px 12px; border-radius: 50px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .urgency-alert span { color: var(--alert-red); font-weight: 900; }
 
@@ -90,25 +81,31 @@
         .section-wrapper { max-width: 600px; margin: 0 auto; padding: 20px; }
         .card { background: var(--card-bg); border-radius: var(--radius); padding: 25px; border: 1px solid rgba(0,0,0,0.05); box-shadow: var(--shadow); margin-bottom: 25px; }
 
-        .founding-status { background: linear-gradient(to right, #f8f9fa, #e3f2fd, #f8f9fa); padding: 20px; border-radius: 12px; text-align: center; font-size: 13px; margin-top: 25px; border: 1px solid #d0efff; line-height: 1.6; }
-        .mission-text { text-align: center; margin-bottom: 15px; }
-        .mission-header { font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 10px; }
-        .mission-body { font-size: 15px; line-height: 1.6; color: var(--text-main); font-weight: 500; }
+        .mission-header { font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 10px; text-align: center; }
+        .mission-body { font-size: 15px; line-height: 1.6; color: var(--text-main); font-weight: 500; text-align: center; margin-bottom: 15px; }
         .section-divider { text-align: center; font-size: 12px; font-weight: 800; color: var(--text-muted); margin-top: 25px; margin-bottom: 20px; padding-top: 20px; border-top: 1px solid #f0f0f0; text-transform: uppercase; letter-spacing: 1px; }
 
         .benefit-row { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid #f0f0f0; }
-        .benefit-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .benefit-row:last-child { border-bottom: none; }
         .icon-box { width: 36px; height: 36px; background: var(--trust-bg-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; color: var(--trust-blue); flex-shrink: 0; }
         .text-box h3 { margin: 0 0 3px 0; font-size: 15px; font-weight: 700; }
         .text-box p { margin: 0; font-size: 12px; color: var(--text-muted); line-height: 1.4; }
 
+        .founding-status { background: linear-gradient(to right, #f8f9fa, #e3f2fd, #f8f9fa); padding: 20px; border-radius: 12px; text-align: center; font-size: 13px; margin-top: 25px; border: 1px solid #d0efff; line-height: 1.6; }
+
         .kit-title { text-align: center; font-size: 12px; font-weight: 700; color: var(--text-muted); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
         .kit-item { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #f0f0f0; }
-        .kit-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .kit-item:last-child { border-bottom: none; }
         .kit-icon { width: 40px; height: 40px; background: #f8f9fa; color: var(--trust-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
         .kit-details strong { display: block; font-size: 14px; margin-bottom: 2px; }
         .kit-details span { font-size: 12px; color: var(--text-muted); }
 
+        .launch-roadmap { background: #fdfdfd; border: 1px dashed #ccc; border-radius: 10px; padding: 15px; margin-top: 20px; font-size: 12px; line-height: 1.5; }
+        .roadmap-item { margin-bottom: 8px; display:flex; gap:10px; align-items: flex-start; }
+        .roadmap-icon { color: var(--neon-green); font-size: 14px; margin-top:2px;}
+        .roadmap-locked { color: #aaa; font-size: 14px; margin-top:2px;}
+
+        /* === PRICING === */
         .price-table { display: flex; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 15px; position: relative; }
         .price-col { flex: 1; padding: 20px 10px; text-align: center; }
         .beta-col { background: var(--trust-bg-light); border-right: 1px solid var(--border); position: relative; }
@@ -122,28 +119,81 @@
         .beta-note { color: var(--trust-blue); font-weight: 600; }
         .limited-badge { display: block; margin-top: 8px; font-size: 9px; font-weight: 800; color: var(--alert-red); background: #ffe3e3; padding: 4px 8px; border-radius: 4px; display: inline-block; }
         .lock-disclaimer { text-align: center; font-size: 11px; color: var(--text-muted); margin-top: -10px; margin-bottom: 20px; font-style: italic; }
-        
-        .step-header { font-size: 12px; font-weight: 800; color: var(--brand-purple); text-transform: uppercase; letter-spacing: 1px; margin: 30px 0 15px 0; border-bottom: 2px solid #eee; padding-bottom: 5px; }
-        .launch-roadmap { background: #fdfdfd; border: 1px dashed #ccc; border-radius: 10px; padding: 15px; margin-top: 20px; font-size: 12px; line-height: 1.5; }
-        .roadmap-item { margin-bottom: 8px; display:flex; gap:10px; align-items: flex-start; }
-        .roadmap-item:last-child { margin-bottom: 0; }
-        .roadmap-icon { color: var(--neon-green); font-size: 14px; margin-top:2px;}
-        .roadmap-locked { color: #aaa; font-size: 14px; margin-top:2px;}
 
+        /* === JOIN BUTTON (THE BIG ONE) === */
+        .join-trigger-btn {
+            width: 100%;
+            background-color: var(--neon-green);
+            color: #000;
+            border: none;
+            padding: 20px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(57, 255, 20, 0.4);
+            animation: pulseBtn 2s infinite;
+            margin-top: 10px;
+            transition: transform 0.2s;
+        }
+        .join-trigger-btn:active { transform: scale(0.96); }
+
+        /* === WIZARD MODAL === */
+        #wizardOverlay {
+            display: none;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #fff; z-index: 20000;
+            overflow-y: auto;
+            padding-bottom: 50px;
+        }
+        
+        .wizard-header {
+            position: sticky; top: 0; background: #fff; z-index: 20001;
+            padding: 20px 20px 10px 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .progress-container {
+            width: 100%; height: 8px; background: #eee; border-radius: 10px; overflow: hidden; margin-bottom: 10px;
+        }
+        .progress-bar {
+            height: 100%; width: 25%; background: var(--brand-purple);
+            transition: width 0.4s ease;
+            background: linear-gradient(90deg, var(--brand-purple), var(--electric-blue));
+        }
+        .progress-text { font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; text-align: right; }
+
+        .wizard-step { display: none; padding: 20px; max-width: 600px; margin: 0 auto; animation: fadeIn 0.4s ease; }
+        .wizard-step.active { display: block; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .wizard-title { font-size: 24px; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
+        
+        .nav-buttons {
+            display: flex; justify-content: space-between; gap: 15px; margin-top: 30px;
+        }
+        .nav-btn {
+            flex: 1; padding: 15px; border-radius: 12px; font-weight: 700; cursor: pointer; border: none; font-size: 14px;
+        }
+        .nav-back { background: #f0f0f0; color: #555; }
+        .nav-next { background: var(--text-main); color: #fff; }
+        
+        /* FORM INPUT STYLES (Retained) */
         .input-group { text-align: left; margin-bottom: 15px; }
         .input-group label { display: block; color: var(--text-muted); font-size: 11px; margin-bottom: 6px; font-weight: 700; text-transform: uppercase; }
         .form-input { width: 100%; padding: 16px; background: #f8f9fa; border: 1px solid var(--border); border-radius: 12px; color: var(--text-main); font-family: 'Inter', sans-serif; font-size: 16px; outline: none; transition: all 0.2s; }
         .form-input:focus { background: white; border-color: var(--trust-blue); box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1); }
-        .form-input:disabled { background: #eee; color: #888; cursor: not-allowed; }
-
+        
         .branch-options { text-align: left; margin: 10px 0 20px; background: #f8f9fa; border-radius: 12px; padding: 15px; border: 1px solid var(--border); }
         .radio-option { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 15px; cursor: pointer; padding-bottom: 15px; border-bottom: 1px solid #e0e0e0; }
         .radio-option:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
         .radio-option input { margin-top: 4px; accent-color: var(--trust-blue); transform: scale(1.2); }
         .radio-text strong { display: block; font-size: 14px; color: var(--text-main); }
         .radio-text span { display: block; font-size: 12px; color: var(--text-muted); }
-        .divider-text { text-align: center; font-size: 10px; font-weight: 700; color: #aaa; margin: -8px 0 8px 0; text-transform: uppercase; letter-spacing: 1px; }
-
+        
         .yes-no-group { display: flex; gap: 10px; }
         .yes-no-label { flex: 1; background: #f8f9fa; border: 1px solid var(--border); padding: 12px; border-radius: 8px; text-align: center; cursor: pointer; font-size: 13px; font-weight: 600; }
         .yes-no-group input[type="radio"] { display: none; }
@@ -153,89 +203,35 @@
         #universalComms, #step3Wrapper, #step4Wrapper, #step5Wrapper { display: none; }
         .hidden-section { display: none; margin-top: 15px; padding: 15px; background: #fff; border: 1px dashed #ccc; border-radius: 10px; }
         
-        .kit-customizer { margin-top: 15px; background: #fcfcfc; border: 1px solid #eee; border-radius: 12px; padding: 15px; }
+        .kit-customizer { background: #fcfcfc; border: 1px solid #eee; border-radius: 12px; padding: 15px; }
         .kit-control-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #f0f0f0; }
-        .kit-control-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
         .kit-name { font-size: 13px; font-weight: 700; color: var(--text-main); }
         .kit-sub { font-size: 10px; color: var(--text-muted); display: block; }
         .counter-box { display: flex; align-items: center; gap: 10px; background: #fff; border: 1px solid #ddd; border-radius: 50px; padding: 4px; }
         .count-btn { width: 28px; height: 28px; border-radius: 50%; border: none; background: #f0f0f0; color: #333; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-        .count-btn:active { background: #e0e0e0; }
         .count-display { font-size: 14px; font-weight: 700; width: 20px; text-align: center; }
+        .live-total-bar { margin-top: 20px; background: #fff; color: #333; padding: 15px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; border: 2px solid var(--brand-purple); box-shadow: 0 5px 15px rgba(128, 0, 255, 0.1); }
+        .total-amount { font-size: 22px; font-weight: 900; color: #39FF14; text-shadow: 0px 1px 1px rgba(0,0,0,0.3); }
 
-        .live-total-bar {
-            margin-top: 20px; background: #fff; color: #333; padding: 15px; border-radius: 12px;
-            display: flex; justify-content: space-between; align-items: center; 
-            border: 2px solid var(--brand-purple);
-            box-shadow: 0 5px 15px rgba(128, 0, 255, 0.1);
-        }
-        .total-label { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
-        .total-amount { font-size: 22px; font-weight: 900; color: #39FF14; text-shadow: 0px 1px 1px rgba(0,0,0,0.3); } 
-        .total-disclaimer { font-size: 10px; color: #777; margin-top: 8px; text-align: center; line-height: 1.3; font-style: italic; }
-
-        .dynamic-contact-field { display: none; margin-top: 15px; background: var(--trust-bg-light); padding: 12px; border-radius: 8px; border: 1px solid #d0efff; }
-        .contact-instruction { font-size: 12px; font-weight: 700; color: var(--trust-blue); margin-bottom: 8px; display: block; }
-
-        .confirm-btn {
-            background: var(--brand-purple); color: white; border: none; 
-            width: 36px; height: 36px; border-radius: 8px; 
-            margin-left: 8px; cursor: pointer; display: inline-flex; 
-            align-items: center; justify-content: center; font-size: 14px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .confirm-btn:active { transform: scale(0.95); background: var(--electric-blue); }
-
-        .find-online-btn {
-            background: var(--trust-blue); color: white; border: none;
-            border-radius: 6px; padding: 8px 12px; font-size: 10px; font-weight: 700;
-            text-transform: uppercase; cursor: pointer; margin-left: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .find-online-btn:active { transform: scale(0.95); background: var(--brand-purple); }
-
-        .compliance-link { font-size:10px; color:var(--trust-blue); text-decoration:underline; cursor:pointer; margin-left:5px; font-weight:600; }
-        .compliance-box { display:none; margin-top:10px; background:#f9f9f9; padding:10px; border-radius:8px; border-left:3px solid #ccc; font-size:11px; color:#555; }
-
-        .terms-container-visual { background: var(--trust-bg-light); border: 2px solid #d0efff; border-radius: 12px; padding: 16px; margin-top: 25px; display: flex; align-items: center; gap: 12px; }
-        .checkbox-hit-area { display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 5px; margin: -5px; }
-        .terms-checkbox { width: 22px; height: 22px; cursor: pointer; accent-color: var(--trust-blue); }
-        .terms-text-static { font-size: 13px; font-weight: 600; color: var(--text-main); line-height: 1.4; cursor: default; user-select: none; }
-        .terms-link { font-size: 13px; font-weight: 700; color: var(--trust-blue); text-decoration: underline; cursor: pointer; margin-left: 3px; }
-
-        .submit-btn { width: 100%; background-color: var(--brand-purple); animation: colorPulse 6s ease-in-out infinite; color: white; border: none; padding: 18px; border-radius: 50px; font-size: 16px; font-weight: 800; margin-top: 15px; cursor: pointer; transition: all 0.3s; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
-        .submit-btn:active { transform: scale(0.98); }
+        .submit-btn { width: 100%; background-color: var(--brand-purple); animation: colorPulse 6s ease-in-out infinite; color: white; border: none; padding: 18px; border-radius: 50px; font-size: 16px; font-weight: 800; margin-top: 15px; cursor: pointer; transition: all 0.3s; text-transform: uppercase; letter-spacing: 1px; }
         .submit-btn:disabled { filter: grayscale(100%) opacity(0.4); cursor: not-allowed; }
 
         .footer-note { margin-top: 20px; font-size: 11px; color: var(--text-muted); text-align: center; line-height: 1.4; }
         footer { text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 12px; }
         .footer-brand-text { font-weight: 800; font-size: 18px; animation: textColorPulse 6s ease-in-out infinite; display: inline-block; margin-bottom: 5px; }
         a.corporate-link { text-decoration: none; color: inherit; display: inline-block; padding: 5px; transition: color 0.2s; }
-        a.corporate-link:hover { color: var(--text-main); }
+        .bottom-test-banner { background-color: #FFD700; color: #000; text-align: center; padding: 20px; font-weight: 800; font-size: 12px; text-transform: uppercase; border-top: 2px solid #000; margin-top: 40px; }
         
         .sub-q-group { margin-top:10px; padding:10px; background:white; border-radius:8px; border:1px solid #eee; }
         .sub-q-label { display:block; font-size:11px; font-weight:700; color:#555; margin-bottom:5px; }
-        
         .same-billing-row { display:flex; align-items:center; gap:8px; margin-bottom:10px; font-size:11px; color:#555; font-weight:600; cursor:pointer; }
         .same-billing-check { accent-color: var(--trust-blue); transform:scale(1.1); }
-
-        .bottom-test-banner {
-            background-color: #FFD700;
-            color: #000;
-            text-align: center;
-            padding: 20px;
-            font-weight: 800;
-            font-size: 12px;
-            text-transform: uppercase;
-            border-top: 2px solid #000;
-            margin-top: 40px;
-        }
     </style>
 </head>
 <body>
 
     <div class="test-banner">
         🚧 WE ARE CURRENTLY TESTING OUR SYSTEMS. PLEASE FEEL FREE TO LOOK AROUND, BUT KINDLY REFRAIN FROM SUBMITTING DATA AT THIS TIME. WE WILL BE LIVE IN 2 weeks. 🚧
-
     </div>
 
     <div class="brand-strip"></div>
@@ -279,17 +275,8 @@
 
         <div class="card">
             <div class="kit-title">Complete Hardware Package (Included)</div>
-            
             <div class="kit-item"><div class="kit-icon"><i class="fas fa-server"></i></div><div class="kit-details"><strong>Active Service License</strong><span>Fully managed hosting. We update your Dashboard links, Photos, Pricing & Special Deals upon request.</span></div></div>
-            
-            <div class="kit-item" id="hardware-item-1">
-                <div class="kit-icon"><i class="fas fa-wifi"></i></div>
-                <div class="kit-details">
-                    <strong id="hardware-title-1">1x Counter Stand OR Vehicle Magnet</strong>
-                    <span id="hardware-desc-1">We will customize this based on your business model below.</span>
-                </div>
-            </div>
-
+            <div class="kit-item" id="hardware-item-1"><div class="kit-icon"><i class="fas fa-wifi"></i></div><div class="kit-details"><strong id="hardware-title-1">1x Counter Stand OR Vehicle Magnet</strong><span id="hardware-desc-1">We will customize this based on your business model below.</span></div></div>
             <div class="kit-item"><div class="kit-icon"><i class="fas fa-id-card"></i></div><div class="kit-details"><strong>2x NFC Enabled Business Cards</strong><span>Tap to share your Digital HQ.</span></div></div>
             <div class="kit-item"><div class="kit-icon"><i class="fas fa-key"></i></div><div class="kit-details"><strong>2x NFC Keyrings</strong><span>For you or your team.</span></div></div>
             <div class="kit-item"><div class="kit-icon"><i class="fas fa-qrcode"></i></div><div class="kit-details"><strong>5x QR Code Stickers</strong><span>High-durability decals.</span></div></div>
@@ -322,16 +309,51 @@
                     <div class="price-note">If you join later</div>
                 </div>
             </div>
-            <div class="lock-disclaimer">*Price locked forever. Only increases if you add more physical locations or upgrade your service plan.</div>
+            
+            <button class="join-trigger-btn" onclick="openWizard()">
+                JOIN BETA NOW <i class="fas fa-arrow-right"></i>
+            </button>
+            <div class="lock-disclaimer" style="margin-top:15px;">*Price locked forever. Only increases if you add more physical locations.</div>
+        </div>
+    </div>
+
+    <footer>
+        <p>
+            <span class="footer-brand-text">Find Local</span><br>
+            <a href="https://tapengagesolutions.co.uk" class="corporate-link">
+                Managed by Tap Engage Solutions<br>
+                (Biagio Firetto)
+            </a>
+        </p>
+        <p style="font-size: 11px; color: #777; margin-top: 10px; line-height: 1.6;">
+            Uxbridge, United Kingdom
+        </p>
+        <p style="font-size: 10px; color: #999; margin-top: 15px;">
+            Copyright © 2026 Tap Engage Solutions. All Rights Reserved.
+        </p>
+    </footer>
+
+    <div class="bottom-test-banner">
+        🚧 TESTING MODE - DO NOT SUBMIT DATA 🚧
+    </div>
+
+    <div id="wizardOverlay">
+        <div class="wizard-header">
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="progress-text" id="progressText">Step 1 of 4</div>
         </div>
 
-        <div class="card">
-            <div class="step-header">1. Digital Presence</div>
+        <div class="wizard-step active" id="step1">
+            <div class="wizard-title">Let's get you set up.<br><span style="font-size:16px; font-weight:400; color:#666;">First, your digital presence.</span></div>
+            
             <div class="input-group"><label>Do you have a Website, Social Media, or Google Business Profile?</label>
                 <div class="yes-no-group">
                     <input type="radio" id="webYes" name="hasWebsite" value="Yes" onclick="toggleOnlineFields(true)"><label for="webYes" class="yes-no-label">Yes</label>
                     <input type="radio" id="webNo" name="hasWebsite" value="No" onclick="toggleOnlineFields(false)"><label for="webNo" class="yes-no-label">No</label>
                 </div>
+                
                 <div id="onlineDetails" style="display:none; margin-top:15px;">
                     <div class="input-group"><label>Great. Please paste the link (Only one link needed, can be anything)</label><input type="text" id="onlineLink" class="form-input" placeholder="e.g. mysite.com or your profile URL"></div>
                     <div class="input-group" style="margin-top:10px;"><label>Is your pricing & service list visible there?</label>
@@ -370,180 +392,211 @@
             </div>
 
             <div id="step3Wrapper">
-                <div class="step-header">2. Select Your Business Model</div>
-                <div class="input-group">
-                    <div class="branch-options">
-                        <label class="radio-option"><input type="radio" name="branches" value="Mobile" onclick="updateModel('Mobile')"><div class="radio-text"><strong>Mobile / Service Based</strong><span>I travel to clients or work remotely</span></div></label>
-                        <div class="divider-text">- OR -</div>
-                        <label class="radio-option"><input type="radio" name="branches" value="Single" onclick="updateModel('Single')"><div class="radio-text"><strong>Single Location</strong><span>I operate from one fixed premises</span></div></label>
-                        <div class="divider-text">- OR -</div>
-                        <label class="radio-option"><input type="radio" name="branches" value="Multiple" onclick="updateModel('Multiple')"><div class="radio-text"><strong>Multiple Locations</strong><span>Currently: +30% per site (Future: +50%)</span></div></label>
+                <div class="nav-buttons">
+                    <button class="nav-btn nav-back" onclick="closeWizard()">Cancel</button>
+                    <button class="nav-btn nav-next" onclick="goToStep(2)">Next Step <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="wizard-step" id="step2">
+            <div class="wizard-title">How do you operate?<br><span style="font-size:16px; font-weight:400; color:#666;">We use this to configure your kit.</span></div>
+            
+            <div class="input-group">
+                <div class="branch-options">
+                    <label class="radio-option"><input type="radio" name="branches" value="Mobile" onclick="updateModel('Mobile')"><div class="radio-text"><strong>Mobile / Service Based</strong><span>I travel to clients or work remotely</span></div></label>
+                    <div class="divider-text">- OR -</div>
+                    <label class="radio-option"><input type="radio" name="branches" value="Single" onclick="updateModel('Single')"><div class="radio-text"><strong>Single Location</strong><span>I operate from one fixed premises</span></div></label>
+                    <div class="divider-text">- OR -</div>
+                    <label class="radio-option"><input type="radio" name="branches" value="Multiple" onclick="updateModel('Multiple')"><div class="radio-text"><strong>Multiple Locations</strong><span>Currently: +30% per site (Future: +50%)</span></div></label>
+                    
+                    <div id="addressContainer" style="margin-top:20px; border-top:1px dashed #ccc; padding-top:15px; display:none;">
                         
-                        <div id="addressContainer" style="margin-top:20px; border-top:1px dashed #ccc; padding-top:15px; display:none;">
-                            
-                            <div id="addr-mobile-wrapper" style="display:none;">
-                                <label>Shipping Address (For Hardware Kit)</label>
-                                <div style="font-size:10px; color:#555; margin-bottom:5px; font-style:italic;">This address is strictly for sending your physical goods. This will not be shown publicly.</div>
-                                <textarea class="form-input" id="shipAddrMobile" rows="2" placeholder="Street, City, Postcode"></textarea>
-                            </div>
-
-                            <div id="addr-single-online" style="display:none;">
-                                <label>Business Address</label>
-                                <div style="display:flex; align-items:center;">
-                                    <textarea id="singleAddrOnline" class="form-input" rows="2" placeholder="Street, City, Postcode"></textarea>
-                                    <button type="button" class="find-online-btn" onclick="autoFillAddress('singleAddrOnline')">Find Online</button>
-                                </div>
-                                <div class="sub-q-group" style="margin-top:10px;">
-                                    <label class="sub-q-label">Is this the same address as shipping?</label>
-                                    <div class="yes-no-group">
-                                        <input type="radio" id="sameShipSingleYes" name="sameShipSingle" value="Yes" onclick="toggleSingleShip(false)">
-                                        <label for="sameShipSingleYes" class="yes-no-label">Yes</label>
-                                        <input type="radio" id="sameShipSingleNo" name="sameShipSingle" value="No" onclick="toggleSingleShip(true)">
-                                        <label for="sameShipSingleNo" class="yes-no-label">No</label>
-                                    </div>
-                                    <div id="singleShipInputWrapper" style="display:none; margin-top:5px;">
-                                        <label style="font-size:11px; font-weight:700; color:#555;">Shipping Address</label>
-                                        <div style="display:flex; align-items:center;">
-                                            <textarea id="singleShipAddr" class="form-input" rows="2"></textarea>
-                                            <button type="button" class="find-online-btn" onclick="autoFillAddress('singleShipAddr')">Find Online</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div id="addr-single-offline" style="display:none;">
-                                <label>Shipping Address</label>
-                                <textarea id="singleAddrOffline" class="form-input" rows="2" placeholder="Street, City, Postcode"></textarea>
-                                <div class="sub-q-group" style="margin-top:10px;">
-                                    <label class="sub-q-label">Would you like this address shown online?</label>
-                                    <div class="yes-no-group">
-                                        <input type="radio" id="showSingleOffYes" name="showSingleOff" value="Yes" onclick="toggleSingleOffPub(false)">
-                                        <label for="showSingleOffYes" class="yes-no-label">Yes</label>
-                                        <input type="radio" id="showSingleOffNo" name="showSingleOff" value="No" onclick="toggleSingleOffPub(true)">
-                                        <label for="showSingleOffNo" class="yes-no-label">No</label>
-                                    </div>
-                                    <input type="text" id="singleOffPubInput" class="form-input" style="display:none; margin-top:5px;" placeholder="What is the address you would like to be shown publicly?">
-                                </div>
-                            </div>
-
-                            <div id="addr-multi-wrapper" style="display:none;">
-                                <div style="margin-bottom:15px;">
-                                    <label>What address would you like the physical goods to be shipped to?</label>
-                                    <textarea id="multiShipAddr" class="form-input" rows="2" placeholder="e.g. Head Office, 123 High Street, London, W1 1AA"></textarea>
-                                    <div id="multiOfflineDropdown" style="display:none; margin-top:5px;">
-                                        <label style="font-size:10px;">Does this count as one of the addresses?</label>
-                                        <select class="form-input" style="padding:8px; font-size:12px;"><option>Yes</option><option>No</option></select>
-                                    </div>
-                                </div>
-
-                                <label style="color:var(--brand-purple); font-size:11px; margin-bottom:5px;">How many physical locations?</label>
-                                <div style="font-size:10px; color:#555; margin-bottom:5px; font-style:italic;">Please press the tick once you've entered the number.</div>
-                                
-                                <div style="display:flex; align-items:center;">
-                                    <input type="number" id="locationCount" class="form-input" style="padding:10px; width:80px;" value="2" min="2">
-                                    <button id="multiConfirmBtn" class="confirm-btn" onclick="generateLocations()"><i class="fas fa-check"></i></button>
-                                    <button id="multiFindBtn" class="find-online-btn" style="display:none;" onclick="generateLocations(true)">Find Online</button>
-                                </div>
-                                
-                                <div id="enterpriseMsg" style="display:none; margin-top:10px; color:var(--trust-blue); font-size:12px; font-weight:700;">Because you have 10+ stores, please email us for an Enterprise Contract after you have filled out the intake form.</div>
-                                <div id="multiLocationInputs" style="margin-top:15px;"></div>
-                            </div>
-
+                        <div id="addr-mobile-wrapper" style="display:none;">
+                            <label>Shipping Address (For Hardware Kit)</label>
+                            <div style="font-size:10px; color:#555; margin-bottom:5px; font-style:italic;">This address is strictly for sending your physical goods. This will not be shown publicly.</div>
+                            <textarea class="form-input" id="shipAddrMobile" rows="2" placeholder="Street, City, Postcode"></textarea>
                         </div>
+
+                        <div id="addr-single-online" style="display:none;">
+                            <label>Business Address</label>
+                            <div style="display:flex; align-items:center;">
+                                <textarea id="singleAddrOnline" class="form-input" rows="2" placeholder="Street, City, Postcode"></textarea>
+                                <button type="button" class="find-online-btn" onclick="autoFillAddress('singleAddrOnline')">Find Online</button>
+                            </div>
+                            <div class="sub-q-group" style="margin-top:10px;">
+                                <label class="sub-q-label">Is this the same address as shipping?</label>
+                                <div class="yes-no-group">
+                                    <input type="radio" id="sameShipSingleYes" name="sameShipSingle" value="Yes" onclick="toggleSingleShip(false)">
+                                    <label for="sameShipSingleYes" class="yes-no-label">Yes</label>
+                                    <input type="radio" id="sameShipSingleNo" name="sameShipSingle" value="No" onclick="toggleSingleShip(true)">
+                                    <label for="sameShipSingleNo" class="yes-no-label">No</label>
+                                </div>
+                                <div id="singleShipInputWrapper" style="display:none; margin-top:5px;">
+                                    <label style="font-size:11px; font-weight:700; color:#555;">Shipping Address</label>
+                                    <div style="display:flex; align-items:center;">
+                                        <textarea id="singleShipAddr" class="form-input" rows="2"></textarea>
+                                        <button type="button" class="find-online-btn" onclick="autoFillAddress('singleShipAddr')">Find Online</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="addr-single-offline" style="display:none;">
+                            <label>Shipping Address</label>
+                            <textarea id="singleAddrOffline" class="form-input" rows="2" placeholder="Street, City, Postcode"></textarea>
+                            <div class="sub-q-group" style="margin-top:10px;">
+                                <label class="sub-q-label">Would you like this address shown online?</label>
+                                <div class="yes-no-group">
+                                    <input type="radio" id="showSingleOffYes" name="showSingleOff" value="Yes" onclick="toggleSingleOffPub(false)">
+                                    <label for="showSingleOffYes" class="yes-no-label">Yes</label>
+                                    <input type="radio" id="showSingleOffNo" name="showSingleOff" value="No" onclick="toggleSingleOffPub(true)">
+                                    <label for="showSingleOffNo" class="yes-no-label">No</label>
+                                </div>
+                                <input type="text" id="singleOffPubInput" class="form-input" style="display:none; margin-top:5px;" placeholder="What is the address you would like to be shown publicly?">
+                            </div>
+                        </div>
+
+                        <div id="addr-multi-wrapper" style="display:none;">
+                            <div style="margin-bottom:15px;">
+                                <label>What address would you like the physical goods to be shipped to?</label>
+                                <textarea id="multiShipAddr" class="form-input" rows="2" placeholder="e.g. Head Office, 123 High Street, London, W1 1AA"></textarea>
+                                <div id="multiOfflineDropdown" style="display:none; margin-top:5px;">
+                                    <label style="font-size:10px;">Does this count as one of the addresses?</label>
+                                    <select class="form-input" style="padding:8px; font-size:12px;"><option>Yes</option><option>No</option></select>
+                                </div>
+                            </div>
+
+                            <label style="color:var(--brand-purple); font-size:11px; margin-bottom:5px;">How many physical locations?</label>
+                            <div style="font-size:10px; color:#555; margin-bottom:5px; font-style:italic;">Please press the tick once you've entered the number.</div>
+                            
+                            <div style="display:flex; align-items:center;">
+                                <input type="number" id="locationCount" class="form-input" style="padding:10px; width:80px;" value="2" min="2">
+                                <button id="multiConfirmBtn" class="confirm-btn" onclick="generateLocations()"><i class="fas fa-check"></i></button>
+                                <button id="multiFindBtn" class="find-online-btn" style="display:none;" onclick="generateLocations(true)">Find Online</button>
+                            </div>
+                            
+                            <div id="enterpriseMsg" style="display:none; margin-top:10px; color:var(--trust-blue); font-size:12px; font-weight:700;">Because you have 10+ stores, please email us for an Enterprise Contract after you have filled out the intake form.</div>
+                            <div id="multiLocationInputs" style="margin-top:15px;"></div>
+                        </div>
+
                     </div>
                 </div>
             </div>
 
             <div id="step4Wrapper">
-                <div class="step-header">3. Business Details</div>
-                <div class="input-group"><label>Business Structure</label>
-                    <div class="branch-options" style="margin-top:5px; margin-bottom:15px;">
-                        <label class="radio-option"><input type="radio" name="entityType" value="Limited Company" onclick="updateDetailsLabels('Limited')"><div class="radio-text"><strong>Limited Company</strong></div></label>
-                        <label class="radio-option"><input type="radio" name="entityType" value="Sole Trader" onclick="updateDetailsLabels('Sole')"><div class="radio-text"><strong>Sole Trader / Partnership</strong></div></label>
-                    </div>
+                <div class="nav-buttons">
+                    <button class="nav-btn nav-back" onclick="goToStep(1)">Back</button>
+                    <button class="nav-btn nav-next" onclick="goToStep(3)">Next Step <i class="fas fa-arrow-right"></i></button>
                 </div>
-                
-                <div id="crnField" style="display:none; margin-bottom:15px;">
-                    <label>Company Registration Number (Required for Footer Compliance)</label>
-                    <div style="display:flex; gap:10px; align-items:center;"><input type="text" id="companyRegNum" class="form-input" placeholder="e.g. 12345678"><span class="compliance-link" onclick="toggleCrnCompliance()">Learn More</span></div>
-                    <div class="compliance-box" id="crnCompBox"><strong>The Companies (Trading Disclosures) Regulations 2008:</strong><br>Requires all limited companies to display their registration number on their website (your Dashboard).</div>
+            </div>
+        </div>
+
+        <div class="wizard-step" id="step3">
+            <div class="wizard-title">Final Details.<br><span style="font-size:16px; font-weight:400; color:#666;">We need these for compliance.</span></div>
+
+            <div class="input-group"><label>Business Structure</label>
+                <div class="branch-options" style="margin-top:5px; margin-bottom:15px;">
+                    <label class="radio-option"><input type="radio" name="entityType" value="Limited Company" onclick="updateDetailsLabels('Limited')"><div class="radio-text"><strong>Limited Company</strong></div></label>
+                    <label class="radio-option"><input type="radio" name="entityType" value="Sole Trader" onclick="updateDetailsLabels('Sole')"><div class="radio-text"><strong>Sole Trader / Partnership</strong></div></label>
                 </div>
-
-                <div class="input-group"><label id="contactLabel">Best Point of Contact (Name or Department)</label><span id="privateLabel" style="font-size:10px; color:#777; display:none; margin-bottom:5px;">(This will not be shown publicly)</span><input type="text" id="userName" class="form-input" placeholder="e.g. John Smith or Marketing Team"></div>
-
-                <div id="ownerCheckSection" style="display:none; margin-top:10px; margin-bottom:15px; background:#f4f4f4; padding:10px; border-radius:8px;">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
-                        <label style="margin:0;">Are you the business owner? <span style="font-weight:400; color:#d9534f; font-size:10px;">(Your name will be shown publicly)</span></label>
-                        <span class="compliance-link" onclick="toggleCompliance()">Why must this be shown publicly? (Compliance)</span>
-                    </div>
-                    <div class="compliance-box" id="compBox"><strong>Consumer Protection Regulations (2008) & Companies Act Compliance:</strong><br>To comply with UK trading laws, your name must be displayed on your dashboard. This proves to customers that you are a legitimate trader.</div>
-                    <div class="yes-no-group"><input type="radio" id="ownerYes" name="isOwner" value="Yes" onclick="toggleOwnerField(true)"><label for="ownerYes" class="yes-no-label">Yes</label><input type="radio" id="ownerNo" name="isOwner" value="No" onclick="toggleOwnerField(false)"><label for="ownerNo" class="yes-no-label">No</label></div>
-                    <div id="ownerYesMsg" style="display:none; color:#333; font-size:11px; font-weight:700; margin-top:5px;"><i class="fas fa-check-circle"></i> Perfect. Please ensure your Full Name is entered correctly above.</div>
-                    <div id="ownerNoField" style="display:none; margin-top:10px;"><label>Please enter the Owner's Full Name</label><input type="text" id="ownerDetails" class="form-input" placeholder="e.g. Sarah Jones"></div>
-                </div>
-
-                <div class="input-group"><label id="bizNameLabel">Business Name</label><input type="text" id="shopName" class="form-input" placeholder="e.g. JS Carpentry"></div>
-                
-                <div id="billingSection"><div class="input-group" style="margin-top:15px;"><label>Billing & Account Email Address</label><input type="email" id="userEmail" class="form-input" placeholder="e.g. accounts@email.com"><div id="waPublicToggle" style="display:none; margin-top:8px;"><label class="same-billing-row"><input type="checkbox" id="publicEmailCheck" class="same-billing-check"> Display this email publicly on your Dashboard?</label></div></div></div>
+            </div>
+            
+            <div id="crnField" style="display:none; margin-bottom:15px;">
+                <label>Company Registration Number (Required for Footer Compliance)</label>
+                <div style="display:flex; gap:10px; align-items:center;"><input type="text" id="companyRegNum" class="form-input" placeholder="e.g. 12345678"><span class="compliance-link" onclick="toggleCrnCompliance()">Learn More</span></div>
+                <div class="compliance-box" id="crnCompBox"><strong>The Companies (Trading Disclosures) Regulations 2008:</strong><br>Requires all limited companies to display their registration number on their website (your Dashboard).</div>
             </div>
 
+            <div class="input-group"><label id="contactLabel">Best Point of Contact (Name or Department)</label><span id="privateLabel" style="font-size:10px; color:#777; display:none; margin-bottom:5px;">(This will not be shown publicly)</span><input type="text" id="userName" class="form-input" placeholder="e.g. John Smith or Marketing Team"></div>
+
+            <div id="ownerCheckSection" style="display:none; margin-top:10px; margin-bottom:15px; background:#f4f4f4; padding:10px; border-radius:8px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+                    <label style="margin:0;">Are you the business owner? <span style="font-weight:400; color:#d9534f; font-size:10px;">(Your name will be shown publicly)</span></label>
+                    <span class="compliance-link" onclick="toggleCompliance()">Why must this be shown publicly? (Compliance)</span>
+                </div>
+                <div class="compliance-box" id="compBox"><strong>Consumer Protection Regulations (2008) & Companies Act Compliance:</strong><br>To comply with UK trading laws, your name must be displayed on your dashboard. This proves to customers that you are a legitimate trader.</div>
+                <div class="yes-no-group"><input type="radio" id="ownerYes" name="isOwner" value="Yes" onclick="toggleOwnerField(true)"><label for="ownerYes" class="yes-no-label">Yes</label><input type="radio" id="ownerNo" name="isOwner" value="No" onclick="toggleOwnerField(false)"><label for="ownerNo" class="yes-no-label">No</label></div>
+                <div id="ownerYesMsg" style="display:none; color:#333; font-size:11px; font-weight:700; margin-top:5px;"><i class="fas fa-check-circle"></i> Perfect. Please ensure your Full Name is entered correctly above.</div>
+                <div id="ownerNoField" style="display:none; margin-top:10px;"><label>Please enter the Owner's Full Name</label><input type="text" id="ownerDetails" class="form-input" placeholder="e.g. Sarah Jones"></div>
+            </div>
+
+            <div class="input-group"><label id="bizNameLabel">Business Name</label><input type="text" id="shopName" class="form-input" placeholder="e.g. JS Carpentry"></div>
+            
+            <div id="billingSection"><div class="input-group" style="margin-top:15px;"><label>Billing & Account Email Address</label><input type="email" id="userEmail" class="form-input" placeholder="e.g. accounts@email.com"><div id="waPublicToggle" style="display:none; margin-top:8px;"><label class="same-billing-row"><input type="checkbox" id="publicEmailCheck" class="same-billing-check"> Display this email publicly on your Dashboard?</label></div></div></div>
+
             <div id="step5Wrapper">
-                <div class="step-header">4. Customize Your Hardware</div>
-                <div class="kit-customizer">
-                    <p style="font-size:11px; color:#555; margin-bottom:15px;">Based on your business model, we have selected this kit for you. You can adjust quantities below.</p>
-                    <div class="kit-control-row"><div><span class="kit-name">Vehicle Magnet</span><span class="kit-sub">Weatherproof NFC</span></div><div class="counter-box"><button class="count-btn" onclick="updateCount('magnet', -1)">-</button><span id="count-magnet" class="count-display">0</span><button class="count-btn" onclick="updateCount('magnet', 1)">+</button></div></div>
-                    <div class="kit-control-row"><div><span class="kit-name">Counter Stand</span><span class="kit-sub">Premium NFC Desk Stand</span></div><div class="counter-box"><button class="count-btn" onclick="updateCount('stand', -1)">-</button><span id="count-stand" class="count-display">0</span><button class="count-btn" onclick="updateCount('stand', 1)">+</button></div></div>
-                    <div class="kit-control-row"><div><span class="kit-name">NFC Business Cards</span><span class="kit-sub">Tap to share</span></div><div class="counter-box"><button class="count-btn" onclick="updateCount('cards', -1)">-</button><span id="count-cards" class="count-display">2</span><button class="count-btn" onclick="updateCount('cards', 1)">+</button></div></div>
-                    <div class="kit-control-row"><div><span class="kit-name">NFC Keyrings</span><span class="kit-sub">For staff keys</span></div><div class="counter-box"><button class="count-btn" onclick="updateCount('keyrings', -1)">-</button><span id="count-keyrings" class="count-display">2</span><button class="count-btn" onclick="updateCount('keyrings', 1)">+</button></div></div>
-                    <div class="kit-control-row"><div><span class="kit-name">QR Stickers</span><span class="kit-sub">Decals for windows/tools</span></div><div class="counter-box"><button class="count-btn" onclick="updateCount('stickers', -1)">-</button><span id="count-stickers" class="count-display">5</span><button class="count-btn" onclick="updateCount('stickers', 1)">+</button></div></div>
-                    <div class="live-total-bar"><div><div class="total-label">Setup Total</div><div class="total-amount" id="finalTotal">£350</div></div><div style="text-align:right; font-size:10px; color:#aaa; font-weight:700;">+ <span style="color:#39FF14; text-shadow: 0px 1px 1px rgba(0,0,0,0.3);">£25/mo</span></div></div>
-                    <div class="total-disclaimer">Note: This bundle is heavily discounted. Removing items does not lower the base setup fee.</div>
+                <div class="nav-buttons">
+                    <button class="nav-btn nav-back" onclick="goToStep(2)">Back</button>
+                    <button class="nav-btn nav-next" onclick="goToStep(4)">Next Step <i class="fas fa-arrow-right"></i></button>
                 </div>
+            </div>
+        </div>
 
-                <div class="terms-container-visual">
-                    <label class="checkbox-hit-area" for="termsCheck"><input type="checkbox" id="termsCheck" class="terms-checkbox" onchange="toggleSubmit()"></label>
-                    <span class="terms-text-static">I have read and agree to the</span><a href="setup-terms.html" target="_blank" class="terms-link">Terms & Conditions</a>
-                </div>
+        <div class="wizard-step" id="step4">
+            <div class="wizard-title">Your Custom Kit.<br><span style="font-size:16px; font-weight:400; color:#666;">Confirm your hardware quantity.</span></div>
 
-                <button onclick="submitApplication()" id="submitBtn" class="submit-btn" disabled>Secure My Founding Member Spot</button>
-                <div class="footer-note"><i class="fas fa-shield-alt"></i> <strong>Lifetime Price Guarantee.</strong></div>
+            <div class="kit-customizer">
+                <p style="font-size:11px; color:#555; margin-bottom:15px;">Based on your business model, we have selected this kit for you. You can adjust quantities below.</p>
+                <div class="kit-control-row"><div><span class="kit-name">Vehicle Magnet</span><span class="kit-sub">Weatherproof NFC</span></div><div class="counter-box"><button class="count-btn" onclick="updateCount('magnet', -1)">-</button><span id="count-magnet" class="count-display">0</span><button class="count-btn" onclick="updateCount('magnet', 1)">+</button></div></div>
+                <div class="kit-control-row"><div><span class="kit-name">Counter Stand</span><span class="kit-sub">Premium NFC Desk Stand</span></div><div class="counter-box"><button class="count-btn" onclick="updateCount('stand', -1)">-</button><span id="count-stand" class="count-display">0</span><button class="count-btn" onclick="updateCount('stand', 1)">+</button></div></div>
+                <div class="kit-control-row"><div><span class="kit-name">NFC Business Cards</span><span class="kit-sub">Tap to share</span></div><div class="counter-box"><button class="count-btn" onclick="updateCount('cards', -1)">-</button><span id="count-cards" class="count-display">2</span><button class="count-btn" onclick="updateCount('cards', 1)">+</button></div></div>
+                <div class="kit-control-row"><div><span class="kit-name">NFC Keyrings</span><span class="kit-sub">For staff keys</span></div><div class="counter-box"><button class="count-btn" onclick="updateCount('keyrings', -1)">-</button><span id="count-keyrings" class="count-display">2</span><button class="count-btn" onclick="updateCount('keyrings', 1)">+</button></div></div>
+                <div class="kit-control-row"><div><span class="kit-name">QR Stickers</span><span class="kit-sub">Decals for windows/tools</span></div><div class="counter-box"><button class="count-btn" onclick="updateCount('stickers', -1)">-</button><span id="count-stickers" class="count-display">5</span><button class="count-btn" onclick="updateCount('stickers', 1)">+</button></div></div>
+                <div class="live-total-bar"><div><div class="total-label">Setup Total</div><div class="total-amount" id="finalTotal">£350</div></div><div style="text-align:right; font-size:10px; color:#aaa; font-weight:700;">+ <span style="color:#39FF14; text-shadow: 0px 1px 1px rgba(0,0,0,0.3);">£25/mo</span></div></div>
+                <div class="total-disclaimer">Note: This bundle is heavily discounted. Removing items does not lower the base setup fee.</div>
+            </div>
+
+            <div class="terms-container-visual">
+                <label class="checkbox-hit-area" for="termsCheck"><input type="checkbox" id="termsCheck" class="terms-checkbox" onchange="toggleSubmit()"></label>
+                <span class="terms-text-static">I have read and agree to the</span><a href="setup-terms.html" target="_blank" class="terms-link">Terms & Conditions</a>
+            </div>
+
+            <button onclick="submitApplication()" id="submitBtn" class="submit-btn" disabled>Secure My Founding Member Spot</button>
+            <div class="footer-note"><i class="fas fa-shield-alt"></i> <strong>Lifetime Price Guarantee.</strong></div>
+            
+            <div class="nav-buttons" style="margin-top:10px;">
+                <button class="nav-btn nav-back" onclick="goToStep(3)">Back</button>
             </div>
         </div>
     </div>
 
-    <footer>
-        <p>
-            <span class="footer-brand-text">Find Local</span><br>
-            <a href="https://tapengagesolutions.co.uk" class="corporate-link">
-                Managed by Tap Engage Solutions<br>
-                (Biagio Firetto)
-            </a>
-        </p>
-        <p style="font-size: 11px; color: #777; margin-top: 10px; line-height: 1.6;">
-            Uxbridge, United Kingdom
-        </p>
-        <p style="font-size: 10px; color: #999; margin-top: 15px;">
-            Copyright © 2026 Tap Engage Solutions. All Rights Reserved.
-        </p>
-    </footer>
-
-    <div class="bottom-test-banner">
-        🚧 TESTING MODE - DO NOT SUBMIT DATA 🚧
-    </div>
-
     <script>
-        // ==========================================
-        // 🛠️ ADMIN CONTROL: CHANGE THIS NUMBER ONLY
-        // ==========================================
         const spotsRemaining = 50; 
-        // ==========================================
-
         document.querySelectorAll('.spots-display').forEach(el => el.innerText = spotsRemaining);
         const BASE_PRICE = 350; 
-        let currentModel = ""; // DEFAULTS TO EMPTY so no address fields show up
+        let currentModel = ""; 
         let isDigital = false;
         let isPricingVisible = false;
         let emailFoundOnline = false;
+
+        function openWizard() {
+            document.getElementById('wizardOverlay').style.display = 'block';
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeWizard() {
+            if(confirm("Are you sure? Your progress will be lost.")) {
+                document.getElementById('wizardOverlay').style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function goToStep(stepNum) {
+            document.querySelectorAll('.wizard-step').forEach(el => el.classList.remove('active'));
+            document.getElementById('step' + stepNum).classList.add('active');
+            
+            const bar = document.getElementById('progressBar');
+            const txt = document.getElementById('progressText');
+            let pct = 25;
+            if(stepNum === 2) pct = 50;
+            if(stepNum === 3) pct = 75;
+            if(stepNum === 4) pct = 100;
+            
+            bar.style.width = pct + '%';
+            txt.innerText = 'Step ' + stepNum + ' of 4';
+            document.getElementById('wizardOverlay').scrollTop = 0;
+        }
 
         const allowances = { Mobile: { magnet: 1, stand: 0, cards: 2, keyrings: 2, stickers: 5 }, Single: { magnet: 0, stand: 1, cards: 2, keyrings: 2, stickers: 5 }, Multiple: { magnet: 0, stand: 1, cards: 2, keyrings: 2, stickers: 5 } };
         const prices = { magnet: 30, stand: 20, cards: 10, keyrings: 5, stickers: 5 };
@@ -553,9 +606,7 @@
         
         function calculateTotal() {
             let extraCost = 0; 
-            // Fallback to Mobile allowance if currentModel is empty (for calculation purposes only)
             const allowance = allowances[currentModel] || allowances['Mobile']; 
-            
             if (counts.magnet > allowance.magnet) extraCost += (counts.magnet - allowance.magnet) * prices.magnet;
             if (counts.stand > allowance.stand) extraCost += (counts.stand - allowance.stand) * prices.stand;
             if (counts.cards > allowance.cards) extraCost += (counts.cards - allowance.cards) * prices.cards;
@@ -569,9 +620,7 @@
         }
         
         function updateModel(type) {
-            // UNHIDE STEP 4 (Business Details)
-            document.getElementById('step4Wrapper').style.display = 'block';
-
+            document.getElementById('step4Wrapper').style.display = 'block'; // Triggers button to step 3
             currentModel = type; 
             const title = document.getElementById('hardware-title-1'); 
             const desc = document.getElementById('hardware-desc-1'); 
@@ -587,9 +636,7 @@
         
         let globalEntityType = ""; 
         function toggleOnlineFields(hasOnline) {
-            // UNHIDE STEP 2 (Comms)
-            document.getElementById('universalComms').style.display = 'block';
-
+            document.getElementById('universalComms').style.display = 'block'; // Triggers rest of Step 1
             isDigital = hasOnline;
             document.getElementById('onlineDetails').style.display = hasOnline ? 'block' : 'none'; 
             document.getElementById('manualSendMsg').style.display = hasOnline ? 'none' : 'block'; 
@@ -601,8 +648,6 @@
             checkCRNRequirement(); 
             toggleContactFields(document.querySelector('input[name="assetMethod"]:checked')?.value);
             updateAddressSection();
-            
-            // "Find Online" button logic for Email (only if digital & pricing yes)
             checkFindButtons();
         }
 
@@ -621,10 +666,8 @@
 
         function toggleContactFields(method) {
             if(!method) return;
+            document.getElementById('step3Wrapper').style.display = 'block'; // Triggers button to Step 2
             
-            // UNHIDE STEP 3 (Business Model)
-            document.getElementById('step3Wrapper').style.display = 'block';
-
             document.getElementById('waField').style.display = method === 'WhatsApp' ? 'block' : 'none'; 
             document.getElementById('emailField').style.display = method === 'Email' ? 'block' : 'none';
             if(method === 'Email') { document.getElementById('billingSection').style.display = 'none'; } 
@@ -637,19 +680,13 @@
         }
 
         function toggleDashInput(show) { 
-            // Only show input if NOT found online. If found online, never show input on "No".
-            if (emailFoundOnline && show) {
-                 document.getElementById('dashEmailInput').style.display = 'none';
-            } else {
-                 document.getElementById('dashEmailInput').style.display = show ? 'block' : 'none'; 
-            }
+            if (emailFoundOnline && show) { document.getElementById('dashEmailInput').style.display = 'none'; } 
+            else { document.getElementById('dashEmailInput').style.display = show ? 'block' : 'none'; }
         }
         function toggleBillInput(show) { document.getElementById('billEmailInput').style.display = show ? 'block' : 'none'; }
         
         function updateDetailsLabels(type) {
-            // UNHIDE STEP 5 (Hardware / Submit)
-            document.getElementById('step5Wrapper').style.display = 'block';
-
+            document.getElementById('step5Wrapper').style.display = 'block'; // Triggers button to Step 4
             globalEntityType = type; 
             const label = document.getElementById('contactLabel'); 
             const ownerSection = document.getElementById('ownerCheckSection'); 
@@ -675,7 +712,6 @@
 
         function checkCRNRequirement() { 
             const crnDiv = document.getElementById('crnField'); 
-            // If Limited AND (No Digital OR No Pricing), ask CRN. If Digital+Pricing, don't ask.
             const autoFound = isDigital && isPricingVisible;
             if (globalEntityType === 'Limited' && !autoFound) { crnDiv.style.display = 'block'; } else { crnDiv.style.display = 'none'; } 
         }
@@ -685,57 +721,32 @@
         function toggleCrnCompliance() { const box = document.getElementById('crnCompBox'); box.style.display = box.style.display === 'block' ? 'none' : 'block'; }
         function toggleSubmit() { const check = document.getElementById('termsCheck'); const btn = document.getElementById('submitBtn'); btn.disabled = !check.checked; }
         
-        // ============================
-        // ADDRESS SECTION LOGIC
-        // ============================
         function updateAddressSection() {
             const container = document.getElementById('addressContainer');
-            
-            // SECURITY CHECK: If no model selected, HIDE EVERYTHING.
-            if(!currentModel) {
-                container.style.display = 'none';
-                return;
-            }
-            
+            if(!currentModel) { container.style.display = 'none'; return; }
             container.style.display = 'block';
 
-            // Hide all sub-sections first
             const ids = ['addr-mobile-wrapper','addr-single-online','addr-single-offline','addr-multi-wrapper'];
-            ids.forEach(id => {
-                const el = document.getElementById(id);
-                if(el) el.style.display = 'none';
-            });
+            ids.forEach(id => { const el = document.getElementById(id); if(el) el.style.display = 'none'; });
 
             const canAutoFind = isDigital && isPricingVisible;
 
-            if(currentModel === 'Mobile') {
-                // For Mobile, we ALWAYS just show shipping now. No public option.
-                document.getElementById('addr-mobile-wrapper').style.display = 'block';
-            }
+            if(currentModel === 'Mobile') { document.getElementById('addr-mobile-wrapper').style.display = 'block'; }
             else if(currentModel === 'Single') {
                 if(canAutoFind) document.getElementById('addr-single-online').style.display = 'block';
                 else document.getElementById('addr-single-offline').style.display = 'block';
             }
             else if(currentModel === 'Multiple') {
                 document.getElementById('addr-multi-wrapper').style.display = 'block';
-                // Multi Specifics
-                document.getElementById('multiConfirmBtn').style.display = 'inline-flex'; // Always show tick
+                document.getElementById('multiConfirmBtn').style.display = 'inline-flex';
                 document.getElementById('multiFindBtn').style.display = canAutoFind ? 'inline-flex' : 'none';
                 document.getElementById('multiOfflineDropdown').style.display = canAutoFind ? 'none' : 'block';
             }
         }
 
-        function autoFillAddress(id) {
-            document.getElementById(id).value = "Find online";
-        }
-
-        function toggleSingleShip(show) {
-            document.getElementById('singleShipInputWrapper').style.display = show ? 'block' : 'none';
-        }
-
-        function toggleSingleOffPub(showInput) {
-            document.getElementById('singleOffPubInput').style.display = showInput ? 'block' : 'none';
-        }
+        function autoFillAddress(id) { document.getElementById(id).value = "Find online"; }
+        function toggleSingleShip(show) { document.getElementById('singleShipInputWrapper').style.display = show ? 'block' : 'none'; }
+        function toggleSingleOffPub(showInput) { document.getElementById('singleOffPubInput').style.display = showInput ? 'block' : 'none'; }
 
         function generateLocations(autoFind = false) {
             const count = parseInt(document.getElementById('locationCount').value);
@@ -743,30 +754,19 @@
             const msg = document.getElementById('enterpriseMsg');
             container.innerHTML = '';
             
-            if(count > 10) {
-                msg.style.display = 'block';
-                // We do NOT generate inputs if > 10, to keep it clean, as per instruction to "email us".
-                return;
-            }
+            if(count > 10) { msg.style.display = 'block'; return; }
             msg.style.display = 'none';
             
             for(let i=0; i<count; i++) {
                 const div = document.createElement('div');
                 div.className = 'input-group';
                 div.style.marginBottom = '10px';
-                const label = document.createElement('label');
-                label.innerText = `Location ${i+1}`;
-                const input = document.createElement('input');
-                input.type = 'text';
-                input.className = 'form-input';
-                if(autoFind) input.value = "Find online";
-                else input.placeholder = "Street, City, Postcode";
-                
-                div.appendChild(label);
-                div.appendChild(input);
-                container.appendChild(div);
+                const label = document.createElement('label'); label.innerText = `Location ${i+1}`;
+                const input = document.createElement('input'); input.type = 'text'; input.className = 'form-input';
+                if(autoFind) input.value = "Find online"; else input.placeholder = "Street, City, Postcode";
+                div.appendChild(label); div.appendChild(input); container.appendChild(div);
             }
-            calculateTotal(); // RE-CALCULATE TOTAL PRICE
+            calculateTotal();
         }
 
         function submitApplication() {
@@ -776,18 +776,14 @@
             const entity = getRadioVal('entityType'); 
             const assetMethod = getRadioVal('assetMethod');
 
-            // Resolve Email
             let finalBillingEmail = "";
             let finalSetupEmail = "";
             if (assetMethod === 'Email') {
                 finalSetupEmail = document.getElementById('assetEmail').value;
                 if(finalSetupEmail === 'Find online') finalSetupEmail += " (Use Link)";
                 finalBillingEmail = (getRadioVal('billEmail') === 'Yes') ? finalSetupEmail : document.getElementById('billEmailInput').value;
-            } else {
-                finalBillingEmail = document.getElementById('userEmail').value;
-            }
+            } else { finalBillingEmail = document.getElementById('userEmail').value; }
             
-            // Resolve Address based on Model
             let finalAddressInfo = "";
             let shippingAddr = "";
             
@@ -797,15 +793,13 @@
             } 
             else if (currentModel === 'Single') {
                 if(document.getElementById('addr-single-online').style.display === 'block') {
-                    // Online Mode
                     const busAddr = document.getElementById('singleAddrOnline').value;
                     const sameShip = getRadioVal('sameShipSingle');
                     if(sameShip === 'Yes') shippingAddr = busAddr;
                     else shippingAddr = document.getElementById('singleShipAddr').value;
                     finalAddressInfo = `%0A📍 Business Addr: ${busAddr}%0A🚚 Shipping: ${shippingAddr}`;
                 } else {
-                    // Offline Mode
-                    const shipAddr = document.getElementById('singleAddrOffline').value; // Label is Shipping
+                    const shipAddr = document.getElementById('singleAddrOffline').value; 
                     shippingAddr = shipAddr;
                     const showPub = getRadioVal('showSingleOff');
                     let pubAddr = "Hidden";
@@ -817,24 +811,18 @@
             else if (currentModel === 'Multiple') {
                 shippingAddr = document.getElementById('multiShipAddr').value;
                 finalAddressInfo = `%0A🚚 Shipping: ${shippingAddr}`;
-                // We don't send all location inputs in URL to avoid length limits, just the count
             }
 
             if(!name || !shop || !entity || !finalBillingEmail || !shippingAddr) { alert("Please fill in key details."); return; }
 
-            // Construct Message
             let locationText = currentModel;
             const locCount = parseInt(document.getElementById('locationCount').value) || 0;
-            if (currentModel === 'Multiple' && locCount > 10) {
-                locationText = "Multiple (10+ ENTERPRISE REQUEST)";
-            } else if (currentModel === 'Multiple') {
-                locationText = `Multiple (${locCount} Sites)`;
-            }
+            if (currentModel === 'Multiple' && locCount > 10) { locationText = "Multiple (10+ ENTERPRISE REQUEST)"; } 
+            else if (currentModel === 'Multiple') { locationText = `Multiple (${locCount} Sites)`; }
 
             const totalText = document.getElementById('finalTotal').innerText;
             const commsPref = `%0A📞 Design Setup via: ${assetMethod}`;
             const emailSummary = `%0A📧 Billing Email: ${finalBillingEmail}`;
-            
             const hardwareOrder = `%0A%0A📦 *CUSTOM KIT ORDER:*%0A- Magnets: ${counts.magnet}%0A- Stands: ${counts.stand}%0A- Cards: ${counts.cards}%0A- Keyrings: ${counts.keyrings}%0A- Stickers: ${counts.stickers}`;
 
             if (confirm("Tap OK for EMAIL Invoice.\nTap CANCEL for WHATSAPP.")) {
