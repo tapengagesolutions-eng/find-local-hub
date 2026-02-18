@@ -232,7 +232,7 @@
 <body>
 
     <div class="test-banner">
-        🚧 WE ARE CURRENTLY TESTING OUR SYSTEMS. PLEASE FEEL FREE TO LOOK AROUND, BUT KINDLY REFRAIN FROM SUBMITTING DATA AT THIS TIME.. WE WILL BE LIVE IN 2 weeks. 🚧
+        🚧 WE ARE CURRENTLY TESTING OUR SYSTEMS. PLEASE FEEL FREE TO LOOK AROUND, BUT KINDLY REFRAIN FROM SUBMITTING DATA AT THIS TIME. WE WILL BE LIVE IN 2 weeks. 🚧
 
     </div>
 
@@ -766,7 +766,40 @@
                 finalBillingEmail = document.getElementById('userEmail').value;
             }
             
-            if(!name || !shop || !entity || !finalBillingEmail) { alert("Please fill in key details."); return; }
+            // Resolve Address based on Model
+            let finalAddressInfo = "";
+            let shippingAddr = "";
+            
+            if (currentModel === 'Mobile') {
+                shippingAddr = document.getElementById('shipAddrMobile').value;
+                finalAddressInfo = `%0A🚚 Shipping (Mobile): ${shippingAddr}`;
+            } 
+            else if (currentModel === 'Single') {
+                if(document.getElementById('addr-single-online').style.display === 'block') {
+                    // Online Mode
+                    const busAddr = document.getElementById('singleAddrOnline').value;
+                    const sameShip = getRadioVal('sameShipSingle');
+                    if(sameShip === 'Yes') shippingAddr = busAddr;
+                    else shippingAddr = document.getElementById('singleShipAddr').value;
+                    finalAddressInfo = `%0A📍 Business Addr: ${busAddr}%0A🚚 Shipping: ${shippingAddr}`;
+                } else {
+                    // Offline Mode
+                    const shipAddr = document.getElementById('singleAddrOffline').value; // Label is Shipping
+                    shippingAddr = shipAddr;
+                    const showPub = getRadioVal('showSingleOff');
+                    let pubAddr = "Hidden";
+                    if(showPub === 'Yes') pubAddr = shipAddr; 
+                    else pubAddr = document.getElementById('singleOffPubInput').value;
+                    finalAddressInfo = `%0A🚚 Shipping: ${shipAddr}%0A🌍 Public Addr: ${pubAddr}`;
+                }
+            }
+            else if (currentModel === 'Multiple') {
+                shippingAddr = document.getElementById('multiShipAddr').value;
+                finalAddressInfo = `%0A🚚 Shipping: ${shippingAddr}`;
+                // We don't send all location inputs in URL to avoid length limits, just the count
+            }
+
+            if(!name || !shop || !entity || !finalBillingEmail || !shippingAddr) { alert("Please fill in key details."); return; }
 
             // Construct Message
             let locationText = currentModel;
@@ -785,14 +818,13 @@
 
             if (confirm("Tap OK for EMAIL Invoice.\nTap CANCEL for WHATSAPP.")) {
                 const subject = `Founding Member: ${shop}`; 
-                const body = `Hi Biaggio,%0D%0A%0D%0AI want the Founding Member rate (£25/mo).%0D%0A%0D%0ADETAILS:%0D%0AStructure: ${entity}%0D%0AContact: ${name}%0D%0ABusiness: ${shop}%0D%0Amodel: ${locationText}${commsPref}${emailSummary}${hardwareOrder.replace(/%0A/g, "%0D%0A")}%0D%0A%0D%0ATOTAL SETUP: ${totalText}%0D%0A%0D%0AI accept the T&Cs.`;
+                const body = `Hi Biaggio,%0D%0A%0D%0AI want the Founding Member rate (£25/mo).%0D%0A%0D%0ADETAILS:%0D%0AStructure: ${entity}%0D%0AContact: ${name}%0D%0ABusiness: ${shop}%0D%0Amodel: ${locationText}${commsPref}${emailSummary}${finalAddressInfo}${hardwareOrder.replace(/%0A/g, "%0D%0A")}%0D%0A%0D%0ATOTAL SETUP: ${totalText}%0D%0A%0D%0AI accept the T&Cs.`;
                 window.location.href = `mailto:tapengagesolutions@gmail.com?subject=${subject}&body=${body}`;
             } else {
-                const message = `*FOUNDING MEMBER REQUEST*%0A%0A📝 Structure: ${entity}%0A👤 Contact: ${name}%0A🏢 Business: ${shop}%0A🏢 Model: ${locationText}${commsPref}${emailSummary}${hardwareOrder}%0A%0A💰 TOTAL SETUP: ${totalText}%0A%0AI accept the T&Cs.`;
+                const message = `*FOUNDING MEMBER REQUEST*%0A%0A📝 Structure: ${entity}%0A👤 Contact: ${name}%0A🏢 Business: ${shop}%0A🏢 Model: ${locationText}${commsPref}${emailSummary}${finalAddressInfo}${hardwareOrder}%0A%0A💰 TOTAL SETUP: ${totalText}%0A%0AI accept the T&Cs.`;
                 window.open(`https://wa.me/447415604242?text=${message}`, '_blank');
             }
         }
     </script>
 </body>
 </html>
-
