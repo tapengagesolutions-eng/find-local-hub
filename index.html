@@ -149,6 +149,8 @@
         .yes-no-group input[type="radio"] { display: none; }
         .yes-no-group input[type="radio"]:checked + .yes-no-label { background: var(--trust-bg-light); border-color: var(--trust-blue); color: var(--trust-blue); }
 
+        /* Hidden Sections for Progressive Disclosure */
+        #universalComms, #step3Wrapper, #step4Wrapper, #step5Wrapper { display: none; }
         .hidden-section { display: none; margin-top: 15px; padding: 15px; background: #fff; border: 1px dashed #ccc; border-radius: 10px; }
         
         .kit-customizer { margin-top: 15px; background: #fcfcfc; border: 1px solid #eee; border-radius: 12px; padding: 15px; }
@@ -344,7 +346,7 @@
                 <div id="manualSendMsg" style="display:none; color:var(--trust-blue); font-size:12px; margin-top:10px; font-weight:600;">No problem. We will message you on WhatsApp or Email to get this information.</div>
             </div>
 
-            <div id="universalComms" style="display:none; margin-top:25px; padding-top:15px; border-top:1px solid #eee;">
+            <div id="universalComms" style="margin-top:25px; padding-top:15px; border-top:1px solid #eee;">
                 <div class="input-group">
                     <label id="commsLabel">If we need anything else, how should we contact you?</label>
                     <div style="font-size:10px; color:#555; margin-bottom:10px; font-style:italic;"><i class="fas fa-info-circle"></i> Note: Official Invoices & Contracts are always sent to your email for security.</div>
@@ -367,139 +369,145 @@
                 </div>
             </div>
 
-            <div class="step-header">2. Select Your Business Model</div>
-            <div class="input-group">
-                <div class="branch-options">
-                    <label class="radio-option"><input type="radio" name="branches" value="Mobile" onclick="updateModel('Mobile')"><div class="radio-text"><strong>Mobile / Service Based</strong><span>I travel to clients or work remotely</span></div></label>
-                    <div class="divider-text">- OR -</div>
-                    <label class="radio-option"><input type="radio" name="branches" value="Single" onclick="updateModel('Single')"><div class="radio-text"><strong>Single Location</strong><span>I operate from one fixed premises</span></div></label>
-                    <div class="divider-text">- OR -</div>
-                    <label class="radio-option"><input type="radio" name="branches" value="Multiple" onclick="updateModel('Multiple')"><div class="radio-text"><strong>Multiple Locations</strong><span>Currently: +30% per site (Future: +50%)</span></div></label>
-                    
-                    <div id="addressContainer" style="margin-top:20px; border-top:1px dashed #ccc; padding-top:15px; display:none;">
+            <div id="step3Wrapper">
+                <div class="step-header">2. Select Your Business Model</div>
+                <div class="input-group">
+                    <div class="branch-options">
+                        <label class="radio-option"><input type="radio" name="branches" value="Mobile" onclick="updateModel('Mobile')"><div class="radio-text"><strong>Mobile / Service Based</strong><span>I travel to clients or work remotely</span></div></label>
+                        <div class="divider-text">- OR -</div>
+                        <label class="radio-option"><input type="radio" name="branches" value="Single" onclick="updateModel('Single')"><div class="radio-text"><strong>Single Location</strong><span>I operate from one fixed premises</span></div></label>
+                        <div class="divider-text">- OR -</div>
+                        <label class="radio-option"><input type="radio" name="branches" value="Multiple" onclick="updateModel('Multiple')"><div class="radio-text"><strong>Multiple Locations</strong><span>Currently: +30% per site (Future: +50%)</span></div></label>
                         
-                        <div id="addr-mobile-wrapper" style="display:none;">
-                            <label>Shipping Address (For Hardware Kit)</label>
-                            <div style="font-size:10px; color:#555; margin-bottom:5px; font-style:italic;">This address is strictly for sending your physical goods. This will not be shown publicly.</div>
-                            <textarea class="form-input" id="shipAddrMobile" rows="2" placeholder="Street, City, Postcode"></textarea>
-                        </div>
-
-                        <div id="addr-single-online" style="display:none;">
-                            <label>Business Address</label>
-                            <div style="display:flex; align-items:center;">
-                                <textarea id="singleAddrOnline" class="form-input" rows="2" placeholder="Street, City, Postcode"></textarea>
-                                <button type="button" class="find-online-btn" onclick="autoFillAddress('singleAddrOnline')">Find Online</button>
+                        <div id="addressContainer" style="margin-top:20px; border-top:1px dashed #ccc; padding-top:15px; display:none;">
+                            
+                            <div id="addr-mobile-wrapper" style="display:none;">
+                                <label>Shipping Address (For Hardware Kit)</label>
+                                <div style="font-size:10px; color:#555; margin-bottom:5px; font-style:italic;">This address is strictly for sending your physical goods. This will not be shown publicly.</div>
+                                <textarea class="form-input" id="shipAddrMobile" rows="2" placeholder="Street, City, Postcode"></textarea>
                             </div>
-                            <div class="sub-q-group" style="margin-top:10px;">
-                                <label class="sub-q-label">Is this the same address as shipping?</label>
-                                <div class="yes-no-group">
-                                    <input type="radio" id="sameShipSingleYes" name="sameShipSingle" value="Yes" onclick="toggleSingleShip(false)">
-                                    <label for="sameShipSingleYes" class="yes-no-label">Yes</label>
-                                    <input type="radio" id="sameShipSingleNo" name="sameShipSingle" value="No" onclick="toggleSingleShip(true)">
-                                    <label for="sameShipSingleNo" class="yes-no-label">No</label>
+
+                            <div id="addr-single-online" style="display:none;">
+                                <label>Business Address</label>
+                                <div style="display:flex; align-items:center;">
+                                    <textarea id="singleAddrOnline" class="form-input" rows="2" placeholder="Street, City, Postcode"></textarea>
+                                    <button type="button" class="find-online-btn" onclick="autoFillAddress('singleAddrOnline')">Find Online</button>
                                 </div>
-                                <div id="singleShipInputWrapper" style="display:none; margin-top:5px;">
-                                    <label style="font-size:11px; font-weight:700; color:#555;">Shipping Address</label>
-                                    <div style="display:flex; align-items:center;">
-                                        <textarea id="singleShipAddr" class="form-input" rows="2"></textarea>
-                                        <button type="button" class="find-online-btn" onclick="autoFillAddress('singleShipAddr')">Find Online</button>
+                                <div class="sub-q-group" style="margin-top:10px;">
+                                    <label class="sub-q-label">Is this the same address as shipping?</label>
+                                    <div class="yes-no-group">
+                                        <input type="radio" id="sameShipSingleYes" name="sameShipSingle" value="Yes" onclick="toggleSingleShip(false)">
+                                        <label for="sameShipSingleYes" class="yes-no-label">Yes</label>
+                                        <input type="radio" id="sameShipSingleNo" name="sameShipSingle" value="No" onclick="toggleSingleShip(true)">
+                                        <label for="sameShipSingleNo" class="yes-no-label">No</label>
+                                    </div>
+                                    <div id="singleShipInputWrapper" style="display:none; margin-top:5px;">
+                                        <label style="font-size:11px; font-weight:700; color:#555;">Shipping Address</label>
+                                        <div style="display:flex; align-items:center;">
+                                            <textarea id="singleShipAddr" class="form-input" rows="2"></textarea>
+                                            <button type="button" class="find-online-btn" onclick="autoFillAddress('singleShipAddr')">Find Online</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div id="addr-single-offline" style="display:none;">
-                            <label>Shipping Address</label>
-                            <textarea id="singleAddrOffline" class="form-input" rows="2" placeholder="Street, City, Postcode"></textarea>
-                            <div class="sub-q-group" style="margin-top:10px;">
-                                <label class="sub-q-label">Would you like this address shown online?</label>
-                                <div class="yes-no-group">
-                                    <input type="radio" id="showSingleOffYes" name="showSingleOff" value="Yes" onclick="toggleSingleOffPub(false)">
-                                    <label for="showSingleOffYes" class="yes-no-label">Yes</label>
-                                    <input type="radio" id="showSingleOffNo" name="showSingleOff" value="No" onclick="toggleSingleOffPub(true)">
-                                    <label for="showSingleOffNo" class="yes-no-label">No</label>
-                                </div>
-                                <input type="text" id="singleOffPubInput" class="form-input" style="display:none; margin-top:5px;" placeholder="What is the address you would like to be shown publicly?">
-                            </div>
-                        </div>
-
-                        <div id="addr-multi-wrapper" style="display:none;">
-                            <div style="margin-bottom:15px;">
-                                <label>What address would you like the physical goods to be shipped to?</label>
-                                <textarea id="multiShipAddr" class="form-input" rows="2" placeholder="e.g. Head Office, 123 High Street, London, W1 1AA"></textarea>
-                                <div id="multiOfflineDropdown" style="display:none; margin-top:5px;">
-                                    <label style="font-size:10px;">Does this count as one of the addresses?</label>
-                                    <select class="form-input" style="padding:8px; font-size:12px;"><option>Yes</option><option>No</option></select>
+                            <div id="addr-single-offline" style="display:none;">
+                                <label>Shipping Address</label>
+                                <textarea id="singleAddrOffline" class="form-input" rows="2" placeholder="Street, City, Postcode"></textarea>
+                                <div class="sub-q-group" style="margin-top:10px;">
+                                    <label class="sub-q-label">Would you like this address shown online?</label>
+                                    <div class="yes-no-group">
+                                        <input type="radio" id="showSingleOffYes" name="showSingleOff" value="Yes" onclick="toggleSingleOffPub(false)">
+                                        <label for="showSingleOffYes" class="yes-no-label">Yes</label>
+                                        <input type="radio" id="showSingleOffNo" name="showSingleOff" value="No" onclick="toggleSingleOffPub(true)">
+                                        <label for="showSingleOffNo" class="yes-no-label">No</label>
+                                    </div>
+                                    <input type="text" id="singleOffPubInput" class="form-input" style="display:none; margin-top:5px;" placeholder="What is the address you would like to be shown publicly?">
                                 </div>
                             </div>
 
-                            <label style="color:var(--brand-purple); font-size:11px; margin-bottom:5px;">How many physical locations?</label>
-                            <div style="font-size:10px; color:#555; margin-bottom:5px; font-style:italic;">Please press the tick once you've entered the number.</div>
-                            
-                            <div style="display:flex; align-items:center;">
-                                <input type="number" id="locationCount" class="form-input" style="padding:10px; width:80px;" value="2" min="2">
-                                <button id="multiConfirmBtn" class="confirm-btn" onclick="generateLocations()"><i class="fas fa-check"></i></button>
-                                <button id="multiFindBtn" class="find-online-btn" style="display:none;" onclick="generateLocations(true)">Find Online</button>
-                            </div>
-                            
-                            <div id="enterpriseMsg" style="display:none; margin-top:10px; color:var(--trust-blue); font-size:12px; font-weight:700;">Because you have 10+ stores, please email us for an Enterprise Contract after you have filled out the intake form.</div>
-                            <div id="multiLocationInputs" style="margin-top:15px;"></div>
-                        </div>
+                            <div id="addr-multi-wrapper" style="display:none;">
+                                <div style="margin-bottom:15px;">
+                                    <label>What address would you like the physical goods to be shipped to?</label>
+                                    <textarea id="multiShipAddr" class="form-input" rows="2" placeholder="e.g. Head Office, 123 High Street, London, W1 1AA"></textarea>
+                                    <div id="multiOfflineDropdown" style="display:none; margin-top:5px;">
+                                        <label style="font-size:10px;">Does this count as one of the addresses?</label>
+                                        <select class="form-input" style="padding:8px; font-size:12px;"><option>Yes</option><option>No</option></select>
+                                    </div>
+                                </div>
 
+                                <label style="color:var(--brand-purple); font-size:11px; margin-bottom:5px;">How many physical locations?</label>
+                                <div style="font-size:10px; color:#555; margin-bottom:5px; font-style:italic;">Please press the tick once you've entered the number.</div>
+                                
+                                <div style="display:flex; align-items:center;">
+                                    <input type="number" id="locationCount" class="form-input" style="padding:10px; width:80px;" value="2" min="2">
+                                    <button id="multiConfirmBtn" class="confirm-btn" onclick="generateLocations()"><i class="fas fa-check"></i></button>
+                                    <button id="multiFindBtn" class="find-online-btn" style="display:none;" onclick="generateLocations(true)">Find Online</button>
+                                </div>
+                                
+                                <div id="enterpriseMsg" style="display:none; margin-top:10px; color:var(--trust-blue); font-size:12px; font-weight:700;">Because you have 10+ stores, please email us for an Enterprise Contract after you have filled out the intake form.</div>
+                                <div id="multiLocationInputs" style="margin-top:15px;"></div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="step-header">3. Business Details</div>
-            <div class="input-group"><label>Business Structure</label>
-                <div class="branch-options" style="margin-top:5px; margin-bottom:15px;">
-                    <label class="radio-option"><input type="radio" name="entityType" value="Limited Company" onclick="updateDetailsLabels('Limited')"><div class="radio-text"><strong>Limited Company</strong></div></label>
-                    <label class="radio-option"><input type="radio" name="entityType" value="Sole Trader" onclick="updateDetailsLabels('Sole')"><div class="radio-text"><strong>Sole Trader / Partnership</strong></div></label>
+            <div id="step4Wrapper">
+                <div class="step-header">3. Business Details</div>
+                <div class="input-group"><label>Business Structure</label>
+                    <div class="branch-options" style="margin-top:5px; margin-bottom:15px;">
+                        <label class="radio-option"><input type="radio" name="entityType" value="Limited Company" onclick="updateDetailsLabels('Limited')"><div class="radio-text"><strong>Limited Company</strong></div></label>
+                        <label class="radio-option"><input type="radio" name="entityType" value="Sole Trader" onclick="updateDetailsLabels('Sole')"><div class="radio-text"><strong>Sole Trader / Partnership</strong></div></label>
+                    </div>
                 </div>
-            </div>
-            
-            <div id="crnField" style="display:none; margin-bottom:15px;">
-                <label>Company Registration Number (Required for Footer Compliance)</label>
-                <div style="display:flex; gap:10px; align-items:center;"><input type="text" id="companyRegNum" class="form-input" placeholder="e.g. 12345678"><span class="compliance-link" onclick="toggleCrnCompliance()">Learn More</span></div>
-                <div class="compliance-box" id="crnCompBox"><strong>The Companies (Trading Disclosures) Regulations 2008:</strong><br>Requires all limited companies to display their registration number on their website (your Dashboard).</div>
-            </div>
-
-            <div class="input-group"><label id="contactLabel">Best Point of Contact (Name or Department)</label><span id="privateLabel" style="font-size:10px; color:#777; display:none; margin-bottom:5px;">(This will not be shown publicly)</span><input type="text" id="userName" class="form-input" placeholder="e.g. John Smith or Marketing Team"></div>
-
-            <div id="ownerCheckSection" style="display:none; margin-top:10px; margin-bottom:15px; background:#f4f4f4; padding:10px; border-radius:8px;">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
-                    <label style="margin:0;">Are you the business owner? <span style="font-weight:400; color:#d9534f; font-size:10px;">(Your name will be shown publicly)</span></label>
-                    <span class="compliance-link" onclick="toggleCompliance()">Why must this be shown publicly? (Compliance)</span>
+                
+                <div id="crnField" style="display:none; margin-bottom:15px;">
+                    <label>Company Registration Number (Required for Footer Compliance)</label>
+                    <div style="display:flex; gap:10px; align-items:center;"><input type="text" id="companyRegNum" class="form-input" placeholder="e.g. 12345678"><span class="compliance-link" onclick="toggleCrnCompliance()">Learn More</span></div>
+                    <div class="compliance-box" id="crnCompBox"><strong>The Companies (Trading Disclosures) Regulations 2008:</strong><br>Requires all limited companies to display their registration number on their website (your Dashboard).</div>
                 </div>
-                <div class="compliance-box" id="compBox"><strong>Consumer Protection Regulations (2008) & Companies Act Compliance:</strong><br>To comply with UK trading laws, your name must be displayed on your dashboard. This proves to customers that you are a legitimate trader.</div>
-                <div class="yes-no-group"><input type="radio" id="ownerYes" name="isOwner" value="Yes" onclick="toggleOwnerField(true)"><label for="ownerYes" class="yes-no-label">Yes</label><input type="radio" id="ownerNo" name="isOwner" value="No" onclick="toggleOwnerField(false)"><label for="ownerNo" class="yes-no-label">No</label></div>
-                <div id="ownerYesMsg" style="display:none; color:#333; font-size:11px; font-weight:700; margin-top:5px;"><i class="fas fa-check-circle"></i> Perfect. Please ensure your Full Name is entered correctly above.</div>
-                <div id="ownerNoField" style="display:none; margin-top:10px;"><label>Please enter the Owner's Full Name</label><input type="text" id="ownerDetails" class="form-input" placeholder="e.g. Sarah Jones"></div>
+
+                <div class="input-group"><label id="contactLabel">Best Point of Contact (Name or Department)</label><span id="privateLabel" style="font-size:10px; color:#777; display:none; margin-bottom:5px;">(This will not be shown publicly)</span><input type="text" id="userName" class="form-input" placeholder="e.g. John Smith or Marketing Team"></div>
+
+                <div id="ownerCheckSection" style="display:none; margin-top:10px; margin-bottom:15px; background:#f4f4f4; padding:10px; border-radius:8px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+                        <label style="margin:0;">Are you the business owner? <span style="font-weight:400; color:#d9534f; font-size:10px;">(Your name will be shown publicly)</span></label>
+                        <span class="compliance-link" onclick="toggleCompliance()">Why must this be shown publicly? (Compliance)</span>
+                    </div>
+                    <div class="compliance-box" id="compBox"><strong>Consumer Protection Regulations (2008) & Companies Act Compliance:</strong><br>To comply with UK trading laws, your name must be displayed on your dashboard. This proves to customers that you are a legitimate trader.</div>
+                    <div class="yes-no-group"><input type="radio" id="ownerYes" name="isOwner" value="Yes" onclick="toggleOwnerField(true)"><label for="ownerYes" class="yes-no-label">Yes</label><input type="radio" id="ownerNo" name="isOwner" value="No" onclick="toggleOwnerField(false)"><label for="ownerNo" class="yes-no-label">No</label></div>
+                    <div id="ownerYesMsg" style="display:none; color:#333; font-size:11px; font-weight:700; margin-top:5px;"><i class="fas fa-check-circle"></i> Perfect. Please ensure your Full Name is entered correctly above.</div>
+                    <div id="ownerNoField" style="display:none; margin-top:10px;"><label>Please enter the Owner's Full Name</label><input type="text" id="ownerDetails" class="form-input" placeholder="e.g. Sarah Jones"></div>
+                </div>
+
+                <div class="input-group"><label id="bizNameLabel">Business Name</label><input type="text" id="shopName" class="form-input" placeholder="e.g. JS Carpentry"></div>
+                
+                <div id="billingSection"><div class="input-group" style="margin-top:15px;"><label>Billing & Account Email Address</label><input type="email" id="userEmail" class="form-input" placeholder="e.g. accounts@email.com"><div id="waPublicToggle" style="display:none; margin-top:8px;"><label class="same-billing-row"><input type="checkbox" id="publicEmailCheck" class="same-billing-check"> Display this email publicly on your Dashboard?</label></div></div></div>
             </div>
 
-            <div class="input-group"><label id="bizNameLabel">Business Name</label><input type="text" id="shopName" class="form-input" placeholder="e.g. JS Carpentry"></div>
-            
-            <div id="billingSection"><div class="input-group" style="margin-top:15px;"><label>Billing & Account Email Address</label><input type="email" id="userEmail" class="form-input" placeholder="e.g. accounts@email.com"><div id="waPublicToggle" style="display:none; margin-top:8px;"><label class="same-billing-row"><input type="checkbox" id="publicEmailCheck" class="same-billing-check"> Display this email publicly on your Dashboard?</label></div></div></div>
-            
-            <div class="step-header">4. Customize Your Hardware</div>
-            <div class="kit-customizer">
-                <p style="font-size:11px; color:#555; margin-bottom:15px;">Based on your business model, we have selected this kit for you. You can adjust quantities below.</p>
-                <div class="kit-control-row"><div><span class="kit-name">Vehicle Magnet</span><span class="kit-sub">Weatherproof NFC</span></div><div class="counter-box"><button class="count-btn" onclick="updateCount('magnet', -1)">-</button><span id="count-magnet" class="count-display">0</span><button class="count-btn" onclick="updateCount('magnet', 1)">+</button></div></div>
-                <div class="kit-control-row"><div><span class="kit-name">Counter Stand</span><span class="kit-sub">Premium NFC Desk Stand</span></div><div class="counter-box"><button class="count-btn" onclick="updateCount('stand', -1)">-</button><span id="count-stand" class="count-display">0</span><button class="count-btn" onclick="updateCount('stand', 1)">+</button></div></div>
-                <div class="kit-control-row"><div><span class="kit-name">NFC Business Cards</span><span class="kit-sub">Tap to share</span></div><div class="counter-box"><button class="count-btn" onclick="updateCount('cards', -1)">-</button><span id="count-cards" class="count-display">2</span><button class="count-btn" onclick="updateCount('cards', 1)">+</button></div></div>
-                <div class="kit-control-row"><div><span class="kit-name">NFC Keyrings</span><span class="kit-sub">For staff keys</span></div><div class="counter-box"><button class="count-btn" onclick="updateCount('keyrings', -1)">-</button><span id="count-keyrings" class="count-display">2</span><button class="count-btn" onclick="updateCount('keyrings', 1)">+</button></div></div>
-                <div class="kit-control-row"><div><span class="kit-name">QR Stickers</span><span class="kit-sub">Decals for windows/tools</span></div><div class="counter-box"><button class="count-btn" onclick="updateCount('stickers', -1)">-</button><span id="count-stickers" class="count-display">5</span><button class="count-btn" onclick="updateCount('stickers', 1)">+</button></div></div>
-                <div class="live-total-bar"><div><div class="total-label">Setup Total</div><div class="total-amount" id="finalTotal">£350</div></div><div style="text-align:right; font-size:10px; color:#aaa; font-weight:700;">+ <span style="color:#39FF14; text-shadow: 0px 1px 1px rgba(0,0,0,0.3);">£25/mo</span></div></div>
-                <div class="total-disclaimer">Note: This bundle is heavily discounted. Removing items does not lower the base setup fee.</div>
-            </div>
+            <div id="step5Wrapper">
+                <div class="step-header">4. Customize Your Hardware</div>
+                <div class="kit-customizer">
+                    <p style="font-size:11px; color:#555; margin-bottom:15px;">Based on your business model, we have selected this kit for you. You can adjust quantities below.</p>
+                    <div class="kit-control-row"><div><span class="kit-name">Vehicle Magnet</span><span class="kit-sub">Weatherproof NFC</span></div><div class="counter-box"><button class="count-btn" onclick="updateCount('magnet', -1)">-</button><span id="count-magnet" class="count-display">0</span><button class="count-btn" onclick="updateCount('magnet', 1)">+</button></div></div>
+                    <div class="kit-control-row"><div><span class="kit-name">Counter Stand</span><span class="kit-sub">Premium NFC Desk Stand</span></div><div class="counter-box"><button class="count-btn" onclick="updateCount('stand', -1)">-</button><span id="count-stand" class="count-display">0</span><button class="count-btn" onclick="updateCount('stand', 1)">+</button></div></div>
+                    <div class="kit-control-row"><div><span class="kit-name">NFC Business Cards</span><span class="kit-sub">Tap to share</span></div><div class="counter-box"><button class="count-btn" onclick="updateCount('cards', -1)">-</button><span id="count-cards" class="count-display">2</span><button class="count-btn" onclick="updateCount('cards', 1)">+</button></div></div>
+                    <div class="kit-control-row"><div><span class="kit-name">NFC Keyrings</span><span class="kit-sub">For staff keys</span></div><div class="counter-box"><button class="count-btn" onclick="updateCount('keyrings', -1)">-</button><span id="count-keyrings" class="count-display">2</span><button class="count-btn" onclick="updateCount('keyrings', 1)">+</button></div></div>
+                    <div class="kit-control-row"><div><span class="kit-name">QR Stickers</span><span class="kit-sub">Decals for windows/tools</span></div><div class="counter-box"><button class="count-btn" onclick="updateCount('stickers', -1)">-</button><span id="count-stickers" class="count-display">5</span><button class="count-btn" onclick="updateCount('stickers', 1)">+</button></div></div>
+                    <div class="live-total-bar"><div><div class="total-label">Setup Total</div><div class="total-amount" id="finalTotal">£350</div></div><div style="text-align:right; font-size:10px; color:#aaa; font-weight:700;">+ <span style="color:#39FF14; text-shadow: 0px 1px 1px rgba(0,0,0,0.3);">£25/mo</span></div></div>
+                    <div class="total-disclaimer">Note: This bundle is heavily discounted. Removing items does not lower the base setup fee.</div>
+                </div>
 
-            <div class="terms-container-visual">
-                <label class="checkbox-hit-area" for="termsCheck"><input type="checkbox" id="termsCheck" class="terms-checkbox" onchange="toggleSubmit()"></label>
-                <span class="terms-text-static">I have read and agree to the</span><a href="setup-terms.html" target="_blank" class="terms-link">Terms & Conditions</a>
-            </div>
+                <div class="terms-container-visual">
+                    <label class="checkbox-hit-area" for="termsCheck"><input type="checkbox" id="termsCheck" class="terms-checkbox" onchange="toggleSubmit()"></label>
+                    <span class="terms-text-static">I have read and agree to the</span><a href="setup-terms.html" target="_blank" class="terms-link">Terms & Conditions</a>
+                </div>
 
-            <button onclick="submitApplication()" id="submitBtn" class="submit-btn" disabled>Secure My Founding Member Spot</button>
-            <div class="footer-note"><i class="fas fa-shield-alt"></i> <strong>Lifetime Price Guarantee.</strong></div>
+                <button onclick="submitApplication()" id="submitBtn" class="submit-btn" disabled>Secure My Founding Member Spot</button>
+                <div class="footer-note"><i class="fas fa-shield-alt"></i> <strong>Lifetime Price Guarantee.</strong></div>
+            </div>
         </div>
     </div>
 
@@ -561,6 +569,9 @@
         }
         
         function updateModel(type) {
+            // UNHIDE STEP 4 (Business Details)
+            document.getElementById('step4Wrapper').style.display = 'block';
+
             currentModel = type; 
             const title = document.getElementById('hardware-title-1'); 
             const desc = document.getElementById('hardware-desc-1'); 
@@ -576,10 +587,12 @@
         
         let globalEntityType = ""; 
         function toggleOnlineFields(hasOnline) {
+            // UNHIDE STEP 2 (Comms)
+            document.getElementById('universalComms').style.display = 'block';
+
             isDigital = hasOnline;
             document.getElementById('onlineDetails').style.display = hasOnline ? 'block' : 'none'; 
             document.getElementById('manualSendMsg').style.display = hasOnline ? 'none' : 'block'; 
-            document.getElementById('universalComms').style.display = 'block';
             
             const commsLabel = document.getElementById('commsLabel'); 
             if (hasOnline) { commsLabel.innerText = "If we need anything else, how should we contact you?"; } 
@@ -608,6 +621,10 @@
 
         function toggleContactFields(method) {
             if(!method) return;
+            
+            // UNHIDE STEP 3 (Business Model)
+            document.getElementById('step3Wrapper').style.display = 'block';
+
             document.getElementById('waField').style.display = method === 'WhatsApp' ? 'block' : 'none'; 
             document.getElementById('emailField').style.display = method === 'Email' ? 'block' : 'none';
             if(method === 'Email') { document.getElementById('billingSection').style.display = 'none'; } 
@@ -630,6 +647,9 @@
         function toggleBillInput(show) { document.getElementById('billEmailInput').style.display = show ? 'block' : 'none'; }
         
         function updateDetailsLabels(type) {
+            // UNHIDE STEP 5 (Hardware / Submit)
+            document.getElementById('step5Wrapper').style.display = 'block';
+
             globalEntityType = type; 
             const label = document.getElementById('contactLabel'); 
             const ownerSection = document.getElementById('ownerCheckSection'); 
@@ -746,6 +766,7 @@
                 div.appendChild(input);
                 container.appendChild(div);
             }
+            calculateTotal(); // RE-CALCULATE TOTAL PRICE
         }
 
         function submitApplication() {
