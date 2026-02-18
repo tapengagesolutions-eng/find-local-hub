@@ -37,12 +37,11 @@
             font-family: 'Inter', sans-serif;
             color: var(--text-main);
             line-height: 1.5;
-            padding-top: 0; /* Banner is in normal flow now */
+            padding-top: 0;
         }
 
-        /* 1. YELLOW TEST BANNER (Normal Flow - Scrolls Away) */
         .test-banner {
-            background-color: #FFD700; /* Yellow */
+            background-color: #FFD700;
             color: #000;
             text-align: center;
             padding: 12px 15px; 
@@ -54,21 +53,17 @@
             z-index: 10001;
         }
 
-        /* 2. COLOR CHANGING BRAND STRIP (Sticky - Stays at Top) */
         .brand-strip { 
             width: 100%; 
             height: 6px; 
             background-color: var(--brand-purple); 
             animation: colorPulse 6s ease-in-out infinite; 
-            
-            /* STICKY LOGIC */
             position: -webkit-sticky;
             position: sticky;
             top: 0;
             z-index: 10000;
         }
 
-        /* ANIMATIONS */
         @keyframes colorPulse {
             0% { background-color: var(--brand-purple); box-shadow: 0 2px 15px rgba(128, 0, 255, 0.4); }   
             33% { background-color: var(--electric-blue); box-shadow: 0 2px 15px rgba(0, 212, 255, 0.4); } 
@@ -94,19 +89,6 @@
 
         .section-wrapper { max-width: 600px; margin: 0 auto; padding: 20px; }
         .card { background: var(--card-bg); border-radius: var(--radius); padding: 25px; border: 1px solid rgba(0,0,0,0.05); box-shadow: var(--shadow); margin-bottom: 25px; }
-
-        /* ROI STYLES */
-        .roi-header { font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--brand-purple); margin-bottom: 15px; border-bottom: 2px solid #eee; padding-bottom: 5px; }
-        .chart-container { margin: 15px 0 20px; }
-        .bar-group { margin-bottom: 10px; }
-        .bar-label { font-size: 11px; font-weight: 700; margin-bottom: 4px; display: flex; justify-content: space-between; color: var(--text-muted); }
-        .bar-bg { background: #f0f0f0; height: 18px; border-radius: 50px; overflow: hidden; position: relative; }
-        .bar-fill { height: 100%; display: flex; align-items: center; padding-left: 8px; font-size: 9px; font-weight: 800; color: #fff; }
-        .fill-cost { width: 35%; background: #ccc; color: #555; } 
-        .fill-profit { width: 75%; background: var(--neon-green); color: #000; box-shadow: 0 0 10px rgba(57,255,20,0.4); }
-        .roi-fact { background: var(--trust-bg-light); border-radius: 8px; padding: 12px; margin-bottom: 10px; border-left: 3px solid var(--trust-blue); }
-        .roi-fact strong { display: block; font-size: 13px; color: var(--text-main); margin-bottom: 2px; }
-        .roi-fact span { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
 
         .founding-status { background: linear-gradient(to right, #f8f9fa, #e3f2fd, #f8f9fa); padding: 20px; border-radius: 12px; text-align: center; font-size: 13px; margin-top: 25px; border: 1px solid #d0efff; line-height: 1.6; }
         .mission-text { text-align: center; margin-bottom: 15px; }
@@ -152,6 +134,7 @@
         .input-group label { display: block; color: var(--text-muted); font-size: 11px; margin-bottom: 6px; font-weight: 700; text-transform: uppercase; }
         .form-input { width: 100%; padding: 16px; background: #f8f9fa; border: 1px solid var(--border); border-radius: 12px; color: var(--text-main); font-family: 'Inter', sans-serif; font-size: 16px; outline: none; transition: all 0.2s; }
         .form-input:focus { background: white; border-color: var(--trust-blue); box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1); }
+        .form-input:disabled { background: #eee; color: #888; cursor: not-allowed; }
 
         .branch-options { text-align: left; margin: 10px 0 20px; background: #f8f9fa; border-radius: 12px; padding: 15px; border: 1px solid var(--border); }
         .radio-option { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 15px; cursor: pointer; padding-bottom: 15px; border-bottom: 1px solid #e0e0e0; }
@@ -168,7 +151,6 @@
 
         .hidden-section { display: none; margin-top: 15px; padding: 15px; background: #fff; border: 1px dashed #ccc; border-radius: 10px; }
         
-        /* KIT CUSTOMIZER STYLES */
         .kit-customizer { margin-top: 15px; background: #fcfcfc; border: 1px solid #eee; border-radius: 12px; padding: 15px; }
         .kit-control-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #f0f0f0; }
         .kit-control-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
@@ -179,7 +161,6 @@
         .count-btn:active { background: #e0e0e0; }
         .count-display { font-size: 14px; font-weight: 700; width: 20px; text-align: center; }
 
-        /* LIVE TOTAL BAR */
         .live-total-bar {
             margin-top: 20px; background: #fff; color: #333; padding: 15px; border-radius: 12px;
             display: flex; justify-content: space-between; align-items: center; 
@@ -190,11 +171,9 @@
         .total-amount { font-size: 22px; font-weight: 900; color: #39FF14; text-shadow: 0px 1px 1px rgba(0,0,0,0.3); } 
         .total-disclaimer { font-size: 10px; color: #777; margin-top: 8px; text-align: center; line-height: 1.3; font-style: italic; }
 
-        /* DYNAMIC CONTACT FIELDS */
         .dynamic-contact-field { display: none; margin-top: 15px; background: var(--trust-bg-light); padding: 12px; border-radius: 8px; border: 1px solid #d0efff; }
         .contact-instruction { font-size: 12px; font-weight: 700; color: var(--trust-blue); margin-bottom: 8px; display: block; }
 
-        /* CONFIRM TICK BUTTON */
         .confirm-btn {
             background: var(--brand-purple); color: white; border: none; 
             width: 36px; height: 36px; border-radius: 8px; 
@@ -204,7 +183,14 @@
         }
         .confirm-btn:active { transform: scale(0.95); background: var(--electric-blue); }
 
-        /* COMPLIANCE MODAL */
+        .find-online-btn {
+            background: var(--trust-blue); color: white; border: none;
+            border-radius: 6px; padding: 8px 12px; font-size: 10px; font-weight: 700;
+            text-transform: uppercase; cursor: pointer; margin-left: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .find-online-btn:active { transform: scale(0.95); background: var(--brand-purple); }
+
         .compliance-link { font-size:10px; color:var(--trust-blue); text-decoration:underline; cursor:pointer; margin-left:5px; font-weight:600; }
         .compliance-box { display:none; margin-top:10px; background:#f9f9f9; padding:10px; border-radius:8px; border-left:3px solid #ccc; font-size:11px; color:#555; }
 
@@ -227,7 +213,6 @@
         .sub-q-group { margin-top:10px; padding:10px; background:white; border-radius:8px; border:1px solid #eee; }
         .sub-q-label { display:block; font-size:11px; font-weight:700; color:#555; margin-bottom:5px; }
         
-        /* SAME AS BILLING CHECKBOX */
         .same-billing-row { display:flex; align-items:center; gap:8px; margin-bottom:10px; font-size:11px; color:#555; font-weight:600; cursor:pointer; }
         .same-billing-check { accent-color: var(--trust-blue); transform:scale(1.1); }
 
@@ -346,11 +331,11 @@
                     <input type="radio" id="webNo" name="hasWebsite" value="No" onclick="toggleOnlineFields(false)"><label for="webNo" class="yes-no-label">No</label>
                 </div>
                 <div id="onlineDetails" style="display:none; margin-top:15px;">
-                    <div class="input-group"><label>Great. Please paste a link (or just your Business Name)</label><input type="text" id="onlineLink" class="form-input" placeholder="e.g. mysite.com or 'Joe's Plumbing'"></div>
+                    <div class="input-group"><label>Great. Please paste the link (Only one link needed, can be anything)</label><input type="text" id="onlineLink" class="form-input" placeholder="e.g. mysite.com or your profile URL"></div>
                     <div class="input-group" style="margin-top:10px;"><label>Is your pricing & service list visible there?</label>
                         <div class="yes-no-group">
-                            <input type="radio" id="priceVisYes" name="priceVis" value="Yes" onclick="togglePriceMsg(false)"><label for="priceVisYes" class="yes-no-label">Yes</label>
-                            <input type="radio" id="priceVisNo" name="priceVis" value="No" onclick="togglePriceMsg(true)"><label for="priceVisNo" class="yes-no-label">No</label>
+                            <input type="radio" id="priceVisYes" name="priceVis" value="Yes" onclick="togglePriceMsg(true)"><label for="priceVisYes" class="yes-no-label">Yes</label>
+                            <input type="radio" id="priceVisNo" name="priceVis" value="No" onclick="togglePriceMsg(false)"><label for="priceVisNo" class="yes-no-label">No</label>
                         </div>
                     </div>
                     <div id="priceYesMsg" style="display:none; color:var(--trust-blue); font-size:11px; margin-top:5px; font-weight:600;"><i class="fas fa-check-circle"></i> That's great. Thank you.</div>
@@ -370,8 +355,13 @@
                     <div id="waField" class="dynamic-contact-field"><span class="contact-instruction">Great. What is your best WhatsApp Number?</span><input type="tel" id="assetPhone" class="form-input" placeholder="e.g. 07700 900000"></div>
                     <div id="emailField" class="dynamic-contact-field">
                         <span class="contact-instruction">Please provide the email you want to use.</span>
-                        <input type="email" id="assetEmail" class="form-input" placeholder="e.g. design@business.com">
+                        <div style="display:flex; align-items:center;">
+                            <input type="email" id="assetEmail" class="form-input" placeholder="e.g. design@business.com">
+                            <button id="findEmailBtn" class="find-online-btn" style="display:none;" onclick="autoFillEmail()">Find this on my website/social</button>
+                        </div>
+                        
                         <div class="sub-q-group"><label class="sub-q-label">Is this the same email for your Public Dashboard?</label><div class="yes-no-group"><input type="radio" id="dashEmailYes" name="dashEmail" value="Yes" onclick="toggleDashInput(false)"><label for="dashEmailYes" class="yes-no-label">Yes</label><input type="radio" id="dashEmailNo" name="dashEmail" value="No" onclick="toggleDashInput(true)"><label for="dashEmailNo" class="yes-no-label">No</label></div><input type="email" id="dashEmailInput" class="form-input" style="margin-top:5px; display:none;" placeholder="Enter Public Dashboard Email"></div>
+                        
                         <div class="sub-q-group"><label class="sub-q-label">Is this the same email for Invoicing & Ongoing Account Management?</label><div class="yes-no-group"><input type="radio" id="billEmailYes" name="billEmail" value="Yes" onclick="toggleBillInput(false)"><label for="billEmailYes" class="yes-no-label">Yes</label><input type="radio" id="billEmailNo" name="billEmail" value="No" onclick="toggleBillInput(true)"><label for="billEmailNo" class="yes-no-label">No</label></div><input type="email" id="billEmailInput" class="form-input" style="margin-top:5px; display:none;" placeholder="Enter Billing Email"></div>
                     </div>
                 </div>
@@ -385,11 +375,90 @@
                     <label class="radio-option"><input type="radio" name="branches" value="Single" onclick="updateModel('Single')"><div class="radio-text"><strong>Single Location</strong><span>I operate from one fixed premises</span></div></label>
                     <div class="divider-text">- OR -</div>
                     <label class="radio-option"><input type="radio" name="branches" value="Multiple" onclick="updateModel('Multiple')"><div class="radio-text"><strong>Multiple Locations</strong><span>Currently: +30% per site (Future: +50%)</span></div></label>
-                    <div id="multipleExpansion" style="display:none; margin-top:10px; padding-top:10px; border-top:1px dashed #ccc; padding-left:10px;">
-                        <label style="color:var(--brand-purple); font-size:11px; margin-bottom:5px;">How many physical locations?</label>
-                        <div style="display:flex; align-items:center;"><input type="number" id="locationCount" class="form-input" style="padding:10px; width:80px;" value="2" min="2"><button class="confirm-btn" onclick="calculateTotal()"><i class="fas fa-check"></i></button></div>
-                        <a href="#" style="display:block; margin-top:8px; font-size:10px; color:#555; text-decoration:underline;">Have 10+ locations? Request Enterprise Contract.</a>
-                        <div id="businessAddrField" style="display:none; margin-top:15px;"><label style="color:var(--text-main);">Head Office / Billing Address</label><textarea id="businessAddr" class="form-input" rows="2" placeholder="Street, City, Postcode"></textarea></div>
+                    
+                    <div id="addressContainer" style="margin-top:20px; border-top:1px dashed #ccc; padding-top:15px; display:none;">
+                        
+                        <div id="addr-mobile-online" style="display:none;">
+                            <label>Shipping Address</label>
+                            <textarea class="form-input" id="shipAddrMobile" rows="2" placeholder="Street, City, Postcode"></textarea>
+                            <div class="sub-q-group" style="margin-top:10px;">
+                                <label class="sub-q-label">Show this publicly?</label>
+                                <div class="yes-no-group">
+                                    <input type="radio" id="showMobPubYes" name="showMobPub" value="Yes" onclick="toggleMobPubInput(true)">
+                                    <label for="showMobPubYes" class="yes-no-label">Yes</label>
+                                    <input type="radio" id="showMobPubNo" name="showMobPub" value="No" onclick="toggleMobPubInput(false)" checked>
+                                    <label for="showMobPubNo" class="yes-no-label">No</label>
+                                </div>
+                                <input type="text" id="mobPubInput" class="form-input" style="display:none; margin-top:5px;" placeholder="Enter Public Address">
+                            </div>
+                        </div>
+
+                        <div id="addr-mobile-offline" style="display:none;">
+                            <label>Shipping Address</label>
+                            <textarea class="form-input" id="shipAddrMobileOff" rows="2" placeholder="Street, City, Postcode"></textarea>
+                            <div style="font-size:10px; color:#555; margin-top:5px; font-style:italic;">This address will not be shown publicly.</div>
+                        </div>
+
+                        <div id="addr-single-online" style="display:none;">
+                            <label>Business Address</label>
+                            <div style="display:flex; align-items:center;">
+                                <textarea id="singleAddrOnline" class="form-input" rows="2" placeholder="Street, City, Postcode"></textarea>
+                                <button type="button" class="find-online-btn" onclick="autoFillAddress('singleAddrOnline')">Find Online</button>
+                            </div>
+                            <div class="sub-q-group" style="margin-top:10px;">
+                                <label class="sub-q-label">Is this the same address as shipping?</label>
+                                <div class="yes-no-group">
+                                    <input type="radio" id="sameShipSingleYes" name="sameShipSingle" value="Yes" onclick="toggleSingleShip(false)">
+                                    <label for="sameShipSingleYes" class="yes-no-label">Yes</label>
+                                    <input type="radio" id="sameShipSingleNo" name="sameShipSingle" value="No" onclick="toggleSingleShip(true)">
+                                    <label for="sameShipSingleNo" class="yes-no-label">No</label>
+                                </div>
+                                <div id="singleShipInputWrapper" style="display:none; margin-top:5px;">
+                                    <label style="font-size:11px; font-weight:700; color:#555;">Shipping Address</label>
+                                    <div style="display:flex; align-items:center;">
+                                        <textarea id="singleShipAddr" class="form-input" rows="2"></textarea>
+                                        <button type="button" class="find-online-btn" onclick="autoFillAddress('singleShipAddr')">Find Online</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="addr-single-offline" style="display:none;">
+                            <label>Your Business Address</label>
+                            <textarea id="singleAddrOffline" class="form-input" rows="2" placeholder="Street, City, Postcode"></textarea>
+                            <div class="sub-q-group" style="margin-top:10px;">
+                                <label class="sub-q-label">Would you like this address shown online?</label>
+                                <div class="yes-no-group">
+                                    <input type="radio" id="showSingleOffYes" name="showSingleOff" value="Yes" onclick="toggleSingleOffPub(false)">
+                                    <label for="showSingleOffYes" class="yes-no-label">Yes</label>
+                                    <input type="radio" id="showSingleOffNo" name="showSingleOff" value="No" onclick="toggleSingleOffPub(true)">
+                                    <label for="showSingleOffNo" class="yes-no-label">No</label>
+                                </div>
+                                <input type="text" id="singleOffPubInput" class="form-input" style="display:none; margin-top:5px;" placeholder="What is the address you would like to be shown publicly?">
+                            </div>
+                        </div>
+
+                        <div id="addr-multi-wrapper" style="display:none;">
+                            <div style="margin-bottom:15px;">
+                                <label>What address would you like the physical goods to be shipped to?</label>
+                                <textarea id="multiShipAddr" class="form-input" rows="2"></textarea>
+                                <div id="multiOfflineDropdown" style="display:none; margin-top:5px;">
+                                    <label style="font-size:10px;">Does this count as one of the addresses?</label>
+                                    <select class="form-input" style="padding:8px; font-size:12px;"><option>Yes</option><option>No</option></select>
+                                </div>
+                            </div>
+
+                            <label style="color:var(--brand-purple); font-size:11px; margin-bottom:5px;">How many physical locations?</label>
+                            <div style="display:flex; align-items:center;">
+                                <input type="number" id="locationCount" class="form-input" style="padding:10px; width:80px;" value="2" min="2">
+                                <button id="multiConfirmBtn" class="confirm-btn" onclick="generateLocations()"><i class="fas fa-check"></i></button>
+                                <button id="multiFindBtn" class="find-online-btn" style="display:none;" onclick="generateLocations(true)">Find Online</button>
+                            </div>
+                            
+                            <div id="enterpriseMsg" style="display:none; margin-top:10px; color:#555; font-size:11px;">Please email us for an Enterprise contract.</div>
+                            <div id="multiLocationInputs" style="margin-top:15px;"></div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -414,20 +483,14 @@
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;"><label style="margin:0;">Are you the business owner?</label><span class="compliance-link" onclick="toggleCompliance()">Why do we need this? (Compliance Check)</span></div>
                 <div class="compliance-box" id="compBox"><strong>Consumer Protection Regulations (2008) & Companies Act Compliance:</strong><br>To comply with UK trading laws, your name must be displayed on your dashboard. This proves to customers that you are a legitimate trader.</div>
                 <div class="yes-no-group"><input type="radio" id="ownerYes" name="isOwner" value="Yes" onclick="toggleOwnerField(true)"><label for="ownerYes" class="yes-no-label">Yes</label><input type="radio" id="ownerNo" name="isOwner" value="No" onclick="toggleOwnerField(false)"><label for="ownerNo" class="yes-no-label">No</label></div>
-                <div id="ownerYesMsg" style="display:none; color:#333; font-size:11px; font-weight:700; margin-top:5px;"><i class="fas fa-check-circle"></i> Perfect. Please ensure your Full Name is entered above.</div>
+                <div id="ownerYesMsg" style="display:none; color:#333; font-size:11px; font-weight:700; margin-top:5px;"><i class="fas fa-check-circle"></i> Perfect. Please ensure your Full Name is entered correctly above.</div>
                 <div id="ownerNoField" style="display:none; margin-top:10px;"><label>Please enter the Owner's Full Name</label><input type="text" id="ownerDetails" class="form-input" placeholder="e.g. Sarah Jones"></div>
             </div>
 
-            <div class="input-group"><label>Business Name</label><input type="text" id="shopName" class="form-input" placeholder="e.g. JS Carpentry"></div>
+            <div class="input-group"><label id="bizNameLabel">Business Name</label><input type="text" id="shopName" class="form-input" placeholder="e.g. JS Carpentry"></div>
             
             <div id="billingSection"><div class="input-group" style="margin-top:15px;"><label>Billing & Account Email Address</label><input type="email" id="userEmail" class="form-input" placeholder="e.g. accounts@email.com"><div id="waPublicToggle" style="display:none; margin-top:8px;"><label class="same-billing-row"><input type="checkbox" id="publicEmailCheck" class="same-billing-check"> Display this email publicly on your Dashboard?</label></div></div></div>
             
-            <div class="input-group" style="margin-top:15px;">
-                <label>Shipping Address (For Hardware Kit)</label>
-                <label id="sameAsBusAddrLabel" class="same-billing-row" style="font-weight:400; color:#777; margin-bottom:5px; display:none;"><input type="checkbox" class="same-billing-check" onclick="toggleShipping(this)"> Same as Head Office Address?</label>
-                <textarea id="shippingAddr" class="form-input" rows="3" placeholder="Street, City, Postcode"></textarea>
-            </div>
-
             <div class="step-header">4. Customize Your Hardware</div>
             <div class="kit-customizer">
                 <p style="font-size:11px; color:#555; margin-bottom:15px;">Based on your business model, we have selected this kit for you. You can adjust quantities below.</p>
@@ -478,7 +541,12 @@
         // ==========================================
 
         document.querySelectorAll('.spots-display').forEach(el => el.innerText = spotsRemaining);
-        const BASE_PRICE = 350; let currentModel = 'Mobile';
+        const BASE_PRICE = 350; 
+        let currentModel = 'Mobile';
+        let isDigital = false;
+        let isPricingVisible = false;
+        let emailFoundOnline = false;
+
         const allowances = { Mobile: { magnet: 1, stand: 0, cards: 2, keyrings: 2, stickers: 5 }, Single: { magnet: 0, stand: 1, cards: 2, keyrings: 2, stickers: 5 }, Multiple: { magnet: 0, stand: 1, cards: 2, keyrings: 2, stickers: 5 } };
         const prices = { magnet: 30, stand: 20, cards: 10, keyrings: 5, stickers: 5 };
         let counts = { magnet: 0, stand: 0, cards: 2, keyrings: 2, stickers: 5 };
@@ -494,114 +562,226 @@
             if (currentModel === 'Multiple') { const locCount = parseInt(document.getElementById('locationCount').value) || 1; if (locCount > 1) { const surchargePerSite = BASE_PRICE * 0.30; const extraSites = locCount - 1; extraCost += (extraSites * surchargePerSite); } }
             const finalTotal = BASE_PRICE + extraCost; document.getElementById('finalTotal').innerText = `£${finalTotal.toFixed(0)}`;
         }
+        
         function updateModel(type) {
-            currentModel = type; const title = document.getElementById('hardware-title-1'); const desc = document.getElementById('hardware-desc-1'); const icon = document.querySelector('#hardware-item-1 .kit-icon i'); const multipleBox = document.getElementById('multipleExpansion');
-            if (type === 'Multiple') { multipleBox.style.display = 'block'; } else { multipleBox.style.display = 'none'; }
-            if (type === 'Mobile') { title.innerText = "1x Smart Vehicle Magnet"; desc.innerText = "Weatherproof NFC magnet for your van/car."; icon.className = "fas fa-car"; counts = { ...allowances.Mobile }; } else { title.innerText = "1x Smart Counter Stand"; desc.innerText = "Premium desk stand with NFC & Fail-Safe QR."; icon.className = "fas fa-wifi"; counts = { ...allowances.Single }; }
+            currentModel = type; 
+            const title = document.getElementById('hardware-title-1'); 
+            const desc = document.getElementById('hardware-desc-1'); 
+            const icon = document.querySelector('#hardware-item-1 .kit-icon i'); 
+            
+            if (type === 'Mobile') { title.innerText = "1x Smart Vehicle Magnet"; desc.innerText = "Weatherproof NFC magnet for your van/car."; icon.className = "fas fa-car"; counts = { ...allowances.Mobile }; } 
+            else { title.innerText = "1x Smart Counter Stand"; desc.innerText = "Premium desk stand with NFC & Fail-Safe QR."; icon.className = "fas fa-wifi"; counts = { ...allowances.Single }; }
+            
             for (const [key, value] of Object.entries(counts)) { document.getElementById(`count-${key}`).innerText = value; }
-            calculateTotal(); checkBusinessAddrVisibility();
+            calculateTotal(); 
+            updateAddressSection();
         }
         
-        let globalEntityType = ""; let globalHasWebsite = "";
+        let globalEntityType = ""; 
         function toggleOnlineFields(hasOnline) {
-            globalHasWebsite = hasOnline ? "Yes" : "No"; document.getElementById('onlineDetails').style.display = hasOnline ? 'block' : 'none'; document.getElementById('manualSendMsg').style.display = hasOnline ? 'none' : 'block'; document.getElementById('universalComms').style.display = 'block';
-            const commsLabel = document.getElementById('commsLabel'); if (hasOnline) { commsLabel.innerText = "If we need anything else, how should we contact you?"; } else { commsLabel.innerText = "How should we collect your Pricing, Logo & Photos?"; }
-            checkCRNRequirement(); toggleContactFields(document.querySelector('input[name="assetMethod"]:checked')?.value); checkBusinessAddrVisibility();
+            isDigital = hasOnline;
+            document.getElementById('onlineDetails').style.display = hasOnline ? 'block' : 'none'; 
+            document.getElementById('manualSendMsg').style.display = hasOnline ? 'none' : 'block'; 
+            document.getElementById('universalComms').style.display = 'block';
+            
+            const commsLabel = document.getElementById('commsLabel'); 
+            if (hasOnline) { commsLabel.innerText = "If we need anything else, how should we contact you?"; } 
+            else { commsLabel.innerText = "How should we collect your Pricing, Logo & Photos?"; }
+            
+            checkCRNRequirement(); 
+            toggleContactFields(document.querySelector('input[name="assetMethod"]:checked')?.value);
+            updateAddressSection();
+            
+            // "Find Online" button logic for Email (only if digital & pricing yes)
+            checkFindButtons();
         }
-        function togglePriceMsg(showNoMsg) {
-            document.getElementById('priceNoMsg').style.display = showNoMsg ? 'block' : 'none'; document.getElementById('priceYesMsg').style.display = showNoMsg ? 'none' : 'block';
-            const commsLabel = document.getElementById('commsLabel'); if (showNoMsg) { commsLabel.innerText = "Since your pricing isn't online, we will need to confirm it later. Which channel do you prefer?"; } else { commsLabel.innerText = "If we need anything else, how should we contact you?"; }
+
+        function togglePriceMsg(isVisible) {
+            isPricingVisible = isVisible;
+            document.getElementById('priceYesMsg').style.display = isVisible ? 'block' : 'none'; 
+            document.getElementById('priceNoMsg').style.display = isVisible ? 'none' : 'block';
+            checkFindButtons();
+            updateAddressSection();
         }
+
+        function checkFindButtons() {
+            const showBtn = isDigital && isPricingVisible;
+            document.getElementById('findEmailBtn').style.display = showBtn ? 'block' : 'none';
+        }
+
         function toggleContactFields(method) {
             if(!method) return;
-            document.getElementById('waField').style.display = method === 'WhatsApp' ? 'block' : 'none'; document.getElementById('emailField').style.display = method === 'Email' ? 'block' : 'none';
-            if(method === 'Email') { document.getElementById('billingSection').style.display = 'none'; } else { document.getElementById('billingSection').style.display = 'block'; if(globalHasWebsite === 'No') { document.getElementById('waPublicToggle').style.display = 'block'; } else { document.getElementById('waPublicToggle').style.display = 'none'; } }
+            document.getElementById('waField').style.display = method === 'WhatsApp' ? 'block' : 'none'; 
+            document.getElementById('emailField').style.display = method === 'Email' ? 'block' : 'none';
+            if(method === 'Email') { document.getElementById('billingSection').style.display = 'none'; } 
+            else { document.getElementById('billingSection').style.display = 'block'; if(!isDigital) { document.getElementById('waPublicToggle').style.display = 'block'; } else { document.getElementById('waPublicToggle').style.display = 'none'; } }
         }
-        function toggleDashInput(show) { document.getElementById('dashEmailInput').style.display = show ? 'block' : 'none'; }
+
+        function autoFillEmail() {
+            document.getElementById('assetEmail').value = "Find online";
+            emailFoundOnline = true;
+        }
+
+        function toggleDashInput(show) { 
+            // Only show input if NOT found online. If found online, never show input on "No".
+            if (emailFoundOnline && show) {
+                 document.getElementById('dashEmailInput').style.display = 'none';
+            } else {
+                 document.getElementById('dashEmailInput').style.display = show ? 'block' : 'none'; 
+            }
+        }
         function toggleBillInput(show) { document.getElementById('billEmailInput').style.display = show ? 'block' : 'none'; }
-        function toggleShipping(el) { const shipArea = document.getElementById('shippingAddr'); const busArea = document.getElementById('businessAddr'); if(el.checked) { shipArea.value = busArea.value; } else { shipArea.value = ""; } }
+        
         function updateDetailsLabels(type) {
-            globalEntityType = type; const label = document.getElementById('contactLabel'); const ownerSection = document.getElementById('ownerCheckSection'); const privateLabel = document.getElementById('privateLabel'); const nameInput = document.getElementById('userName');
-            if (type === 'Limited') { label.innerText = "Best Point of Contact (Name or Department)"; nameInput.placeholder = "e.g. John Smith or Marketing Team"; privateLabel.style.display = "block"; ownerSection.style.display = 'none'; } else { label.innerText = "Your Name (Primary Contact)"; nameInput.placeholder = "e.g. John Smith"; privateLabel.style.display = "none"; ownerSection.style.display = 'block'; }
+            globalEntityType = type; 
+            const label = document.getElementById('contactLabel'); 
+            const ownerSection = document.getElementById('ownerCheckSection'); 
+            const privateLabel = document.getElementById('privateLabel'); 
+            const nameInput = document.getElementById('userName');
+            const bizLabel = document.getElementById('bizNameLabel');
+
+            if (type === 'Limited') { 
+                label.innerText = "Best Point of Contact (Name or Department)"; 
+                nameInput.placeholder = "e.g. John Smith or Marketing Team"; 
+                privateLabel.style.display = "block"; 
+                ownerSection.style.display = 'none';
+                bizLabel.innerText = "Business Name";
+            } else { 
+                label.innerText = "Your Name (Primary Contact)"; 
+                nameInput.placeholder = "e.g. John Smith"; 
+                privateLabel.style.display = "none"; 
+                ownerSection.style.display = 'block'; 
+                bizLabel.innerText = "Business Name / Trading Name";
+            }
             checkCRNRequirement();
         }
-        function checkCRNRequirement() { const crnDiv = document.getElementById('crnField'); if (globalEntityType === 'Limited' && globalHasWebsite === 'No') { crnDiv.style.display = 'block'; } else { crnDiv.style.display = 'none'; } }
-        function checkBusinessAddrVisibility() { const busAddrField = document.getElementById('businessAddrField'); const sameAsToggle = document.getElementById('sameAsBusAddrLabel'); if (currentModel !== 'Mobile' && globalHasWebsite === 'No') { busAddrField.style.display = 'block'; sameAsToggle.style.display = 'flex'; } else { busAddrField.style.display = 'none'; sameAsToggle.style.display = 'none'; } }
+
+        function checkCRNRequirement() { 
+            const crnDiv = document.getElementById('crnField'); 
+            // If Limited AND (No Digital OR No Pricing), ask CRN. If Digital+Pricing, don't ask.
+            const autoFound = isDigital && isPricingVisible;
+            if (globalEntityType === 'Limited' && !autoFound) { crnDiv.style.display = 'block'; } else { crnDiv.style.display = 'none'; } 
+        }
+
         function toggleOwnerField(isOwner) { document.getElementById('ownerYesMsg').style.display = isOwner ? 'block' : 'none'; document.getElementById('ownerNoField').style.display = isOwner ? 'none' : 'block'; }
         function toggleCompliance() { const box = document.getElementById('compBox'); box.style.display = box.style.display === 'block' ? 'none' : 'block'; }
         function toggleCrnCompliance() { const box = document.getElementById('crnCompBox'); box.style.display = box.style.display === 'block' ? 'none' : 'block'; }
         function toggleSubmit() { const check = document.getElementById('termsCheck'); const btn = document.getElementById('submitBtn'); btn.disabled = !check.checked; }
         
+        // ============================
+        // ADDRESS SECTION LOGIC
+        // ============================
+        function updateAddressSection() {
+            const container = document.getElementById('addressContainer');
+            if(!currentModel) return;
+            container.style.display = 'block';
+
+            // Hide all first
+            const ids = ['addr-mobile-online','addr-mobile-offline','addr-single-online','addr-single-offline','addr-multi-wrapper'];
+            ids.forEach(id => document.getElementById(id).style.display = 'none');
+
+            const canAutoFind = isDigital && isPricingVisible;
+
+            if(currentModel === 'Mobile') {
+                if(canAutoFind) document.getElementById('addr-mobile-online').style.display = 'block';
+                else document.getElementById('addr-mobile-offline').style.display = 'block';
+            }
+            else if(currentModel === 'Single') {
+                if(canAutoFind) document.getElementById('addr-single-online').style.display = 'block';
+                else document.getElementById('addr-single-offline').style.display = 'block';
+            }
+            else if(currentModel === 'Multiple') {
+                document.getElementById('addr-multi-wrapper').style.display = 'block';
+                // Multi Specifics
+                document.getElementById('multiFindBtn').style.display = canAutoFind ? 'inline-flex' : 'none';
+                document.getElementById('multiConfirmBtn').style.display = canAutoFind ? 'none' : 'inline-flex';
+                document.getElementById('multiOfflineDropdown').style.display = canAutoFind ? 'none' : 'block';
+            }
+        }
+
+        function autoFillAddress(id) {
+            document.getElementById(id).value = "Find online";
+        }
+
+        function toggleMobPubInput(show) {
+            document.getElementById('mobPubInput').style.display = show ? 'block' : 'none';
+        }
+
+        function toggleSingleShip(show) {
+            document.getElementById('singleShipInputWrapper').style.display = show ? 'block' : 'none';
+        }
+
+        function toggleSingleOffPub(showInput) {
+            document.getElementById('singleOffPubInput').style.display = showInput ? 'block' : 'none';
+        }
+
+        function generateLocations(autoFind = false) {
+            const count = parseInt(document.getElementById('locationCount').value);
+            const container = document.getElementById('multiLocationInputs');
+            const msg = document.getElementById('enterpriseMsg');
+            container.innerHTML = '';
+            
+            if(count > 10) {
+                msg.style.display = 'block';
+                return;
+            }
+            msg.style.display = 'none';
+            
+            for(let i=0; i<count; i++) {
+                const div = document.createElement('div');
+                div.className = 'input-group';
+                div.style.marginBottom = '10px';
+                const label = document.createElement('label');
+                label.innerText = `Location ${i+1}`;
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.className = 'form-input';
+                if(autoFind) input.value = "Find online";
+                else input.placeholder = "Street, City, Postcode";
+                
+                div.appendChild(label);
+                div.appendChild(input);
+                container.appendChild(div);
+            }
+        }
+
         function submitApplication() {
-            const name = document.getElementById('userName').value; const shop = document.getElementById('shopName').value;
+            const name = document.getElementById('userName').value;
+            const shop = document.getElementById('shopName').value;
             const getRadioVal = (name) => { const els = document.getElementsByName(name); for(let i=0; i<els.length; i++) if(els[i].checked) return els[i].value; return null; };
-            const entity = getRadioVal('entityType'); const branchVal = getRadioVal('branches'); const hasWeb = getRadioVal('hasWebsite'); 
+            const entity = getRadioVal('entityType'); 
             const assetMethod = getRadioVal('assetMethod');
 
-            // Resolve Email Logic
+            // Resolve Email
             let finalBillingEmail = "";
             let finalSetupEmail = "";
-            let finalDashEmail = "";
-
             if (assetMethod === 'Email') {
                 finalSetupEmail = document.getElementById('assetEmail').value;
-                if (getRadioVal('dashEmail') === 'Yes') { finalDashEmail = finalSetupEmail; }
-                else { finalDashEmail = document.getElementById('dashEmailInput').value; }
-                if (getRadioVal('billEmail') === 'Yes') { finalBillingEmail = finalSetupEmail; }
-                else { finalBillingEmail = document.getElementById('billEmailInput').value; }
+                if(finalSetupEmail === 'Find online') finalSetupEmail += " (Use Link)";
+                finalBillingEmail = (getRadioVal('billEmail') === 'Yes') ? finalSetupEmail : document.getElementById('billEmailInput').value;
             } else {
                 finalBillingEmail = document.getElementById('userEmail').value;
-                if(document.getElementById('publicEmailCheck').checked) { finalDashEmail = finalBillingEmail; } else { finalDashEmail = "Not Specified (Use Billing)"; }
             }
             
-            const shipping = document.getElementById('shippingAddr').value;
-            let busAddr = "N/A (Mobile/Online)";
-            if(document.getElementById('businessAddrField').style.display === 'block') { busAddr = document.getElementById('businessAddr').value; }
+            if(!name || !shop || !entity || !finalBillingEmail) { alert("Please fill in key details."); return; }
 
-            if(!name || !shop || !entity || !branchVal || !hasWeb || !assetMethod || !finalBillingEmail || !shipping) { alert("Please fill in all details."); return; }
-
-            let locCount = "1";
-            if (branchVal === "Multiple") { locCount = document.getElementById('locationCount').value; }
-
-            let assetContact = "N/A";
-            if (assetMethod === "WhatsApp") assetContact = document.getElementById('assetPhone').value;
-            if (assetMethod === "Email") assetContact = finalSetupEmail;
-
-            let crnInfo = "";
-            if (entity === "Limited Company" && hasWeb === "No") { crnInfo = `%0A🏢 CRN: ${document.getElementById('companyRegNum').value}`; }
-
-            const hardwareOrder = `%0A%0A📦 *CUSTOM KIT ORDER:*%0A- Magnets: ${counts.magnet}%0A- Stands: ${counts.stand}%0A- Cards: ${counts.cards}%0A- Keyrings: ${counts.keyrings}%0A- Stickers: ${counts.stickers}`;
+            // Construct Message
+            const locationText = currentModel;
             const totalText = document.getElementById('finalTotal').innerText;
-
-            let webStatus = "";
-            if (hasWeb === "Yes") {
-                const link = document.getElementById('onlineLink').value || "Provided later";
-                const priceVis = getRadioVal('priceVis') || "Not specified";
-                webStatus = `%0A🌐 Online: YES (${link})%0A- Pricing Visible: ${priceVis}`;
-            } else { webStatus = `%0A🌐 Online: NO`; }
+            const commsPref = `%0A📞 Design Setup via: ${assetMethod}`;
+            const emailSummary = `%0A📧 Billing Email: ${finalBillingEmail}`;
             
-            let ownerInfo = "";
-            if (entity === "Sole Trader") {
-                const isOwner = getRadioVal('isOwner');
-                if (isOwner === "No") { ownerInfo = `%0A👮 Owner: ${document.getElementById('ownerDetails').value}`; } else { ownerInfo = `%0A👮 Owner: Same as Contact`; }
-            }
-            
-            const commsPref = `%0A📞 Design Setup via: ${assetMethod} (${assetContact})`;
-            const emailSummary = `%0A📧 Billing Email: ${finalBillingEmail}%0A📧 Dash Email: ${finalDashEmail}`;
-            const addrSummary = `%0A📍 Business Addr: ${busAddr}%0A🚚 Shipping: ${shipping}`;
-            const locationText = branchVal === "Multiple" ? `Multiple (${locCount} Sites)` : branchVal;
+            const hardwareOrder = `%0A%0A📦 *CUSTOM KIT ORDER:*%0A- Magnets: ${counts.magnet}%0A- Stands: ${counts.stand}%0A- Cards: ${counts.cards}%0A- Keyrings: ${counts.keyrings}%0A- Stickers: ${counts.stickers}`;
 
             if (confirm("Tap OK for EMAIL Invoice.\nTap CANCEL for WHATSAPP.")) {
                 const subject = `Founding Member: ${shop}`; 
-                const body = `Hi Biaggio,%0D%0A%0D%0AI want the Founding Member rate (£25/mo).%0D%0A%0D%0ADETAILS:%0D%0AStructure: ${entity}%0D%0AContact: ${name}%0D%0ABusiness: ${shop}%0D%0Amodel: ${locationText}${webStatus}${crnInfo}${ownerInfo}${commsPref}${emailSummary}${addrSummary}${hardwareOrder.replace(/%0A/g, "%0D%0A")}%0D%0A%0D%0ATOTAL SETUP: ${totalText}%0D%0A%0D%0AI accept the T&Cs.`;
+                const body = `Hi Biaggio,%0D%0A%0D%0AI want the Founding Member rate (£25/mo).%0D%0A%0D%0ADETAILS:%0D%0AStructure: ${entity}%0D%0AContact: ${name}%0D%0ABusiness: ${shop}%0D%0Amodel: ${locationText}${commsPref}${emailSummary}${hardwareOrder.replace(/%0A/g, "%0D%0A")}%0D%0A%0D%0ATOTAL SETUP: ${totalText}%0D%0A%0D%0AI accept the T&Cs.`;
                 window.location.href = `mailto:tapengagesolutions@gmail.com?subject=${subject}&body=${body}`;
             } else {
-                const message = `*FOUNDING MEMBER REQUEST*%0A%0A📝 Structure: ${entity}%0A👤 Contact: ${name}%0A🏢 Business: ${shop}%0A🏢 Model: ${locationText}${webStatus}${crnInfo}${ownerInfo}${commsPref}${emailSummary}${addrSummary}${hardwareOrder}%0A%0A💰 TOTAL SETUP: ${totalText}%0A%0AI accept the T&Cs.`;
+                const message = `*FOUNDING MEMBER REQUEST*%0A%0A📝 Structure: ${entity}%0A👤 Contact: ${name}%0A🏢 Business: ${shop}%0A🏢 Model: ${locationText}${commsPref}${emailSummary}${hardwareOrder}%0A%0A💰 TOTAL SETUP: ${totalText}%0A%0AI accept the T&Cs.`;
                 window.open(`https://wa.me/447415604242?text=${message}`, '_blank');
             }
         }
     </script>
 </body>
 </html>
-
-
