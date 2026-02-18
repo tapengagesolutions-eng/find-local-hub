@@ -441,7 +441,7 @@
                         <div id="addr-multi-wrapper" style="display:none;">
                             <div style="margin-bottom:15px;">
                                 <label>What address would you like the physical goods to be shipped to?</label>
-                                <textarea id="multiShipAddr" class="form-input" rows="2"></textarea>
+                                <textarea id="multiShipAddr" class="form-input" rows="2" placeholder="e.g. Head Office, 123 High Street, London, W1 1AA"></textarea>
                                 <div id="multiOfflineDropdown" style="display:none; margin-top:5px;">
                                     <label style="font-size:10px;">Does this count as one of the addresses?</label>
                                     <select class="form-input" style="padding:8px; font-size:12px;"><option>Yes</option><option>No</option></select>
@@ -449,13 +449,15 @@
                             </div>
 
                             <label style="color:var(--brand-purple); font-size:11px; margin-bottom:5px;">How many physical locations?</label>
+                            <div style="font-size:10px; color:#555; margin-bottom:5px; font-style:italic;">Please press the tick once you've entered the number.</div>
+                            
                             <div style="display:flex; align-items:center;">
                                 <input type="number" id="locationCount" class="form-input" style="padding:10px; width:80px;" value="2" min="2">
                                 <button id="multiConfirmBtn" class="confirm-btn" onclick="generateLocations()"><i class="fas fa-check"></i></button>
                                 <button id="multiFindBtn" class="find-online-btn" style="display:none;" onclick="generateLocations(true)">Find Online</button>
                             </div>
                             
-                            <div id="enterpriseMsg" style="display:none; margin-top:10px; color:#555; font-size:11px;">Please email us for an Enterprise contract.</div>
+                            <div id="enterpriseMsg" style="display:none; margin-top:10px; color:var(--trust-blue); font-size:12px; font-weight:700;">Because you have 10+ stores, please email us for an Enterprise Contract after you have filled out the intake form.</div>
                             <div id="multiLocationInputs" style="margin-top:15px;"></div>
                         </div>
 
@@ -693,8 +695,8 @@
             else if(currentModel === 'Multiple') {
                 document.getElementById('addr-multi-wrapper').style.display = 'block';
                 // Multi Specifics
+                document.getElementById('multiConfirmBtn').style.display = 'inline-flex'; // Always show tick
                 document.getElementById('multiFindBtn').style.display = canAutoFind ? 'inline-flex' : 'none';
-                document.getElementById('multiConfirmBtn').style.display = canAutoFind ? 'none' : 'inline-flex';
                 document.getElementById('multiOfflineDropdown').style.display = canAutoFind ? 'none' : 'block';
             }
         }
@@ -723,6 +725,7 @@
             
             if(count > 10) {
                 msg.style.display = 'block';
+                // We do NOT generate inputs if > 10, to keep it clean, as per instruction to "email us".
                 return;
             }
             msg.style.display = 'none';
@@ -766,7 +769,14 @@
             if(!name || !shop || !entity || !finalBillingEmail) { alert("Please fill in key details."); return; }
 
             // Construct Message
-            const locationText = currentModel;
+            let locationText = currentModel;
+            const locCount = parseInt(document.getElementById('locationCount').value) || 0;
+            if (currentModel === 'Multiple' && locCount > 10) {
+                locationText = "Multiple (10+ ENTERPRISE REQUEST)";
+            } else if (currentModel === 'Multiple') {
+                locationText = `Multiple (${locCount} Sites)`;
+            }
+
             const totalText = document.getElementById('finalTotal').innerText;
             const commsPref = `%0A📞 Design Setup via: ${assetMethod}`;
             const emailSummary = `%0A📧 Billing Email: ${finalBillingEmail}`;
