@@ -378,25 +378,10 @@
                     
                     <div id="addressContainer" style="margin-top:20px; border-top:1px dashed #ccc; padding-top:15px; display:none;">
                         
-                        <div id="addr-mobile-online" style="display:none;">
-                            <label>Shipping Address</label>
+                        <div id="addr-mobile-wrapper" style="display:none;">
+                            <label>Shipping Address (For Hardware Kit)</label>
+                            <div style="font-size:10px; color:#555; margin-bottom:5px; font-style:italic;">This address is strictly for sending your physical goods. This will not be shown publicly.</div>
                             <textarea class="form-input" id="shipAddrMobile" rows="2" placeholder="Street, City, Postcode"></textarea>
-                            <div class="sub-q-group" style="margin-top:10px;">
-                                <label class="sub-q-label">Show this publicly?</label>
-                                <div class="yes-no-group">
-                                    <input type="radio" id="showMobPubYes" name="showMobPub" value="Yes" onclick="toggleMobPubInput(true)">
-                                    <label for="showMobPubYes" class="yes-no-label">Yes</label>
-                                    <input type="radio" id="showMobPubNo" name="showMobPub" value="No" onclick="toggleMobPubInput(false)" checked>
-                                    <label for="showMobPubNo" class="yes-no-label">No</label>
-                                </div>
-                                <input type="text" id="mobPubInput" class="form-input" style="display:none; margin-top:5px;" placeholder="Enter Public Address">
-                            </div>
-                        </div>
-
-                        <div id="addr-mobile-offline" style="display:none;">
-                            <label>Shipping Address</label>
-                            <textarea class="form-input" id="shipAddrMobileOff" rows="2" placeholder="Street, City, Postcode"></textarea>
-                            <div style="font-size:10px; color:#555; margin-top:5px; font-style:italic;">This address will not be shown publicly.</div>
                         </div>
 
                         <div id="addr-single-online" style="display:none;">
@@ -424,7 +409,7 @@
                         </div>
 
                         <div id="addr-single-offline" style="display:none;">
-                            <label>Your Business Address</label>
+                            <label>Shipping Address</label>
                             <textarea id="singleAddrOffline" class="form-input" rows="2" placeholder="Street, City, Postcode"></textarea>
                             <div class="sub-q-group" style="margin-top:10px;">
                                 <label class="sub-q-label">Would you like this address shown online?</label>
@@ -482,7 +467,10 @@
             <div class="input-group"><label id="contactLabel">Best Point of Contact (Name or Department)</label><span id="privateLabel" style="font-size:10px; color:#777; display:none; margin-bottom:5px;">(This will not be shown publicly)</span><input type="text" id="userName" class="form-input" placeholder="e.g. John Smith or Marketing Team"></div>
 
             <div id="ownerCheckSection" style="display:none; margin-top:10px; margin-bottom:15px; background:#f4f4f4; padding:10px; border-radius:8px;">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;"><label style="margin:0;">Are you the business owner?</label><span class="compliance-link" onclick="toggleCompliance()">Why do we need this? (Compliance Check)</span></div>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+                    <label style="margin:0;">Are you the business owner? <span style="font-weight:400; color:#d9534f; font-size:10px;">(Your name will be shown publicly)</span></label>
+                    <span class="compliance-link" onclick="toggleCompliance()">Why must this be shown publicly? (Compliance)</span>
+                </div>
                 <div class="compliance-box" id="compBox"><strong>Consumer Protection Regulations (2008) & Companies Act Compliance:</strong><br>To comply with UK trading laws, your name must be displayed on your dashboard. This proves to customers that you are a legitimate trader.</div>
                 <div class="yes-no-group"><input type="radio" id="ownerYes" name="isOwner" value="Yes" onclick="toggleOwnerField(true)"><label for="ownerYes" class="yes-no-label">Yes</label><input type="radio" id="ownerNo" name="isOwner" value="No" onclick="toggleOwnerField(false)"><label for="ownerNo" class="yes-no-label">No</label></div>
                 <div id="ownerYesMsg" style="display:none; color:#333; font-size:11px; font-weight:700; margin-top:5px;"><i class="fas fa-check-circle"></i> Perfect. Please ensure your Full Name is entered correctly above.</div>
@@ -544,7 +532,7 @@
 
         document.querySelectorAll('.spots-display').forEach(el => el.innerText = spotsRemaining);
         const BASE_PRICE = 350; 
-        let currentModel = 'Mobile';
+        let currentModel = ""; // DEFAULTS TO EMPTY so no address fields show up
         let isDigital = false;
         let isPricingVisible = false;
         let emailFoundOnline = false;
@@ -554,15 +542,22 @@
         let counts = { magnet: 0, stand: 0, cards: 2, keyrings: 2, stickers: 5 };
 
         function updateCount(item, change) { counts[item] += change; if (counts[item] < 0) counts[item] = 0; document.getElementById(`count-${item}`).innerText = counts[item]; calculateTotal(); }
+        
         function calculateTotal() {
-            let extraCost = 0; const allowance = allowances[currentModel];
+            let extraCost = 0; 
+            // Fallback to Mobile allowance if currentModel is empty (for calculation purposes only)
+            const allowance = allowances[currentModel] || allowances['Mobile']; 
+            
             if (counts.magnet > allowance.magnet) extraCost += (counts.magnet - allowance.magnet) * prices.magnet;
             if (counts.stand > allowance.stand) extraCost += (counts.stand - allowance.stand) * prices.stand;
             if (counts.cards > allowance.cards) extraCost += (counts.cards - allowance.cards) * prices.cards;
             if (counts.keyrings > allowance.keyrings) extraCost += (counts.keyrings - allowance.keyrings) * prices.keyrings;
             if (counts.stickers > allowance.stickers) extraCost += (counts.stickers - allowance.stickers) * prices.stickers;
+            
             if (currentModel === 'Multiple') { const locCount = parseInt(document.getElementById('locationCount').value) || 1; if (locCount > 1) { const surchargePerSite = BASE_PRICE * 0.30; const extraSites = locCount - 1; extraCost += (extraSites * surchargePerSite); } }
-            const finalTotal = BASE_PRICE + extraCost; document.getElementById('finalTotal').innerText = `£${finalTotal.toFixed(0)}`;
+            
+            const finalTotal = BASE_PRICE + extraCost; 
+            document.getElementById('finalTotal').innerText = `£${finalTotal.toFixed(0)}`;
         }
         
         function updateModel(type) {
@@ -675,18 +670,27 @@
         // ============================
         function updateAddressSection() {
             const container = document.getElementById('addressContainer');
-            if(!currentModel) return;
+            
+            // SECURITY CHECK: If no model selected, HIDE EVERYTHING.
+            if(!currentModel) {
+                container.style.display = 'none';
+                return;
+            }
+            
             container.style.display = 'block';
 
-            // Hide all first
-            const ids = ['addr-mobile-online','addr-mobile-offline','addr-single-online','addr-single-offline','addr-multi-wrapper'];
-            ids.forEach(id => document.getElementById(id).style.display = 'none');
+            // Hide all sub-sections first
+            const ids = ['addr-mobile-wrapper','addr-single-online','addr-single-offline','addr-multi-wrapper'];
+            ids.forEach(id => {
+                const el = document.getElementById(id);
+                if(el) el.style.display = 'none';
+            });
 
             const canAutoFind = isDigital && isPricingVisible;
 
             if(currentModel === 'Mobile') {
-                if(canAutoFind) document.getElementById('addr-mobile-online').style.display = 'block';
-                else document.getElementById('addr-mobile-offline').style.display = 'block';
+                // For Mobile, we ALWAYS just show shipping now. No public option.
+                document.getElementById('addr-mobile-wrapper').style.display = 'block';
             }
             else if(currentModel === 'Single') {
                 if(canAutoFind) document.getElementById('addr-single-online').style.display = 'block';
@@ -703,10 +707,6 @@
 
         function autoFillAddress(id) {
             document.getElementById(id).value = "Find online";
-        }
-
-        function toggleMobPubInput(show) {
-            document.getElementById('mobPubInput').style.display = show ? 'block' : 'none';
         }
 
         function toggleSingleShip(show) {
