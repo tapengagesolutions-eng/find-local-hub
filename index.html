@@ -875,7 +875,8 @@
         }
         function toggleBillInput(show) { document.getElementById('billEmailInput').style.display = show ? 'block' : 'none'; runValidation(); }
 
-        function updateModel(type) {
+        // Core visual update & auto-scroll
+        function updateModel(type, preventScroll = false) {
             currentModel = type; 
             
             const title = document.getElementById('hardware-title-1'); 
@@ -899,13 +900,15 @@
             updateAddressSection();
             runValidation();
 
-            // Smooth UX Auto-Scroll
-            setTimeout(() => {
-                const addressBox = document.getElementById('addressContainer');
-                if (addressBox && addressBox.style.display === 'block') {
-                    addressBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            }, 150);
+            // Smooth UX Auto-Scroll (skip if edge case prevents it)
+            if (!preventScroll) {
+                setTimeout(() => {
+                    const addressBox = document.getElementById('addressContainer');
+                    if (addressBox && addressBox.style.display === 'block') {
+                        addressBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }, 150);
+            }
         }
 
         function updateAddressSection() {
@@ -927,12 +930,33 @@
                 document.getElementById('addr-multi-wrapper').style.display = 'block';
                 document.getElementById('multiFindBtn').style.display = canAutoFind ? 'inline-flex' : 'none';
                 document.getElementById('multiOfflineDropdown').style.display = canAutoFind ? 'none' : 'block';
-                generateLocations(); 
+                // Do not auto-generate instantly on load if they haven't set a number.
+                if(document.getElementById('locationCount').value) {
+                    generateLocations();
+                }
             }
         }
 
         function generateLocations(autoFind = false) {
             const count = parseInt(document.getElementById('locationCount').value) || 0;
+            
+            // EDGE CASE FIX: If they enter 1 or 0, instantly correct them to "Single Location"
+            if (count <= 1) {
+                // 1. Force the radio button UI to update
+                const singleRadio = document.querySelector('input[name="branches"][value="Single"]');
+                if(singleRadio) singleRadio.checked = true;
+                
+                // 2. Change the state, but tell it NOT to scroll down
+                updateModel('Single', true);
+                
+                // 3. Scroll UP so they see what we corrected
+                setTimeout(() => {
+                    document.querySelector('.branch-options').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
+                
+                return; // Stop execution here
+            }
+            
             const container = document.getElementById('multiLocationInputs');
             const alertBox = document.getElementById('enterpriseAlert');
             const standardInputs = document.getElementById('standardMultiInputs');
@@ -1043,6 +1067,14 @@
 
         function toggleWaPublicEmail(show) {
             document.getElementById('waPublicEmailWrapper').style.display = show ? 'block' : 'none';
+            
+            // Only show Find Online if they have a fully visible website
+            if (show && isDigital && isPricingVisible) {
+                document.getElementById('waPublicEmailFindBtn').style.display = 'inline-block';
+            } else {
+                document.getElementById('waPublicEmailFindBtn').style.display = 'none';
+            }
+            
             runValidation();
         }
 
