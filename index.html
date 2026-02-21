@@ -178,7 +178,6 @@
         /* Corporate Footer Styling */
         footer { text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 12px; }
         .footer-brand-text { font-weight: 800; font-size: 18px; color: #000000; display: inline-block; margin-bottom: 5px; }
-        a.corporate-link { text-decoration: none; color: inherit; display: inline-block; padding: 5px; transition: color 0.2s; }
         
         .sub-q-group { margin-top:10px; padding:10px; background:white; border-radius:8px; border:1px solid #eee; }
         .sub-q-label { display:block; font-size:11px; font-weight:700; color:#555; margin-bottom:5px; }
@@ -310,15 +309,15 @@
         </div>
     </div>
 
-    <footer>
+    <footer style="margin-top: 40px; padding-bottom: 20px;">
         <p>
-            <span class="footer-brand-text">Find Local</span><br>
-            <a href="https://tapengagesolutions.co.uk" class="corporate-link" target="_blank">Operated by Tap Engage Solutions</a><br>
+            <a href="https://tapengagesolutions.co.uk" target="_blank" style="text-decoration: none; color: inherit;"><span class="footer-brand-text">Find Local</span></a><br>
+            <a href="https://tapengagesolutions.co.uk" target="_blank" style="text-decoration: none; color: inherit;">Operated by Tap Engage Solutions</a><br>
             <span style="font-size: 11px; color: #777;">Biagio Firetto (Sole Trader)</span><br>
-            <a href="mailto:tapengagesolutions@gmail.com" style="color: #777; text-decoration: none; font-size: 11px; margin-top: 3px; display: inline-block;">tapengagesolutions@gmail.com</a>
+            <a href="mailto:tapengagesolutions@gmail.com" style="color: inherit; text-decoration: none; font-size: 11px; margin-top: 3px; display: inline-block;">tapengagesolutions@gmail.com</a>
         </p>
         <p style="font-size: 11px; color: #777; margin-top: 10px; line-height: 1.6;">
-            Uxbridge, United Kingdom
+            21 Cochrane House, Cowley Road, Uxbridge, Greater London, UB8 2DA
         </p>
         <p style="font-size: 10px; color: #999; margin-top: 15px;">
             Copyright © 2026 Tap Engage Solutions. All Rights Reserved.
@@ -642,13 +641,13 @@
 
         <footer style="margin-top: 40px; padding-bottom: 20px;">
             <p>
-                <span class="footer-brand-text">Find Local</span><br>
-                <a href="https://tapengagesolutions.co.uk" class="corporate-link" target="_blank">Operated by Tap Engage Solutions</a><br>
+                <a href="https://tapengagesolutions.co.uk" target="_blank" style="text-decoration: none; color: inherit;"><span class="footer-brand-text">Find Local</span></a><br>
+                <a href="https://tapengagesolutions.co.uk" target="_blank" style="text-decoration: none; color: inherit;">Operated by Tap Engage Solutions</a><br>
                 <span style="font-size: 11px; color: #777;">Biagio Firetto (Sole Trader)</span><br>
-                <a href="mailto:tapengagesolutions@gmail.com" style="color: #777; text-decoration: none; font-size: 11px; margin-top: 3px; display: inline-block;">tapengagesolutions@gmail.com</a>
+                <a href="mailto:tapengagesolutions@gmail.com" style="color: inherit; text-decoration: none; font-size: 11px; margin-top: 3px; display: inline-block;">tapengagesolutions@gmail.com</a>
             </p>
             <p style="font-size: 11px; color: #777; margin-top: 10px; line-height: 1.6;">
-                Uxbridge, United Kingdom
+                21 Cochrane House, Cowley Road, Uxbridge, Greater London, UB8 2DA
             </p>
             <p style="font-size: 10px; color: #999; margin-top: 15px;">
                 Copyright © 2026 Tap Engage Solutions. All Rights Reserved.
@@ -849,7 +848,6 @@
                 const storedEmail = document.getElementById('assetEmail').value || document.getElementById('billEmailInput').value;
                 const storedPhone = document.getElementById('assetPhone').value;
 
-                // Only auto-fill if empty to prevent overriding user edits
                 if (storedEmail && !entEmail.value) {
                     entEmail.value = storedEmail;
                     entEmail.classList.add('flash-green');
@@ -933,7 +931,11 @@
 
         function updateModel(type, preventScroll = false) {
             currentModel = type; 
+            isEnterpriseMode = false; 
             
+            document.getElementById('enterpriseAlert').style.display = 'none';
+            document.getElementById('standardMultiInputs').style.display = 'none';
+
             const title = document.getElementById('hardware-title-1'); 
             const desc = document.getElementById('hardware-desc-1'); 
             const icon = document.querySelector('#hardware-item-1 .kit-icon i'); 
@@ -1354,7 +1356,7 @@
         // 🛠️ ADMIN CONTROL & CONFIGURATION 🛠️
         // SCROLL ALL THE WAY DOWN HERE TO MAKE CHANGES
         // ==========================================
-        const spotsRemaining = 5; 
+        const spotsRemaining = 50; 
         document.querySelectorAll('.spots-display').forEach(el => el.innerText = spotsRemaining);
 
         const WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/YOUR_ZAPIER_ID_HERE/"; 
