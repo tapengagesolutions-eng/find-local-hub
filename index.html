@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#ffffff">
     <title>Find Local | Founding Member Setup</title>
     
@@ -67,9 +67,6 @@
             33% { background-color: var(--electric-blue); box-shadow: 0 2px 15px rgba(0, 212, 255, 0.4); } 
             66% { background-color: var(--neon-green); box-shadow: 0 2px 15px rgba(57, 255, 20, 0.4); }
             100% { background-color: var(--brand-purple); box-shadow: 0 2px 15px rgba(128, 0, 255, 0.4); } 
-        }
-        @keyframes textColorPulse {
-            0% { color: var(--brand-purple); } 33% { color: var(--electric-blue); } 66% { color: var(--neon-green); } 100% { color: var(--brand-purple); } 
         }
 
         .hero { padding: 30px 20px 20px; text-align: center; }
@@ -158,7 +155,7 @@
         .dynamic-contact-field { display: none; margin-top: 15px; background: var(--trust-bg-light); padding: 12px; border-radius: 8px; border: 1px solid #d0efff; }
         .contact-instruction { font-size: 12px; font-weight: 700; color: var(--trust-blue); margin-bottom: 8px; display: block; }
 
-        .confirm-btn { background: var(--brand-purple); color: white; border: none; width: 36px; height: 36px; border-radius: 8px; margin-left: 8px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .confirm-btn { background: var(--brand-purple); color: white; border: none; width: 36px; height: 36px; border-radius: 8px; margin-left: 8px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: all 0.2s; }
         .confirm-btn:active { transform: scale(0.95); background: var(--electric-blue); }
 
         .find-online-btn { background: var(--trust-blue); color: white; border: none; border-radius: 6px; padding: 8px 12px; font-size: 10px; font-weight: 700; text-transform: uppercase; cursor: pointer; margin-left: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
@@ -180,7 +177,7 @@
 
         /* Corporate Footer Styling */
         footer { text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 12px; }
-        .footer-brand-text { font-weight: 800; font-size: 18px; animation: textColorPulse 6s ease-in-out infinite; display: inline-block; margin-bottom: 5px; }
+        .footer-brand-text { font-weight: 800; font-size: 18px; color: var(--brand-purple); display: inline-block; margin-bottom: 5px; }
         a.corporate-link { text-decoration: none; color: inherit; display: inline-block; padding: 5px; transition: color 0.2s; }
         
         .sub-q-group { margin-top:10px; padding:10px; background:white; border-radius:8px; border:1px solid #eee; }
@@ -227,6 +224,9 @@
 
         .flash-green { animation: fieldFlash 1.5s ease-out; }
         @keyframes fieldFlash { 0% { background-color: #d4ffda; border-color: var(--neon-green); } 100% { background-color: #f8f9fa; border-color: var(--border); } }
+        
+        /* Updated Upsell Banner */
+        .upsell-banner { display:none; background: #e3f2fd; border: 1px solid var(--trust-blue); padding: 12px; border-radius: 8px; margin-bottom: 15px; font-size: 11px; color: var(--trust-blue); font-weight: 700; line-height: 1.4; }
     </style>
 </head>
 <body>
@@ -266,6 +266,8 @@
             <div class="founding-status">
                 <i class="fas fa-crown" style="color:#FFD700"></i> <strong>100% Profit Pledge</strong><br><br>
                 We use 100% of profits from this Beta to launch our <strong>'Clean Start'</strong> specialist cleaning service, designed specifically to employ the homeless.
+                <br><br>
+                <span style="font-size: 11px; color: var(--text-muted); font-style: italic; font-weight: 400; display: block;">(Includes optional access to our 'Impact Updates'. You will be the first to know when our savings pot hits the operational target to launch the first mobile unit.)</span>
             </div>
         </div>
 
@@ -366,7 +368,7 @@
                 </div>
             </div>
 
-            <div id="universalComms" style="margin-top:25px; padding-top:15px; border-top:1px solid #eee;">
+            <div id="universalComms" style="margin-top:25px; padding-top:15px; border-top:1px solid #eee; display:none;">
                 <div class="input-group">
                     <label id="commsLabel">If we need anything else, how should we contact you?</label>
                     <div style="font-size:10px; color:#555; margin-bottom:10px; font-style:italic;"><i class="fas fa-info-circle"></i> Note: Official Invoices & Contracts are always sent to your email for security.</div>
@@ -382,10 +384,10 @@
                             <button id="findEmailBtn" class="find-online-btn" style="display:none;" onclick="autoFillField('assetEmail')">Find Online</button>
                         </div>
                         <div id="q-dashEmail" style="display:none;">
-                            <div class="sub-q-group"><label class="sub-q-label">Is this the same email for your Public Dashboard?</label><div class="yes-no-group"><input type="radio" id="dashEmailYes" name="dashEmail" value="Yes" onclick="toggleDashInput(false)"><label for="dashEmailYes" class="yes-no-label">Yes</label><input type="radio" id="dashEmailNo" name="dashEmail" value="No" onclick="toggleDashInput(true)"><label for="dashEmailNo" class="yes-no-label">No</label></div><input type="email" id="dashEmailInput" class="form-input" style="margin-top:5px; display:none;" placeholder="Enter Public Dashboard Email"></div>
+                            <div class="sub-q-group"><label class="sub-q-label">Is this the same email for your Public Dashboard?</label><div class="yes-no-group"><input type="radio" id="dashEmailYes" name="dashEmail" value="Yes" onclick="toggleDashInput(false)"><label for="dashEmailYes" class="yes-no-label">Yes</label><input type="radio" id="dashEmailNo" name="dashEmail" value="No" onclick="toggleDashInput(true)"><label for="dashEmailNo" class="yes-no-label">No</label></div><input type="email" id="dashEmailInput" class="form-input" style="margin-top:5px; display:none;" placeholder="Enter Public Dashboard Email" oninput="runValidation();"></div>
                         </div>
                         <div id="q-billEmail" style="display:none;">
-                            <div class="sub-q-group"><label class="sub-q-label">Is this the same email for Invoicing & Management?</label><div class="yes-no-group"><input type="radio" id="billEmailYes" name="billEmail" value="Yes" onclick="toggleBillInput(false)"><label for="billEmailYes" class="yes-no-label">Yes</label><input type="radio" id="billEmailNo" name="billEmail" value="No" onclick="toggleBillInput(true)"><label for="billEmailNo" class="yes-no-label">No</label></div><input type="email" id="billEmailInput" class="form-input" style="margin-top:5px; display:none;" placeholder="Enter Billing Email"></div>
+                            <div class="sub-q-group"><label class="sub-q-label">Is this the same email for Invoicing & Management?</label><div class="yes-no-group"><input type="radio" id="billEmailYes" name="billEmail" value="Yes" onclick="toggleBillInput(false)"><label for="billEmailYes" class="yes-no-label">Yes</label><input type="radio" id="billEmailNo" name="billEmail" value="No" onclick="toggleBillInput(true)"><label for="billEmailNo" class="yes-no-label">No</label></div><input type="email" id="billEmailInput" class="form-input" style="margin-top:5px; display:none;" placeholder="Enter Billing Email" oninput="runValidation();"></div>
                         </div>
                     </div>
                 </div>
@@ -408,6 +410,26 @@
                     <div class="divider-text">- OR -</div>
                     <label class="radio-option"><input type="radio" name="branches" value="Multiple" onclick="updateModel('Multiple')"><div class="radio-text"><strong>Multiple Locations</strong><span>Currently: +30% per site</span></div></label>
                     
+                    <div id="q-fleet" style="display:none; margin-top:20px; padding-top:15px; border-top:1px dashed #ccc;">
+                        <div class="sub-q-group">
+                            <label class="sub-q-label">Do you operate company vehicles on the road?</label>
+                            <div class="yes-no-group">
+                                <input type="radio" id="fleetYes" name="hasFleet" value="Yes" onclick="toggleFleetCount(true)">
+                                <label for="fleetYes" class="yes-no-label">Yes</label>
+                                <input type="radio" id="fleetNo" name="hasFleet" value="No" onclick="toggleFleetCount(false)">
+                                <label for="fleetNo" class="yes-no-label">No</label>
+                            </div>
+                            <div id="fleetCountWrapper" style="display:none; margin-top:10px;">
+                                <label style="color:var(--brand-purple); font-size:11px; margin-bottom:5px; display:block;">How many vehicles?</label>
+                                <div style="font-size:10px; color:#555; margin-bottom:5px; font-style:italic;">Please press the tick to confirm.</div>
+                                <div style="display:flex; align-items:center;">
+                                    <input type="number" id="vehicleCountUniversal" class="form-input" style="padding:10px; width:80px;" value="1" min="1" oninput="runValidation();">
+                                    <button class="confirm-btn" onclick="handleFleetInput()"><i class="fas fa-check"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div id="addressContainer" style="margin-top:20px; border-top:1px dashed #ccc; padding-top:15px; display:none;">
                         
                         <div id="addr-mobile-wrapper" style="display:none;">
@@ -467,7 +489,7 @@
                                 For networks of 5 or more locations, we provide custom rollout pricing and a dedicated Account Manager. Skip the standard checkout—we'll handle the heavy lifting for you.
                             </div>
 
-                            <div id="standardMultiInputs" style="margin-top:15px;">
+                            <div id="standardMultiInputs" style="margin-top:15px; display:none;">
                                 <div style="margin-bottom:15px;">
                                     <label>Shipping Address for physical goods</label>
                                     <textarea id="multiShipAddr" class="form-input" rows="2" placeholder="e.g. Head Office..." oninput="runValidation();"></textarea>
@@ -556,6 +578,10 @@
         <div class="wizard-step" id="step4">
             <div class="wizard-title">Your Custom Kit.<br><span style="font-size:16px; font-weight:400; color:#666;">Confirm your hardware quantity.</span></div>
 
+            <div id="fleetUpsellMsg" class="upsell-banner">
+                <i class="fas fa-lightbulb" style="color: #FFD700; margin-right: 5px;"></i> You mentioned having a fleet of <span id="fleetUpsellCount">X</span> vehicles. You can easily add extra magnets for your team below if you'd like!
+            </div>
+
             <div class="kit-customizer">
                 <p style="font-size:11px; color:#555; margin-bottom:15px;">Based on your business model, we have selected this kit for you. You can adjust quantities below.</p>
                 <div class="kit-control-row"><div><span class="kit-name">Vehicle Magnet</span></div><div class="counter-box"><button class="count-btn" onclick="updateCount('magnet', -1)">-</button><span id="count-magnet" class="count-display">0</span><button class="count-btn" onclick="updateCount('magnet', 1)">+</button></div></div>
@@ -563,6 +589,10 @@
                 <div class="kit-control-row"><div><span class="kit-name">NFC Cards</span></div><div class="counter-box"><button class="count-btn" onclick="updateCount('cards', -1)">-</button><span id="count-cards" class="count-display">2</span><button class="count-btn" onclick="updateCount('cards', 1)">+</button></div></div>
                 <div class="kit-control-row"><div><span class="kit-name">NFC Keyrings</span></div><div class="counter-box"><button class="count-btn" onclick="updateCount('keyrings', -1)">-</button><span id="count-keyrings" class="count-display">2</span><button class="count-btn" onclick="updateCount('keyrings', 1)">+</button></div></div>
                 <div class="kit-control-row"><div><span class="kit-name">QR Stickers</span></div><div class="counter-box"><button class="count-btn" onclick="updateCount('stickers', -1)">-</button><span id="count-stickers" class="count-display">5</span><button class="count-btn" onclick="updateCount('stickers', 1)">+</button></div></div>
+                
+                <div id="priceBreakdown" style="display:none; margin-top:15px; padding-top:15px; border-top:1px dashed #ccc; font-size:12px; color:#555; font-weight:600;">
+                    </div>
+
                 <div class="live-total-bar"><div><div class="total-label">Setup Total</div><div class="total-amount" id="finalTotal">£350</div></div><div style="text-align:right; font-size:10px; color:#aaa; font-weight:700;">+ <span style="color:#39FF14; text-shadow: 0px 1px 1px rgba(0,0,0,0.3);">£25/mo</span></div></div>
             </div>
 
@@ -582,20 +612,24 @@
         <div class="wizard-step" id="stepEnterprise">
             <div class="wizard-title"><span id="entTitleText">Enterprise Setup</span><br><span style="font-size:16px; font-weight:400; color:#666;">We will assign a dedicated Account Manager to handle your multi-site rollout.</span></div>
 
-            <div id="ent-q-name" style="display:none;">
-                <div class="input-group"><label>Best Point of Contact (Name or Department)</label><input type="text" id="entName" class="form-input" placeholder="e.g. John Smith or Marketing Team" oninput="document.getElementById('ent-q-email').style.display='block'; runValidation();"></div>
+            <div class="input-group">
+                <label>Best Point of Contact (Name or Department)</label>
+                <input type="text" id="entName" class="form-input" placeholder="e.g. John Smith or Marketing Team" oninput="runValidation();">
             </div>
             
-            <div id="ent-q-email" style="display:none;">
-                <div class="input-group"><label>Best Email for Contact</label><input type="email" id="entEmail" class="form-input" placeholder="e.g. marketing@company.com" oninput="document.getElementById('ent-q-phone').style.display='block'; runValidation();"></div>
+            <div class="input-group">
+                <label>Best Email for Contact</label>
+                <input type="email" id="entEmail" class="form-input" placeholder="e.g. marketing@company.com" oninput="runValidation();">
             </div>
             
-            <div id="ent-q-phone" style="display:none;">
-                <div class="input-group"><label>Best Contact Phone Number</label><input type="tel" id="entPhone" class="form-input" placeholder="e.g. 07700 900000" oninput="document.getElementById('ent-q-timeline').style.display='block'; runValidation();"></div>
+            <div class="input-group">
+                <label>Best Contact Phone Number</label>
+                <input type="tel" id="entPhone" class="form-input" placeholder="e.g. 07700 900000" oninput="runValidation();">
             </div>
             
-            <div id="ent-q-timeline" style="display:none;">
-                <div class="input-group"><label>What is your timeline?</label><textarea id="entDetails" class="form-input" rows="3" placeholder="e.g. Looking to equip all our shops by next month." oninput="runValidation();"></textarea></div>
+            <div class="input-group">
+                <label>What is your timeline?</label>
+                <textarea id="entDetails" class="form-input" rows="3" placeholder="e.g. Looking to equip all our shops by next month." oninput="runValidation();"></textarea>
             </div>
 
             <button onclick="submitEnterprise()" id="entSubmitBtn" class="submit-btn" disabled>AWAITING DETAILS</button>
@@ -604,18 +638,24 @@
                 <button class="nav-btn nav-back" onclick="goToStep(2)">Back to Locations</button>
             </div>
         </div>
+
+        <footer style="margin-top: 40px; padding-bottom: 20px;">
+            <p>
+                <span class="footer-brand-text">Find Local</span><br>
+                <a href="https://tapengagesolutions.co.uk" class="corporate-link" target="_blank">Operated by Tap Engage Solutions</a><br>
+                <span style="font-size: 11px; color: #777;">Biagio Firetto (Sole Trader)</span>
+            </p>
+            <p style="font-size: 11px; color: #777; margin-top: 10px; line-height: 1.6;">
+                Uxbridge, United Kingdom
+            </p>
+            <p style="font-size: 10px; color: #999; margin-top: 15px;">
+                Copyright © 2026 Tap Engage Solutions. All Rights Reserved.
+            </p>
+        </footer>
+
     </div>
 
     <script>
-        // ==========================================
-        // ADMIN CONFIG
-        // ==========================================
-        const WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/YOUR_ZAPIER_ID_HERE/"; 
-        
-        const spotsRemaining = 50; 
-        document.querySelectorAll('.spots-display').forEach(el => el.innerText = spotsRemaining);
-        const BASE_PRICE = 350; 
-        
         // State Management
         let currentModel = ""; 
         let isDigital = false;
@@ -625,6 +665,7 @@
         const allowances = { Mobile: { magnet: 1, stand: 0, cards: 2, keyrings: 2, stickers: 5 }, Single: { magnet: 0, stand: 1, cards: 2, keyrings: 2, stickers: 5 }, Multiple: { magnet: 0, stand: 1, cards: 2, keyrings: 2, stickers: 5 } };
         const prices = { magnet: 30, stand: 20, cards: 10, keyrings: 5, stickers: 5 };
         let counts = { magnet: 0, stand: 0, cards: 2, keyrings: 2, stickers: 5 };
+        const BASE_PRICE = 350; 
 
         // ==========================================
         // DYNAMIC TIME GREETING & PLACEHOLDERS
@@ -717,7 +758,7 @@
 
             let isValid = true;
 
-            const textInputs = step.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], textarea');
+            const textInputs = step.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="number"], textarea');
             for (let input of textInputs) {
                 if (isElementVisible(input) && input.value.trim() === '') {
                     isValid = false;
@@ -733,6 +774,19 @@
                     if (!checked) {
                         isValid = false;
                         break;
+                    }
+                }
+            }
+
+            if (stepId === 'step2' && isValid) {
+                const addrContainer = document.getElementById('addressContainer');
+                if (addrContainer.style.display !== 'block') {
+                    isValid = false; 
+                }
+                if (currentModel === 'Multiple') {
+                    const multiContainer = document.getElementById('multiLocationInputs');
+                    if (multiContainer.children.length === 0 && !isEnterpriseMode) {
+                        isValid = false; 
                     }
                 }
             }
@@ -790,24 +844,16 @@
                 const entEmail = document.getElementById('entEmail');
                 const entPhone = document.getElementById('entPhone');
 
-                document.getElementById('ent-q-name').style.display = 'block';
-
                 const storedEmail = document.getElementById('assetEmail').value || document.getElementById('billEmailInput').value;
                 const storedPhone = document.getElementById('assetPhone').value;
 
-                if (storedEmail) {
+                if (storedEmail && !entEmail.value) {
                     entEmail.value = storedEmail;
-                    document.getElementById('ent-q-email').style.display = 'block';
                     entEmail.classList.add('flash-green');
                 }
-                if (storedPhone) {
+                if (storedPhone && !entPhone.value) {
                     entPhone.value = storedPhone;
-                    document.getElementById('ent-q-phone').style.display = 'block';
                     entPhone.classList.add('flash-green');
-                }
-                
-                if (storedEmail && storedPhone) {
-                    document.getElementById('ent-q-timeline').style.display = 'block';
                 }
             }
             
@@ -889,6 +935,13 @@
             const desc = document.getElementById('hardware-desc-1'); 
             const icon = document.querySelector('#hardware-item-1 .kit-icon i'); 
             
+            document.getElementById('q-fleet').style.display = 'block';
+            document.getElementById('addressContainer').style.display = 'none';
+
+            document.getElementById('fleetYes').checked = false;
+            document.getElementById('fleetNo').checked = false;
+            document.getElementById('fleetCountWrapper').style.display = 'none';
+
             if (type === 'Mobile') { 
                 title.innerText = "1x Smart Vehicle Magnet"; 
                 desc.innerText = "Weatherproof NFC magnet for your van/car."; 
@@ -903,17 +956,47 @@
             
             for (const [key, value] of Object.entries(counts)) { document.getElementById(`count-${key}`).innerText = value; }
             calculateTotal(); 
-            updateAddressSection();
             runValidation();
 
             if (!preventScroll) {
                 setTimeout(() => {
-                    const addressBox = document.getElementById('addressContainer');
-                    if (addressBox && addressBox.style.display === 'block') {
-                        addressBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }
+                    document.getElementById('q-fleet').scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }, 150);
             }
+        }
+
+        function toggleFleetCount(hasFleet) {
+            document.getElementById('fleetCountWrapper').style.display = hasFleet ? 'block' : 'none';
+            if (hasFleet) {
+                document.getElementById('addressContainer').style.display = 'none';
+            } else {
+                handleFleetInput(); 
+            }
+            runValidation();
+        }
+
+        function handleFleetInput() {
+            if (currentModel === 'Mobile') {
+                counts.magnet = 1; 
+            } else {
+                counts.magnet = 0; 
+            }
+            
+            let vehicleCount = (getRadioVal('hasFleet') === 'Yes') ? (parseInt(document.getElementById('vehicleCountUniversal').value) || 1) : 0;
+            
+            document.getElementById('count-magnet').innerText = counts.magnet;
+            calculateTotal();
+
+            const upsellBanner = document.getElementById('fleetUpsellMsg');
+            if (vehicleCount > 1) {
+                document.getElementById('fleetUpsellCount').innerText = vehicleCount;
+                upsellBanner.style.display = 'block';
+            } else {
+                upsellBanner.style.display = 'none';
+            }
+
+            updateAddressSection();
+            runValidation();
         }
 
         function updateAddressSection() {
@@ -934,11 +1017,17 @@
             } else if(currentModel === 'Multiple') {
                 document.getElementById('addr-multi-wrapper').style.display = 'block';
                 document.getElementById('multiFindBtn').style.display = canAutoFind ? 'inline-flex' : 'none';
-                document.getElementById('multiOfflineDropdown').style.display = canAutoFind ? 'none' : 'block';
+                document.getElementById('standardMultiInputs').style.display = 'none';
                 if(document.getElementById('locationCount').value) {
                     generateLocations();
                 }
             }
+
+            setTimeout(() => {
+                if (container.style.display === 'block') {
+                    container.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }, 150);
         }
 
         function generateLocations(autoFind = false) {
@@ -997,25 +1086,43 @@
         function calculateTotal() {
             if(isEnterpriseMode) return; 
 
-            let extraCost = 0; 
+            let hardwareCost = 0; 
+            let locationCost = 0;
             const allowance = allowances[currentModel] || allowances['Mobile']; 
             
-            if (counts.magnet > allowance.magnet) extraCost += (counts.magnet - allowance.magnet) * prices.magnet;
-            if (counts.stand > allowance.stand) extraCost += (counts.stand - allowance.stand) * prices.stand;
-            if (counts.cards > allowance.cards) extraCost += (counts.cards - allowance.cards) * prices.cards;
-            if (counts.keyrings > allowance.keyrings) extraCost += (counts.keyrings - allowance.keyrings) * prices.keyrings;
-            if (counts.stickers > allowance.stickers) extraCost += (counts.stickers - allowance.stickers) * prices.stickers;
+            if (counts.magnet > allowance.magnet) hardwareCost += (counts.magnet - allowance.magnet) * prices.magnet;
+            if (counts.stand > allowance.stand) hardwareCost += (counts.stand - allowance.stand) * prices.stand;
+            if (counts.cards > allowance.cards) hardwareCost += (counts.cards - allowance.cards) * prices.cards;
+            if (counts.keyrings > allowance.keyrings) hardwareCost += (counts.keyrings - allowance.keyrings) * prices.keyrings;
+            if (counts.stickers > allowance.stickers) hardwareCost += (counts.stickers - allowance.stickers) * prices.stickers;
             
+            let extraSites = 0;
             if (currentModel === 'Multiple') { 
                 const locCount = parseInt(document.getElementById('locationCount').value) || 1; 
                 if (locCount > 1) { 
+                    extraSites = locCount - 1;
                     const surchargePerSite = BASE_PRICE * 0.30; 
-                    extraCost += ((locCount - 1) * surchargePerSite); 
+                    locationCost += (extraSites * surchargePerSite); 
                 } 
             }
             
-            const finalTotal = BASE_PRICE + extraCost; 
+            const finalTotal = BASE_PRICE + hardwareCost + locationCost; 
             document.getElementById('finalTotal').innerText = `£${finalTotal.toFixed(0)}`;
+
+            const breakdownDiv = document.getElementById('priceBreakdown');
+            if (hardwareCost > 0 || locationCost > 0) {
+                breakdownDiv.style.display = 'block';
+                let html = `<div style="display:flex; justify-content:space-between; margin-bottom:4px;"><span>Base Setup:</span><span>£350</span></div>`;
+                if (locationCost > 0) {
+                    html += `<div style="display:flex; justify-content:space-between; margin-bottom:4px; color:var(--trust-blue);"><span>Extra Locations (${extraSites}):</span><span>+£${locationCost.toFixed(0)}</span></div>`;
+                }
+                if (hardwareCost > 0) {
+                    html += `<div style="display:flex; justify-content:space-between; color:var(--trust-blue);"><span>Extra Hardware:</span><span>+£${hardwareCost.toFixed(0)}</span></div>`;
+                }
+                breakdownDiv.innerHTML = html;
+            } else {
+                breakdownDiv.style.display = 'none';
+            }
         }
 
         function toggleSingleShip(show) { document.getElementById('singleShipInputWrapper').style.display = show ? 'block' : 'none'; runValidation(); }
@@ -1099,6 +1206,8 @@
             btn.innerText = "Submitting...";
             btn.disabled = true;
             btn.classList.remove('submit-ready'); 
+            
+            let vehicleCount = (getRadioVal('hasFleet') === 'Yes') ? (document.getElementById('vehicleCountUniversal').value || "1") : "0";
 
             const payload = {
                 Submission_Type: "Enterprise Lead",
@@ -1113,7 +1222,8 @@
                 Corporate_Email: document.getElementById('entEmail').value,
                 Phone_Number: document.getElementById('entPhone').value,
                 Rollout_Timeline: document.getElementById('entDetails').value,
-                Requested_Locations: document.getElementById('locationCount').value
+                Requested_Locations: document.getElementById('locationCount').value,
+                Active_Vehicles: vehicleCount
             };
 
             sendToZapier(payload, btn, "REQUEST ENTERPRISE SETUP");
@@ -1136,6 +1246,22 @@
             } else {
                 publicDashEmail = (getRadioVal('waPublicEmailOpt') === 'Yes') ? document.getElementById('userEmail').value : document.getElementById('waPublicEmailInput').value;
             }
+            
+            let vehicleCount = (getRadioVal('hasFleet') === 'Yes') ? (document.getElementById('vehicleCountUniversal').value || "1") : "0";
+
+            // --- DATA SCRUBBER START ---
+            const finalStructure = getRadioVal('entityType');
+            let finalCRN = document.getElementById('companyRegNum').value;
+            let finalIsOwner = getRadioVal('isOwner');
+            let finalOwnerOverride = document.getElementById('ownerDetails').value;
+
+            if (finalStructure === 'Limited Company') {
+                finalIsOwner = "";
+                finalOwnerOverride = "";
+            } else {
+                finalCRN = "";
+            }
+            // --- DATA SCRUBBER END ---
 
             const payload = {
                 Submission_Type: "Standard Beta Setup",
@@ -1148,12 +1274,13 @@
                 Public_Dashboard_Email: publicDashEmail,
                 
                 Business_Model: currentModel,
-                Business_Structure: getRadioVal('entityType'),
+                Active_Vehicles: vehicleCount,
+                Business_Structure: finalStructure,
                 Business_Name: document.getElementById('shopName').value,
                 Contact_Name: document.getElementById('userName').value,
-                Is_Owner: getRadioVal('isOwner'),
-                Owner_Name_Override: document.getElementById('ownerDetails').value,
-                CRN_Number: document.getElementById('companyRegNum').value,
+                Is_Owner: finalIsOwner,
+                Owner_Name_Override: finalOwnerOverride,
+                CRN_Number: finalCRN,
 
                 Hardware_Magnets: counts.magnet,
                 Hardware_Stands: counts.stand,
@@ -1219,6 +1346,17 @@
                 buttonElement.classList.add('submit-ready'); 
             });
         }
+
+        // ==========================================
+        // 🛠️ ADMIN CONTROL & CONFIGURATION 🛠️
+        // SCROLL ALL THE WAY DOWN HERE TO MAKE CHANGES
+        // ==========================================
+        const spotsRemaining = 17; 
+        document.querySelectorAll('.spots-display').forEach(el => el.innerText = spotsRemaining);
+
+        const WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/YOUR_ZAPIER_ID_HERE/"; 
+        // ==========================================
+
     </script>
 </body>
 </html>
