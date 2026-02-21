@@ -177,7 +177,7 @@
 
         /* Corporate Footer Styling */
         footer { text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 12px; }
-        .footer-brand-text { font-weight: 800; font-size: 18px; color: var(--brand-purple); display: inline-block; margin-bottom: 5px; }
+        .footer-brand-text { font-weight: 800; font-size: 18px; color: #000000; display: inline-block; margin-bottom: 5px; }
         a.corporate-link { text-decoration: none; color: inherit; display: inline-block; padding: 5px; transition: color 0.2s; }
         
         .sub-q-group { margin-top:10px; padding:10px; background:white; border-radius:8px; border:1px solid #eee; }
@@ -314,7 +314,8 @@
         <p>
             <span class="footer-brand-text">Find Local</span><br>
             <a href="https://tapengagesolutions.co.uk" class="corporate-link" target="_blank">Operated by Tap Engage Solutions</a><br>
-            <span style="font-size: 11px; color: #777;">Biagio Firetto (Sole Trader)</span>
+            <span style="font-size: 11px; color: #777;">Biagio Firetto (Sole Trader)</span><br>
+            <a href="mailto:tapengagesolutions@gmail.com" style="color: #777; text-decoration: none; font-size: 11px; margin-top: 3px; display: inline-block;">tapengagesolutions@gmail.com</a>
         </p>
         <p style="font-size: 11px; color: #777; margin-top: 10px; line-height: 1.6;">
             Uxbridge, United Kingdom
@@ -643,7 +644,8 @@
             <p>
                 <span class="footer-brand-text">Find Local</span><br>
                 <a href="https://tapengagesolutions.co.uk" class="corporate-link" target="_blank">Operated by Tap Engage Solutions</a><br>
-                <span style="font-size: 11px; color: #777;">Biagio Firetto (Sole Trader)</span>
+                <span style="font-size: 11px; color: #777;">Biagio Firetto (Sole Trader)</span><br>
+                <a href="mailto:tapengagesolutions@gmail.com" style="color: #777; text-decoration: none; font-size: 11px; margin-top: 3px; display: inline-block;">tapengagesolutions@gmail.com</a>
             </p>
             <p style="font-size: 11px; color: #777; margin-top: 10px; line-height: 1.6;">
                 Uxbridge, United Kingdom
@@ -847,6 +849,7 @@
                 const storedEmail = document.getElementById('assetEmail').value || document.getElementById('billEmailInput').value;
                 const storedPhone = document.getElementById('assetPhone').value;
 
+                // Only auto-fill if empty to prevent overriding user edits
                 if (storedEmail && !entEmail.value) {
                     entEmail.value = storedEmail;
                     entEmail.classList.add('flash-green');
@@ -1351,7 +1354,7 @@
         // 🛠️ ADMIN CONTROL & CONFIGURATION 🛠️
         // SCROLL ALL THE WAY DOWN HERE TO MAKE CHANGES
         // ==========================================
-        const spotsRemaining = 17; 
+        const spotsRemaining = 5; 
         document.querySelectorAll('.spots-display').forEach(el => el.innerText = spotsRemaining);
 
         const WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/YOUR_ZAPIER_ID_HERE/"; 
