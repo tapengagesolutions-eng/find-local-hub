@@ -138,6 +138,13 @@
         .yes-no-group input[type="radio"] { display: none; }
         .yes-no-group input[type="radio"]:checked + .yes-no-label { background: var(--trust-bg-light); border-color: var(--trust-blue); color: var(--trust-blue); }
 
+        /* CUSTOM AUTOCOMPLETE FOR MOBILE */
+        .autocomplete-wrapper { position: relative; width: 100%; }
+        .autocomplete-items { position: absolute; border: 1px solid var(--border); border-top: none; z-index: 100; top: 100%; left: 0; right: 0; background: #fff; border-radius: 0 0 12px 12px; max-height: 180px; overflow-y: auto; display: none; box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
+        .autocomplete-items div { padding: 14px 16px; cursor: pointer; font-size: 15px; border-bottom: 1px solid #f0f0f0; color: var(--text-main); font-weight: 500; }
+        .autocomplete-items div:last-child { border-bottom: none; }
+        .autocomplete-items div:hover { background-color: var(--trust-bg-light); color: var(--trust-blue); font-weight: 700; }
+
         .kit-customizer { margin-top: 15px; background: #fcfcfc; border: 1px solid #eee; border-radius: 12px; padding: 15px; }
         .kit-control-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #f0f0f0; }
         .kit-control-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
@@ -373,10 +380,10 @@
                 </div>
                 <div id="referralInputWrapper" style="display:none; margin-top:10px;">
                     <label style="font-size:11px; font-weight:700; color:#555; display:block; margin-bottom:5px;">Please enter their name or business</label>
-                    <input type="text" id="referralInput" class="form-input" placeholder="e.g. JS Carpentry or Jane Doe" list="partner-list" oninput="runValidation();">
-                    
-                    <datalist id="partner-list">
-                        </datalist>
+                    <div class="autocomplete-wrapper">
+                        <input type="text" id="referralInput" class="form-input" placeholder="e.g. JS Carpentry or Jane Doe" oninput="runValidation(); filterPartners();" onfocus="showPartners()" onblur="hidePartners()">
+                        <div id="custom-partner-list" class="autocomplete-items"></div>
+                    </div>
                 </div>
             </div>
 
@@ -768,7 +775,7 @@
             let invalidElements = [];
 
             // Check visible text inputs
-            const textInputs = step.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="number"], textarea');
+            const textInputs = step.querySelectorAll('input[type="text"]:not(#referralInput), input[type="email"], input[type="tel"], input[type="number"], textarea');
             for (let input of textInputs) {
                 if (isElementVisible(input)) {
                     if (input.id === 'referralInput' && getRadioVal('hasReferral') !== 'Yes') {
@@ -932,6 +939,7 @@
                 const storedEmail = document.getElementById('assetEmail').value || document.getElementById('billEmailInput').value;
                 const storedPhone = document.getElementById('assetPhone').value;
 
+                // Only auto-fill if empty to prevent overriding user edits
                 if (storedEmail && !entEmail.value) {
                     entEmail.value = storedEmail;
                     entEmail.classList.add('flash-green');
@@ -1464,15 +1472,56 @@
             "Sarah Jones Consulting"
         ];
 
-        // This automatically builds the dropdown for you based on the list above
-        const datalist = document.getElementById('partner-list');
-        if(datalist) {
-            referralPartners.forEach(partner => {
-                const option = document.createElement('option');
-                option.value = partner;
-                datalist.appendChild(option);
+        // Custom Mobile-Friendly Autocomplete Logic
+        const refInput = document.getElementById('referralInput');
+        const refList = document.getElementById('custom-partner-list');
+
+        function populatePartners(arr) {
+            if(!refList) return;
+            refList.innerHTML = '';
+            arr.forEach(partner => {
+                const div = document.createElement('div');
+                div.innerText = partner;
+                // mousedown fires before blur
+                div.onmousedown = function(e) {
+                    e.preventDefault(); 
+                    refInput.value = partner;
+                    refList.style.display = 'none';
+                    runValidation();
+                };
+                // touchstart for immediate mobile response
+                div.ontouchstart = function(e) {
+                    e.preventDefault(); 
+                    refInput.value = partner;
+                    refList.style.display = 'none';
+                    runValidation();
+                };
+                refList.appendChild(div);
             });
         }
+
+        function showPartners() {
+            filterPartners();
+            if(refList) refList.style.display = 'block';
+        }
+
+        function hidePartners() {
+            setTimeout(() => { if(refList) refList.style.display = 'none'; }, 150);
+        }
+
+        function filterPartners() {
+            if(!refInput || !refList) return;
+            const val = refInput.value.toLowerCase();
+            if (!val) {
+                populatePartners(referralPartners);
+            } else {
+                const filtered = referralPartners.filter(p => p.toLowerCase().includes(val));
+                populatePartners(filtered);
+            }
+        }
+        
+        // Initialize
+        populatePartners(referralPartners);
         // ==========================================
 
     </script>
