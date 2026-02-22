@@ -170,8 +170,32 @@
         .terms-text-static { font-size: 13px; font-weight: 600; color: var(--text-main); line-height: 1.4; cursor: default; user-select: none; }
         .terms-link { font-size: 13px; font-weight: 700; color: var(--trust-blue); text-decoration: underline; cursor: pointer; margin-left: 3px; }
 
-        .submit-btn { width: 100%; background-color: #cccccc; color: #888888; border: none; padding: 18px; border-radius: 50px; font-size: 16px; font-weight: 800; margin-top: 15px; transition: all 0.3s; text-transform: uppercase; letter-spacing: 1px; }
-        .submit-btn:disabled { cursor: not-allowed; }
+        /* ERROR FLASHING SYSTEM */
+        .error-flash {
+            border: 2px solid var(--alert-red) !important;
+            background-color: #fff0f0 !important;
+            box-shadow: 0 0 10px rgba(230, 57, 70, 0.2);
+            animation: errorShake 0.4s;
+            transition: all 0.2s;
+        }
+        @keyframes errorShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+        }
+
+        /* NEXT BUTTON STYLING */
+        .nav-buttons { display: flex; justify-content: space-between; gap: 15px; margin-top: 30px; }
+        .nav-btn { flex: 1; padding: 15px; border-radius: 12px; font-weight: 700; cursor: pointer; border: none; font-size: 14px; transition: all 0.3s; }
+        .nav-back { background: #f0f0f0; color: #555; }
+        .nav-back:active { background: #e0e0e0; }
+        
+        .nav-next { background: #e0e0e0; color: #a0a0a0; }
+        .nav-next.nav-ready { background: var(--text-main); color: #fff; }
+        .nav-next.nav-ready:active { transform: scale(0.98); }
+
+        .submit-btn { width: 100%; background-color: #cccccc; color: #888888; border: none; padding: 18px; border-radius: 50px; font-size: 16px; font-weight: 800; margin-top: 15px; transition: all 0.3s; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
         .submit-ready { background-color: var(--neon-green) !important; color: #000 !important; cursor: pointer !important; animation: pulseBtn 2s infinite !important; box-shadow: 0 4px 15px rgba(57, 255, 20, 0.3); }
         .submit-ready:active { transform: scale(0.98); }
 
@@ -207,14 +231,6 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         .wizard-title { font-size: 24px; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
-        .nav-buttons { display: flex; justify-content: space-between; gap: 15px; margin-top: 30px; }
-        .nav-btn { flex: 1; padding: 15px; border-radius: 12px; font-weight: 700; cursor: pointer; border: none; font-size: 14px; transition: all 0.2s; }
-        .nav-back { background: #f0f0f0; color: #555; }
-        .nav-back:active { background: #e0e0e0; }
-        
-        .nav-next { background: var(--text-main); color: #fff; }
-        .nav-next:active { transform: scale(0.98); }
-        .nav-next:disabled { background: #e0e0e0; color: #a0a0a0; cursor: not-allowed; transform: none; }
 
         #universalComms { display: none; }
         
@@ -311,8 +327,12 @@
 
     <footer style="margin-top: 40px; padding-bottom: 20px;">
         <p>
-            <a href="https://tapengagesolutions.co.uk" target="_blank" style="text-decoration: none; color: inherit;"><span class="footer-brand-text">Find Local</span></a><br>
-            <a href="https://tapengagesolutions.co.uk" target="_blank" style="text-decoration: none; color: inherit;">Operated by Tap Engage Solutions</a><br>
+            <a href="https://tapengagesolutions.co.uk" target="_blank" style="text-decoration: none; color: inherit;">
+                <span class="footer-brand-text">Find Local</span>
+            </a><br>
+            <a href="https://tapengagesolutions.co.uk" target="_blank" style="text-decoration: none; color: inherit;">
+                <span style="font-weight: 400; font-size: 12px; display: inline-block; margin-top: 5px; color: #555;">Owned and managed by Tap Engage Solutions</span>
+            </a><br>
             <span style="font-size: 11px; color: #777;">Biagio Firetto (Sole Trader)</span><br>
             <a href="mailto:tapengagesolutions@gmail.com" style="color: inherit; text-decoration: none; font-size: 11px; margin-top: 3px; display: inline-block;">tapengagesolutions@gmail.com</a>
         </p>
@@ -343,6 +363,21 @@
             <div class="input-group">
                 <label id="bizNameLabel">What is your business name?</label>
                 <input type="text" id="shopName" class="form-input" placeholder="e.g. JS Carpentry" oninput="handleBizNameInput()">
+            </div>
+            
+            <div class="input-group" style="margin-top: 15px; margin-bottom: 25px;">
+                <label>Were you referred by anybody?</label>
+                <div class="yes-no-group">
+                    <input type="radio" id="refYes" name="hasReferral" value="Yes" onclick="toggleReferralInput(true)"><label for="refYes" class="yes-no-label">Yes</label>
+                    <input type="radio" id="refNo" name="hasReferral" value="No" onclick="toggleReferralInput(false)"><label for="refNo" class="yes-no-label">No</label>
+                </div>
+                <div id="referralInputWrapper" style="display:none; margin-top:10px;">
+                    <label style="font-size:11px; font-weight:700; color:#555; display:block; margin-bottom:5px;">Please enter their name or business</label>
+                    <input type="text" id="referralInput" class="form-input" placeholder="e.g. JS Carpentry or Jane Doe" list="partner-list" oninput="runValidation();">
+                    
+                    <datalist id="partner-list">
+                        </datalist>
+                </div>
             </div>
 
             <div id="q-website" style="display:none;">
@@ -395,7 +430,7 @@
 
             <div class="nav-buttons">
                 <button class="nav-btn nav-back" onclick="closeWizard()">Go Back</button>
-                <button class="nav-btn nav-next" id="btnNext1" onclick="goToStep(2)" disabled>Next Step <i class="fas fa-arrow-right"></i></button>
+                <button class="nav-btn nav-next" id="btnNext1" onclick="attemptNext('step1', 2)">Next Step <i class="fas fa-arrow-right"></i></button>
             </div>
         </div>
 
@@ -503,7 +538,7 @@
 
             <div class="nav-buttons">
                 <button class="nav-btn nav-back" onclick="goToStep(1)">Back</button>
-                <button class="nav-btn nav-next" id="btnNext2" onclick="nextFromStep2()" disabled>Next Step <i class="fas fa-arrow-right"></i></button>
+                <button class="nav-btn nav-next" id="btnNext2" onclick="attemptNext('step2', 'nextFrom2')">Next Step <i class="fas fa-arrow-right"></i></button>
             </div>
         </div>
 
@@ -571,7 +606,7 @@
 
             <div class="nav-buttons">
                 <button class="nav-btn nav-back" onclick="goToStep(2)">Back</button>
-                <button class="nav-btn nav-next" id="btnNext3" onclick="goToStep(4)" disabled>Next Step <i class="fas fa-arrow-right"></i></button>
+                <button class="nav-btn nav-next" id="btnNext3" onclick="attemptNext('step3', 4)">Next Step <i class="fas fa-arrow-right"></i></button>
             </div>
         </div>
 
@@ -597,11 +632,11 @@
             </div>
 
             <div class="terms-container-visual">
-                <label class="checkbox-hit-area" for="termsCheck"><input type="checkbox" id="termsCheck" class="terms-checkbox"></label>
+                <label class="checkbox-hit-area" for="termsCheck"><input type="checkbox" id="termsCheck" class="terms-checkbox" onchange="runValidation()"></label>
                 <span class="terms-text-static">I have read and agree to the</span><a href="#" class="terms-link">Terms & Conditions</a>
             </div>
 
-            <button onclick="submitApplication()" id="submitBtn" class="submit-btn" disabled>Awaiting Agreement</button>
+            <button onclick="attemptNext('step4', 'submit4')" id="submitBtn" class="submit-btn">Awaiting Agreement</button>
             <div class="footer-note"><i class="fas fa-shield-alt"></i> <strong>Lifetime Price Guarantee.</strong></div>
             
             <div class="nav-buttons" style="margin-top:10px;">
@@ -632,7 +667,7 @@
                 <textarea id="entDetails" class="form-input" rows="3" placeholder="e.g. Looking to equip all our shops by next month." oninput="runValidation();"></textarea>
             </div>
 
-            <button onclick="submitEnterprise()" id="entSubmitBtn" class="submit-btn" disabled>AWAITING DETAILS</button>
+            <button onclick="attemptNext('stepEnterprise', 'submitEnt')" id="entSubmitBtn" class="submit-btn">AWAITING DETAILS</button>
             
             <div class="nav-buttons" style="margin-top:10px;">
                 <button class="nav-btn nav-back" onclick="goToStep(2)">Back to Locations</button>
@@ -641,8 +676,12 @@
 
         <footer style="margin-top: 40px; padding-bottom: 20px;">
             <p>
-                <a href="https://tapengagesolutions.co.uk" target="_blank" style="text-decoration: none; color: inherit;"><span class="footer-brand-text">Find Local</span></a><br>
-                <a href="https://tapengagesolutions.co.uk" target="_blank" style="text-decoration: none; color: inherit;">Operated by Tap Engage Solutions</a><br>
+                <a href="https://tapengagesolutions.co.uk" target="_blank" style="text-decoration: none; color: inherit;">
+                    <span class="footer-brand-text">Find Local</span>
+                </a><br>
+                <a href="https://tapengagesolutions.co.uk" target="_blank" style="text-decoration: none; color: inherit;">
+                    <span style="font-weight: 400; font-size: 12px; display: inline-block; margin-top: 5px; color: #555;">Owned and managed by Tap Engage Solutions</span>
+                </a><br>
                 <span style="font-size: 11px; color: #777;">Biagio Firetto (Sole Trader)</span><br>
                 <a href="mailto:tapengagesolutions@gmail.com" style="color: inherit; text-decoration: none; font-size: 11px; margin-top: 3px; display: inline-block;">tapengagesolutions@gmail.com</a>
             </p>
@@ -667,6 +706,10 @@
         const prices = { magnet: 30, stand: 20, cards: 10, keyrings: 5, stickers: 5 };
         let counts = { magnet: 0, stand: 0, cards: 2, keyrings: 2, stickers: 5 };
         const BASE_PRICE = 350; 
+        
+        // URL Parameter Tracker for Referral
+        const urlParams = new URLSearchParams(window.location.search);
+        const partnerTag = urlParams.get('partner') || "None";
 
         // ==========================================
         // DYNAMIC TIME GREETING & PLACEHOLDERS
@@ -713,22 +756,97 @@
         }
 
         // ==========================================
-        // STRICT VALIDATION ENGINE
+        // NEW STRICT VALIDATION ENGINE
         // ==========================================
         
         document.getElementById('wizardOverlay').addEventListener('input', runValidation);
         document.getElementById('wizardOverlay').addEventListener('change', runValidation);
         document.getElementById('wizardOverlay').addEventListener('click', runValidation);
 
+        function getValidationState(stepId) {
+            const step = document.getElementById(stepId);
+            let invalidElements = [];
+
+            // Check visible text inputs
+            const textInputs = step.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="number"], textarea');
+            for (let input of textInputs) {
+                if (isElementVisible(input)) {
+                    if (input.id === 'referralInput' && getRadioVal('hasReferral') !== 'Yes') {
+                        continue; 
+                    }
+                    if (input.value.trim() === '') {
+                        invalidElements.push(input);
+                    }
+                }
+            }
+
+            // Check visible radio buttons
+            const visibleRadios = Array.from(step.querySelectorAll('input[type="radio"]')).filter(isElementVisible);
+            const radioGroups = [...new Set(visibleRadios.map(r => r.name))];
+            for (let name of radioGroups) {
+                const checked = step.querySelector(`input[name="${name}"]:checked`);
+                if (!checked) {
+                    const firstRadio = step.querySelector(`input[name="${name}"]`);
+                    invalidElements.push(firstRadio.closest('.yes-no-group') || firstRadio.closest('.branch-options'));
+                }
+            }
+
+            // Step 2 specific rules
+            if (stepId === 'step2') {
+                const addrContainer = document.getElementById('addressContainer');
+                if (addrContainer.style.display !== 'block' && currentModel) {
+                    // Logic waiting on user click
+                }
+                if (currentModel === 'Multiple' && !isEnterpriseMode) {
+                    const multiContainer = document.getElementById('multiLocationInputs');
+                    if (multiContainer.children.length === 0) {
+                        invalidElements.push(document.getElementById('locationCount'));
+                    }
+                }
+            }
+
+            // Step 4 specific rules
+            if (stepId === 'step4') {
+                if(!document.getElementById('termsCheck').checked) {
+                    invalidElements.push(document.querySelector('.terms-container-visual'));
+                }
+            }
+
+            return invalidElements;
+        }
+
+        function attemptNext(currentStep, nextStep) {
+            const invalidFields = getValidationState(currentStep);
+            
+            // Clear any old flashes
+            document.querySelectorAll('.error-flash').forEach(el => el.classList.remove('error-flash'));
+
+            if (invalidFields.length > 0) {
+                // Flash and scroll to the first error
+                invalidFields[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                invalidFields.forEach(el => {
+                    el.classList.add('error-flash');
+                    el.addEventListener('input', () => { el.classList.remove('error-flash'); runValidation(); }, {once: true});
+                    el.addEventListener('click', () => { el.classList.remove('error-flash'); runValidation(); }, {once: true});
+                });
+            } else {
+                // If valid, proceed!
+                if (nextStep === 'nextFrom2') nextFromStep2();
+                else if (nextStep === 'submit4') submitApplication();
+                else if (nextStep === 'submitEnt') submitEnterprise();
+                else goToStep(nextStep);
+            }
+        }
+
         function runValidation() {
-            if (document.getElementById('step1').classList.contains('active')) validateStep('step1', 'btnNext1');
-            if (document.getElementById('step2').classList.contains('active')) validateStep('step2', 'btnNext2');
-            if (document.getElementById('step3').classList.contains('active')) validateStep('step3', 'btnNext3');
+            if (document.getElementById('step1').classList.contains('active')) checkValidAndStyle('step1', 'btnNext1');
+            if (document.getElementById('step2').classList.contains('active')) checkValidAndStyle('step2', 'btnNext2');
+            if (document.getElementById('step3').classList.contains('active')) checkValidAndStyle('step3', 'btnNext3');
             
             if (document.getElementById('step4').classList.contains('active')) {
                 const termsChecked = document.getElementById('termsCheck').checked;
                 const submitBtn = document.getElementById('submitBtn');
-                submitBtn.disabled = !termsChecked;
                 if(termsChecked) {
                     submitBtn.classList.add('submit-ready');
                     submitBtn.innerText = "SUBMIT & JOIN BETA";
@@ -739,10 +857,8 @@
             }
             
             if (document.getElementById('stepEnterprise').classList.contains('active')) {
-                validateStep('stepEnterprise', 'entSubmitBtn'); 
-                
                 const entBtn = document.getElementById('entSubmitBtn');
-                if(!entBtn.disabled) {
+                if(getValidationState('stepEnterprise').length === 0) {
                     entBtn.classList.add('submit-ready');
                     entBtn.innerText = "REQUEST ENTERPRISE SETUP";
                 } else {
@@ -752,47 +868,15 @@
             }
         }
 
-        function validateStep(stepId, btnId) {
-            const step = document.getElementById(stepId);
+        function checkValidAndStyle(stepId, btnId) {
             const btn = document.getElementById(btnId);
-            if (!step || !btn) return;
-
-            let isValid = true;
-
-            const textInputs = step.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="number"], textarea');
-            for (let input of textInputs) {
-                if (isElementVisible(input) && input.value.trim() === '') {
-                    isValid = false;
-                    break;
-                }
+            if (!btn) return;
+            const invalidFields = getValidationState(stepId);
+            if (invalidFields.length === 0) {
+                btn.classList.add('nav-ready');
+            } else {
+                btn.classList.remove('nav-ready');
             }
-
-            if (isValid) {
-                const visibleRadios = Array.from(step.querySelectorAll('input[type="radio"]')).filter(isElementVisible);
-                const radioGroups = [...new Set(visibleRadios.map(r => r.name))];
-                for (let name of radioGroups) {
-                    const checked = step.querySelector(`input[name="${name}"]:checked`);
-                    if (!checked) {
-                        isValid = false;
-                        break;
-                    }
-                }
-            }
-
-            if (stepId === 'step2' && isValid) {
-                const addrContainer = document.getElementById('addressContainer');
-                if (addrContainer.style.display !== 'block') {
-                    isValid = false; 
-                }
-                if (currentModel === 'Multiple') {
-                    const multiContainer = document.getElementById('multiLocationInputs');
-                    if (multiContainer.children.length === 0 && !isEnterpriseMode) {
-                        isValid = false; 
-                    }
-                }
-            }
-
-            btn.disabled = !isValid;
         }
 
         function isElementVisible(el) {
@@ -867,6 +951,11 @@
         function nextFromStep2() {
             if (isEnterpriseMode) goToStep('Enterprise');
             else goToStep(3);
+        }
+
+        function toggleReferralInput(show) {
+            document.getElementById('referralInputWrapper').style.display = show ? 'block' : 'none';
+            runValidation();
         }
 
         function autoFillField(id) {
@@ -1228,7 +1317,10 @@
                 Phone_Number: document.getElementById('entPhone').value,
                 Rollout_Timeline: document.getElementById('entDetails').value,
                 Requested_Locations: document.getElementById('locationCount').value,
-                Active_Vehicles: vehicleCount
+                Active_Vehicles: vehicleCount,
+                
+                Customer_Stated_Referral: (getRadioVal('hasReferral') === 'Yes' && document.getElementById('referralInput')) ? document.getElementById('referralInput').value : "None",
+                Silent_Partner_Tag: partnerTag
             };
 
             sendToZapier(payload, btn, "REQUEST ENTERPRISE SETUP");
@@ -1295,7 +1387,10 @@
                 Total_Setup_Price: document.getElementById('finalTotal').innerText,
                 
                 Shipping_Address: "",
-                Public_Address: ""
+                Public_Address: "",
+
+                Customer_Stated_Referral: (getRadioVal('hasReferral') === 'Yes' && document.getElementById('referralInput')) ? document.getElementById('referralInput').value : "None",
+                Silent_Partner_Tag: partnerTag
             };
 
             if (currentModel === 'Mobile') {
@@ -1360,6 +1455,24 @@
         document.querySelectorAll('.spots-display').forEach(el => el.innerText = spotsRemaining);
 
         const WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/25456236/ucgpd5n/"; 
+
+        // ADD YOUR REFERRAL PARTNERS HERE:
+        const referralPartners = [
+            "Apex Media",
+            "JS Carpentry",
+            "London Tech Solutions",
+            "Sarah Jones Consulting"
+        ];
+
+        // This automatically builds the dropdown for you based on the list above
+        const datalist = document.getElementById('partner-list');
+        if(datalist) {
+            referralPartners.forEach(partner => {
+                const option = document.createElement('option');
+                option.value = partner;
+                datalist.appendChild(option);
+            });
+        }
         // ==========================================
 
     </script>
