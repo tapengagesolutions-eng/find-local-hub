@@ -706,7 +706,7 @@
 
 
 
-    <div class="bottom-test-banner">🚧 EARLY ACCESS WAITLIST: We are still setting up our systems, but we are now ready to take on customer information! When we are live, we will email your official billing and shipping details. No payment is required today. 🚧</div>
+    <div class="bottom-test-banner">🚧 EARLY ACCESS WAITLIST: We are setting up our systems, but are now accepting applications! Secure your spot today. No payment is required right now—we will email your official billing and shipping details once we are live. 🚧</div>
 
 
 
@@ -1572,7 +1572,7 @@
 
             // Check visible text inputs
 
-            const textInputs = step.querySelectorAll('input[type="text"]:not(#referralInput), input[type="email"], input[type="tel"], input[type="number"], textarea');
+            const textInputs = step.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="number"], textarea');
 
             for (let input of textInputs) {
 
@@ -2634,13 +2634,13 @@
 
                 console.log("Future route triggered -> thank-you-no-web.html");
 
-                alert("APPLICATION RECEIVED! You are on the waitlist. We will email your official billing and shipping setup link as soon as your spot opens up.");
+                alert("APPLICATION RECEIVED!\n\nYou are on the waitlist. We will email your official billing and shipping setup link as soon as your spot opens up.");
 
             } else {
 
                 console.log("Future route triggered -> thank-you.html");
 
-                alert("APPLICATION RECEIVED! You are on the waitlist. We will email your official billing and shipping setup link as soon as your spot opens up.");
+                alert("APPLICATION RECEIVED!\n\nYou are on the waitlist. We will email your official billing and shipping setup link as soon as your spot opens up.");
 
             }
 
@@ -3104,4 +3104,4 @@
 
 </body>
 
-</html>
+</html> 
