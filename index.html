@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+
+
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -254,7 +256,7 @@
 </head>
 <body>
 
-    <div class="test-banner">🚧 EARLY ACCESS WAITLIST: We are setting up our systems, but are now accepting applications! Secure your spot today. No payment is required right now—we will email your official billing and shipping details once we are live. 🚧</div>
+    <div class="test-banner">🚧 EARLY ACCESS WAITLIST: We are still setting up our systems, but we are now ready to take on customer information! When we are live, we will email your official billing and shipping details. No payment is required today. 🚧</div>
     <div class="brand-strip"></div>
 
     <div class="hero">
@@ -263,7 +265,7 @@
         <h1>The Digital Hub <br>for Local Business.</h1>
         <span class="pill-badge">Exclusive Beta Programme</span><br>
         <div class="urgency-alert">⚠️ Time is Running Out: <span class="spots-display">50</span> <span>Spots Remaining</span></div>
-        <p class="sub-head">The digital hub for local business and community events. We drive your sales while funding vocational skills for SEN students and fresh starts for the homeless.</p>
+        <p class="sub-head">A community-first directory for local business, built for real social impact.</p>
         <a href="#pricing-section" class="fast-track-btn">Skip to Offer & Pricing ↓</a>
     </div>
 
@@ -352,7 +354,7 @@
         </p>
     </footer>
 
-    <div class="bottom-test-banner">🚧 EARLY ACCESS WAITLIST: We are setting up our systems, but are now accepting applications! Secure your spot today. No payment is required right now—we will email your official billing and shipping details once we are live. 🚧</div>
+    <div class="bottom-test-banner">🚧 EARLY ACCESS WAITLIST: We are still setting up our systems, but we are now ready to take on customer information! When we are live, we will email your official billing and shipping details. No payment is required today. 🚧</div>
 
     <div id="wizardOverlay">
         <div class="wizard-header">
@@ -785,7 +787,7 @@
             let invalidElements = [];
 
             // Check visible text inputs
-            const textInputs = step.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="number"], textarea');
+            const textInputs = step.querySelectorAll('input[type="text"]:not(#referralInput), input[type="email"], input[type="tel"], input[type="number"], textarea');
             for (let input of textInputs) {
                 if (isElementVisible(input)) {
                     if (input.id === 'referralInput' && getRadioVal('hasReferral') !== 'Yes') {
@@ -1316,10 +1318,10 @@
         function handleRedirects(payload) {
             if (payload.Digital_Presence === 'No') {
                 console.log("Future route triggered -> thank-you-no-web.html");
-                alert("APPLICATION RECEIVED!\n\nYou are on the waitlist. We will email your official billing and shipping setup link as soon as your spot opens up.");
+                alert("APPLICATION RECEIVED! You are on the waitlist. We will email your official billing and shipping setup link as soon as your spot opens up.");
             } else {
                 console.log("Future route triggered -> thank-you.html");
-                alert("APPLICATION RECEIVED!\n\nYou are on the waitlist. We will email your official billing and shipping setup link as soon as your spot opens up.");
+                alert("APPLICATION RECEIVED! You are on the waitlist. We will email your official billing and shipping setup link as soon as your spot opens up.");
             }
         }
 
