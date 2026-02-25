@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find Local | Details Received</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --bg: #f8f9fa; --card-bg: #ffffff; --text-main: #111111; --text-muted: #555555; --brand-purple: #8000FF; --electric-blue: #00D4FF; --neon-green: #39FF14; --trust-blue: #0066cc; --radius: 20px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg); color: var(--text-main); padding: 40px 20px 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; overflow-x: hidden; }
+        .page { width: 100%; max-width: 600px; position: relative; z-index: 10; margin-top: 5vh; }
+        .neon-strip { position: fixed; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, var(--brand-purple), var(--electric-blue), var(--neon-green), var(--brand-purple)); background-size: 200% 100%; animation: glow 6s linear infinite; z-index: 9999; }
+        @keyframes glow { 0%{background-position:0% 50%;} 50%{background-position:100% 50%;} 100%{background-position:0% 50%;} }
+        .confetti { position: absolute; width: 10px; height: 10px; background: var(--neon-green); animation: fall linear forwards; opacity: 0; }
+        .confetti:nth-child(even) { background: var(--electric-blue); }
+        .confetti:nth-child(3n) { background: var(--brand-purple); }
+        @keyframes fall { to { transform: translateY(100vh) rotate(720deg); } }
+        .card { background: var(--card-bg); padding: 40px 30px; border-radius: var(--radius); box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-align: center; position: relative; overflow: hidden; border: 1px solid #e6ebf1; margin-bottom: 40px; }
+        #time-greeting { font-size: 1.1rem; font-weight: 800; color: var(--brand-purple); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+        h1 { margin-top: 0; font-size: 2rem; margin-bottom: 10px; font-weight: 900; letter-spacing: -0.5px; }
+        p.success-text { line-height: 1.6; color: var(--text-muted); margin-bottom: 15px; font-size: 1.05rem; }
+        .email-notice { background: #f5f5f5; color: #111111; font-size: 13px; padding: 18px 20px; border-radius: 8px; margin-bottom: 25px; border: 1px solid #dddddd; text-align: left; line-height: 1.5; }
+        .email-notice p { margin-bottom: 12px; } .email-notice p:last-child { margin-bottom: 0; }
+        .email-notice ul { margin-left: 22px; margin-bottom: 15px; color: #333; }
+        .info-box { background: #f0f7ff; border: 2px dashed var(--trust-blue); padding: 20px; border-radius: 12px; margin-bottom: 25px; font-size: 0.95rem; color: #333; text-align: left; }
+        .info-box strong { color: var(--trust-blue); display: block; margin-bottom: 10px; font-size: 16px; }
+        .info-box ul { font-size: 13px; color: #444; padding-left: 20px; margin-top: 10px; margin-bottom: 0; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 18px; border-radius: 50px; font-weight: 800; font-size: 1rem; text-decoration: none; margin-bottom: 12px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; }
+        .btn-email-solid { background: var(--trust-blue); color: #fff; box-shadow: 0 8px 20px rgba(0, 102, 204, 0.3); }
+        .btn-wa-outline { background: #f4fff6; color: #128c7e; border: 2px solid #25D366; }
+        .btn-secondary { background: #f0f0f0; color: #555; border: none; }
+        footer { text-align: center; padding: 20px; color: var(--text-muted); font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="neon-strip"></div>
+    <div id="confetti-container" style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0;"></div>
+    <div class="page">
+        <div class="card">
+            <div style="font-size: 3rem; margin-bottom: 10px;">🎉</div>
+            <div id="time-greeting">Good day!</div>
+            <h1>Application Received.</h1>
+            <p class="success-text">Your details have been securely logged, and your setup process is ready to begin.</p>
+            
+            <div class="email-notice">
+                <p><i class="fas fa-envelope"></i> <strong>Note: Your official billing information has been sent.</strong> This contains our bank details to securely set up your payment. Please allow up to 5 minutes.</p>
+                <p><strong>Your Next Steps:</strong></p>
+                <ul>
+                    <li><strong>Initial Payment:</strong> Transfer your setup total via online banking (refer to your email for your exact invoice total and unique Customer Reference Number).</li>
+                    <li><strong>Monthly Subscription:</strong> Set up a standing order for £25 per month.</li>
+                    <li><strong>Send Files:</strong> Because you don't currently have a digital footprint, we need you to reply to our email with your assets.</li>
+                </ul>
+                <p style="color: #444;"><em><strong>Important:</strong> Our setup team will only begin building your dashboard once your files are received and your payment is confirmed.</em></p>
+            </div>
+
+            <div class="info-box">
+                <strong><i class="fas fa-file-upload"></i> We need your files</strong>
+                <span style="font-size: 13px;">To build your new platform manually, please send us:</span>
+                <ul>
+                    <li>Your company logo (if you have one).</li>
+                    <li>Your pricing structure and full list of service offerings.</li>
+                </ul>
+            </div>
+
+            <a href="mailto:tapengagesolutions@gmail.com" class="btn btn-email-solid"><i class="fas fa-envelope" style="font-size: 1.2rem;"></i> Send Files via Email</a>
+            <a href="https://wa.me/447511634426" target="_blank" class="btn btn-wa-outline"><i class="fab fa-whatsapp"></i> Send Files via WhatsApp</a>
+            
+            <div style="margin-top: 15px;">
+                <a href="https://tapengagesolutions.co.uk" class="btn btn-secondary"><i class="fas fa-home"></i> Back to Homepage</a>
+            </div>
+        </div>
+        <footer>
+            <a href="https://tapengagesolutions.co.uk" target="_blank" style="font-weight: 800; font-size: 18px; color: #000; text-decoration: none;">Find Local</a><br>
+            <span style="font-size: 11px; color: #777;">Owned and managed by Tap Engage Solutions | Biagio Firetto (Sole Trader)</span>
+        </footer>
+    </div>
+    <script>
+        const hour = new Date().getHours(); document.getElementById('time-greeting').innerText = (hour < 12 ? "Good morning" : (hour < 18 ? "Good afternoon" : "Good evening")) + "!";
+        const container = document.getElementById('confetti-container'); const colors = ['#39ff14', '#00d0ff', '#8000FF'];
+        for (let i = 0; i < 50; i++) { const c = document.createElement('div'); c.classList.add('confetti'); c.style.left = Math.random()*100+'vw'; c.style.background = colors[Math.floor(Math.random()*colors.length)]; c.style.animationDuration = (Math.random()*3+2)+'s'; container.appendChild(c); }
+    </script>
+</body>
+</html>
