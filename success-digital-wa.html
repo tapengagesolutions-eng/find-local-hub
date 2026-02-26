@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Find Local | Details Received</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -11,7 +13,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
         body { background: var(--bg); color: var(--text-main); padding: 40px 20px 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; overflow-x: hidden; }
         .page { width: 100%; max-width: 600px; position: relative; z-index: 10; margin-top: 5vh; }
-        .neon-strip { position: fixed; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, var(--brand-purple), var(--electric-blue), var(--neon-green), var(--brand-purple)); background-size: 200% 100%; animation: glow 6s linear infinite; z-index: 9999; }
+        .neon-strip { position: fixed; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, var(--brand-purple), var(--electric-blue), var(--neon-green), var(--brand-purple)); background-size: 200% 100%; animation: glow 6s linear infinite; box-shadow: 0 0 18px rgba(128, 0, 255, 0.4); z-index: 9999; }
         @keyframes glow { 0%{background-position:0% 50%;} 50%{background-position:100% 50%;} 100%{background-position:0% 50%;} }
         .confetti { position: absolute; width: 10px; height: 10px; background: var(--neon-green); animation: fall linear forwards; opacity: 0; }
         .confetti:nth-child(even) { background: var(--electric-blue); }
@@ -21,16 +23,23 @@
         #time-greeting { font-size: 1.1rem; font-weight: 800; color: var(--brand-purple); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
         h1 { margin-top: 0; font-size: 2rem; margin-bottom: 10px; font-weight: 900; letter-spacing: -0.5px; }
         p.success-text { line-height: 1.6; color: var(--text-muted); margin-bottom: 15px; font-size: 1.05rem; }
-        .email-notice { background: #f5f5f5; color: #111111; font-size: 13px; padding: 18px 20px; border-radius: 8px; margin-bottom: 25px; border: 1px solid #dddddd; text-align: left; line-height: 1.5; }
+        .email-notice { background: #f5f5f5; color: #111111; font-size: 13px; padding: 18px 20px; border-radius: 8px; margin-bottom: 25px; border: 1px solid #dddddd; text-align: left; display: block; line-height: 1.5; }
         .email-notice p { margin-bottom: 12px; } .email-notice p:last-child { margin-bottom: 0; }
         .email-notice ul { margin-left: 22px; margin-bottom: 15px; color: #333; }
+        .email-notice li { margin-bottom: 6px; } .email-notice strong { font-weight: 700; color: #000; }
         .info-box { background: #f4fff6; border: 2px dashed #25D366; padding: 20px; border-radius: 12px; margin-bottom: 25px; font-size: 0.95rem; color: #333; text-align: left; }
         .info-box strong { color: #128c7e; display: block; margin-bottom: 10px; font-size: 16px; }
-        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 18px; border-radius: 50px; font-weight: 800; font-size: 1rem; text-decoration: none; margin-bottom: 12px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; }
-        .btn-wa { background: #25D366; color: #fff; box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3); }
-        .btn-email-outline { background: #f0f7ff; color: var(--trust-blue); border: 2px solid var(--trust-blue); }
+        .info-box ul { font-size: 13px; color: #444; padding-left: 20px; line-height: 1.6; margin-top: 10px; margin-bottom: 0; }
+        .info-box li { margin-bottom: 4px; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 18px; border-radius: 50px; font-weight: 800; font-size: 1rem; text-decoration: none; margin-bottom: 12px; transition: transform 0.2s; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; }
+        .btn:active { transform: scale(0.96); }
+        .btn-wa { background: #25D366; color: #fff; box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3); border: none; }
+        .btn-email { background: var(--trust-bg-light); color: var(--trust-blue); border: 2px solid var(--trust-blue); }
         .btn-secondary { background: #f0f0f0; color: #555; border: none; }
-        footer { text-align: center; padding: 20px; color: var(--text-muted); font-size: 12px; }
+        footer { text-align: center; padding: 20px; color: var(--text-muted); font-size: 12px; width: 100%; max-width: 600px; z-index: 10; }
+        .footer-brand-text { font-weight: 800; font-size: 18px; color: #000000; display: inline-block; margin-bottom: 5px; text-decoration: none; }
+        .footer-link { color: inherit; text-decoration: none; display: inline-block; transition: color 0.2s; }
+        .footer-link:hover { color: var(--brand-purple); }
     </style>
 </head>
 <body>
@@ -41,40 +50,50 @@
             <div style="font-size: 3rem; margin-bottom: 10px;">🎉</div>
             <div id="time-greeting">Good day!</div>
             <h1>Application Received.</h1>
-            <p class="success-text">Good news! We found your existing digital footprint, and your Beta setup is ready to begin.</p>
+            <p class="success-text">Your details have been securely logged, and your place in the Beta Programme is reserved.</p>
             
             <div class="email-notice">
-                <p><i class="fas fa-envelope"></i> <strong>Note: Your official billing information has been sent.</strong> This contains our bank details to securely set up your payment. Please allow up to 5 minutes.</p>
+                <p><i class="fas fa-envelope"></i> <strong>Note: Your official billing information has been sent.</strong> This email contains our bank details to securely set up your payment. Please allow up to 5 minutes.</p>
                 <p><strong>Your Next Steps:</strong></p>
                 <ul>
-                    <li><strong>Initial Payment:</strong> Transfer your setup total via online banking (refer to your email for your exact invoice total and unique Customer Reference Number).</li>
+                    <li><strong>Initial Payment:</strong> Transfer your setup total via online banking. (Please refer to your email for your exact invoice total).</li>
                     <li><strong>Monthly Subscription:</strong> Set up a standing order for £25 per month.</li>
                 </ul>
-                <p style="color: #444;"><em><strong>Important:</strong> Our team will only begin scraping your existing website/socials and building your dashboard once your initial payment is confirmed.</em></p>
+                <p style="color: #d32f2f; font-weight: 600; line-height: 1.4;">⚠️ CRITICAL STEP: When making your payment and setting up your standing order, you absolutely must use your unique Customer Reference Number (found in your email) as the bank payment reference. If you do not include this, we will not know you have paid!</p>
             </div>
 
             <div class="info-box">
                 <strong><i class="fas fa-magic"></i> We'll handle the heavy lifting</strong>
-                <span style="font-size: 13px;">Since you have an online presence, our team will extract your current information to build your new platform. If you want to add anything extra, simply message us below!</span>
+                <span style="font-size: 13px; color: #333; line-height: 1.5; display: block;">Once your payment is successfully processed, your part is completely done! Our team will extract your current online information to build your new Digital HQ. We handle everything from here.<br><br>When it is ready, we will send your live dashboard link directly to your WhatsApp and Email. We will also dispatch your physical hardware to your chosen address (a full breakdown of the kit you are receiving is detailed in your email).</span>
             </div>
 
-            <a href="https://wa.me/447511634426" target="_blank" class="btn btn-wa"><i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> Message us on WhatsApp</a>
-            <a href="mailto:tapengagesolutions@gmail.com" class="btn btn-email-outline"><i class="fas fa-envelope"></i> Contact us via Email</a>
+            <a href="https://wa.me/447511634426" target="_blank" class="btn btn-wa"><i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> Contact us via WhatsApp</a>
+            <a href="mailto:tapengagesolutions@gmail.com" class="btn btn-email"><i class="fas fa-envelope"></i> Contact us via Email</a>
             
             <div style="margin-top: 15px;">
-                <a href="https://tapengagesolutions.co.uk" class="btn btn-secondary"><i class="fas fa-home"></i> Back to Homepage</a>
+                <a href="index.html" class="btn btn-secondary"><i class="fas fa-home"></i> Back to Find Local Homepage</a>
+                <p style="font-size: 12px; color: var(--text-muted); margin-top: 5px; line-height: 1.4;">
+                    <em>You will not need to resubmit—we already have your information safely saved.</em>
+                </p>
             </div>
         </div>
+
         <footer>
-            <a href="https://tapengagesolutions.co.uk" target="_blank" style="font-weight: 800; font-size: 18px; color: #000; text-decoration: none;">Find Local</a><br>
-            <span style="font-size: 11px; color: #777;">Owned and managed by Tap Engage Solutions | Biagio Firetto (Sole Trader)</span>
+            <a href="https://tapengagesolutions.co.uk" target="_blank" class="footer-brand-text">Find Local</a><br>
+            <a href="https://tapengagesolutions.co.uk" target="_blank" class="footer-link" style="font-weight: 400; font-size: 12px; margin-top: 5px; color: #555;">Owned and managed by Tap Engage Solutions</a><br>
+            <span style="font-size: 11px; color: #777;">Biagio Firetto (Sole Trader)</span><br>
+            <a href="mailto:tapengagesolutions@gmail.com" class="footer-link" style="font-size: 11px; margin-top: 3px;">tapengagesolutions@gmail.com</a><br>
+            <a href="https://wa.me/447511634426" target="_blank" class="footer-link" style="font-size: 11px; margin-top: 5px; display: inline-block;">
+                <i class="fab fa-whatsapp" style="color: #111111; margin-right: 3px;"></i> Message Setup Support
+            </a><br>
+            <p style="font-size: 11px; color: #777; margin-top: 10px; line-height: 1.6;">21 Cochrane House, Cowley Road, Uxbridge, Greater London, UB8 2DA</p>
+            <p style="font-size: 10px; color: #999; margin-top: 15px;">Copyright © 2026 Tap Engage Solutions. All Rights Reserved.</p>
         </footer>
     </div>
     <script>
-        const hour = new Date().getHours();
-        document.getElementById('time-greeting').innerText = (hour < 12 ? "Good morning" : (hour < 18 ? "Good afternoon" : "Good evening")) + "!";
+        const hour = new Date().getHours(); let greeting = "Good evening"; if (hour < 12) greeting = "Good morning"; else if (hour < 18) greeting = "Good afternoon"; document.getElementById('time-greeting').innerText = greeting + "!";
         const container = document.getElementById('confetti-container'); const colors = ['#39ff14', '#00d0ff', '#8000FF'];
-        for (let i = 0; i < 50; i++) { const c = document.createElement('div'); c.classList.add('confetti'); c.style.left = Math.random()*100+'vw'; c.style.background = colors[Math.floor(Math.random()*colors.length)]; c.style.animationDuration = (Math.random()*3+2)+'s'; container.appendChild(c); }
+        for (let i = 0; i < 50; i++) { const c = document.createElement('div'); c.classList.add('confetti'); c.style.left = Math.random() * 100 + 'vw'; c.style.background = colors[Math.floor(Math.random() * colors.length)]; c.style.animationDuration = (Math.random() * 3 + 2) + 's'; c.style.opacity = Math.random(); container.appendChild(c); }
     </script>
 </body>
 </html>
