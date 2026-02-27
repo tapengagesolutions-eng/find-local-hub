@@ -1315,28 +1315,8 @@
         // ==========================================
 
         function handleRedirects(payload) {
-            let targetURL = "";
-
-            if (payload.Submission_Type === "Enterprise Lead") {
-                targetURL = "success-enterprise.html";
-            } else {
-                // Determine if they are completely ready for a digital scrape
-                const isFullyDigital = (payload.Digital_Presence === "Yes" && payload.Pricing_Visible === "Yes");
-                const choseEmail = payload.Comms_Preference === "Email";
-
-                if (isFullyDigital && choseEmail) {
-                    targetURL = "success-digital-email.html";
-                } else if (isFullyDigital && !choseEmail) {
-                    targetURL = "success-digital-wa.html";
-                } else if (!isFullyDigital && choseEmail) {
-                    targetURL = "success-manual-email.html";
-                } else if (!isFullyDigital && !choseEmail) {
-                    targetURL = "success-manual-wa.html";
-                }
-            }
-
-            console.log("Redirecting to: " + targetURL);
-            window.location.href = targetURL;
+            console.log("Redirecting to: " + payload.Target_URL);
+            window.location.href = payload.Target_URL;
         }
 
         function submitEnterprise() {
@@ -1365,7 +1345,9 @@
                 Active_Vehicles: vehicleCount,
                 
                 Customer_Stated_Referral: (getRadioVal('hasReferral') === 'Yes' && document.getElementById('referralInput')) ? document.getElementById('referralInput').value : "None",
-                Silent_Partner_Tag: partnerTag
+                Silent_Partner_Tag: partnerTag,
+                Routing_Scenario: "Enterprise",
+                Target_URL: "success-enterprise.html"
             };
 
             sendToZapier(payload, btn, "REQUEST ENTERPRISE SETUP");
@@ -1405,6 +1387,16 @@
             }
             // --- DATA SCRUBBER END ---
 
+            let scenario = "";
+            let target = "";
+            const isFullyDigital = (getRadioVal('hasWebsite') === "Yes" && getRadioVal('priceVis') === "Yes");
+            const choseEmail = assetMethod === "Email";
+
+            if (isFullyDigital && choseEmail) { scenario = "Digital_Email"; target = "success-digital-email.html"; }
+            else if (isFullyDigital && !choseEmail) { scenario = "Digital_WA"; target = "success-digital-wa.html"; }
+            else if (!isFullyDigital && choseEmail) { scenario = "Manual_Email"; target = "success-manual-email.html"; }
+            else if (!isFullyDigital && !choseEmail) { scenario = "Manual_WA"; target = "success-manual-wa.html"; }
+
             const payload = {
                 Submission_Type: "Standard Beta Setup",
                 Digital_Presence: getRadioVal('hasWebsite'),
@@ -1436,7 +1428,9 @@
                 Public_Address: "",
 
                 Customer_Stated_Referral: (getRadioVal('hasReferral') === 'Yes' && document.getElementById('referralInput')) ? document.getElementById('referralInput').value : "None",
-                Silent_Partner_Tag: partnerTag
+                Silent_Partner_Tag: partnerTag,
+                Routing_Scenario: scenario,
+                Target_URL: target
             };
 
             if (currentModel === 'Mobile') {
