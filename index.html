@@ -597,14 +597,6 @@
                     <label class="radio-option"><input type="radio" name="entityType" value="Sole Trader" onclick="updateDetailsLabels('Sole')"><div class="radio-text"><strong>Sole Trader / Partnership</strong></div></label>
                 </div>
             </div>
-            
-            <div id="q-crn" style="display:none;">
-                <div id="crnField" style="margin-bottom:15px;">
-                    <label>Company Registration Number</label>
-                    <div style="display:flex; gap:10px; align-items:center;"><input type="text" id="companyRegNum" class="form-input" placeholder="e.g. 12345678" oninput="handleCRNInput()"><span class="compliance-link" onclick="toggleCompBox('crnCompBox')">Learn More</span></div>
-                    <div class="compliance-box" id="crnCompBox"><strong>The Companies (Trading Disclosures) Regulations 2008</strong> Requires limited companies to display their CRN on their dashboard.</div>
-                </div>
-            </div>
 
             <div id="q-poc" style="display:none;">
                 <div class="input-group"><label id="contactLabel">Best Point of Contact</label><span id="privateLabel" style="font-size:10px; color:#777; display:none; margin-bottom:5px;">(Not shown publicly)</span><input type="text" id="userName" class="form-input" placeholder="e.g. John Smith or Marketing Team" oninput="handlePocInput()"></div>
@@ -1264,25 +1256,15 @@
         }
         
         function updateDetailsLabels(type) { 
-            document.getElementById('q-crn').style.display = 'none';
             document.getElementById('q-poc').style.display = 'none';
             document.getElementById('q-owner').style.display = 'none';
 
             if(type === 'Limited'){ 
-                if (!isDigital || !isPricingVisible) {
-                    document.getElementById('q-crn').style.display = 'block';
-                } else {
-                    document.getElementById('q-poc').style.display = 'block';
-                }
+                document.getElementById('q-poc').style.display = 'block';
             } else { 
                 document.getElementById('q-poc').style.display='block'; 
             } 
             runValidation(); 
-        }
-
-        function handleCRNInput() {
-            document.getElementById('q-poc').style.display = 'block';
-            runValidation();
         }
 
         function handlePocInput() {
@@ -1372,15 +1354,12 @@
 
             // --- DATA SCRUBBER START ---
             const finalStructure = getRadioVal('entityType');
-            let finalCRN = document.getElementById('companyRegNum') ? document.getElementById('companyRegNum').value : "";
             let finalIsOwner = getRadioVal('isOwner');
             let finalOwnerOverride = document.getElementById('ownerDetails') ? document.getElementById('ownerDetails').value : "";
 
             if (finalStructure === 'Limited Company') {
                 finalIsOwner = "";
                 finalOwnerOverride = "";
-            } else {
-                finalCRN = "";
             }
             // --- DATA SCRUBBER END ---
 
@@ -1412,7 +1391,7 @@
                 Contact_Name: document.getElementById('userName').value,
                 Is_Owner: finalIsOwner,
                 Owner_Name_Override: finalOwnerOverride,
-                CRN_Number: finalCRN,
+                CRN_Number: "",
 
                 Hardware_Magnets: counts.magnet,
                 Hardware_Stands: counts.stand,
