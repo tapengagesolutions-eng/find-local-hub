@@ -420,19 +420,50 @@
                         <label class="radio-option"><input type="radio" name="assetMethod" value="WhatsApp" onclick="toggleContactFields('WhatsApp')"><div class="radio-text"><strong>WhatsApp</strong></div></label>
                         <label class="radio-option"><input type="radio" name="assetMethod" value="Email" onclick="toggleContactFields('Email')"><div class="radio-text"><strong>Email</strong></div></label>
                     </div>
-                    <div id="waField" class="dynamic-contact-field"><span class="contact-instruction">Great. What is your best WhatsApp Number?</span><input type="tel" id="assetPhone" class="form-input" placeholder="e.g. 07700 900000" oninput="runValidation();"></div>
+                    
+                    <div id="waField" class="dynamic-contact-field">
+                        <span class="contact-instruction">Great. What is your best WhatsApp Number?</span>
+                        <input type="tel" id="assetPhone" class="form-input" placeholder="e.g. 07700 900000" oninput="runValidation();">
+                        
+                        <div style="margin-top: 15px; border-top: 1px dashed #ccc; padding-top: 15px;">
+                            <span class="contact-instruction">Billing & Account Email Address</span>
+                            <input type="email" id="userEmail" class="form-input" placeholder="e.g. accounts@email.com" oninput="runValidation();">
+                            
+                            <div class="sub-q-group" style="margin-top:10px;">
+                                <label class="sub-q-label">Display this email publicly on your Dashboard?</label>
+                                <div class="yes-no-group">
+                                    <input type="radio" id="waPublicYes" name="waPublicEmailOpt" value="Yes" onclick="toggleWaPublicEmail(false)"><label for="waPublicYes" class="yes-no-label">Yes</label>
+                                    <input type="radio" id="waPublicNo" name="waPublicEmailOpt" value="No" onclick="toggleWaPublicEmail(true)"><label for="waPublicNo" class="yes-no-label">No</label>
+                                </div>
+                                <div id="waPublicEmailWrapper" style="display:none; margin-top:10px;">
+                                    <label style="font-size:11px; font-weight:700; color:#555; display:block; margin-bottom:5px;">Public Email Address</label>
+                                    <input type="email" id="waPublicEmailInput" class="form-input" placeholder="e.g. info@business.com" oninput="runValidation();">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div id="emailField" class="dynamic-contact-field">
-                        <span class="contact-instruction">Please provide the email you want to use.</span>
-                        <span style="font-size:11px; color:var(--text-muted); display:block; margin-bottom:8px; font-weight: 500; line-height: 1.4;"><i class="fas fa-info-circle"></i> Don't have a corporate email? No problem! A standard personal address (like @gmail.com) works perfectly.</span>
-                        <div style="display:flex; align-items:center;">
-                            <input type="email" id="assetEmail" class="form-input" placeholder="e.g. design@business.com" oninput="document.getElementById('q-dashEmail').style.display='block'; runValidation();">
-                            <button id="findEmailBtn" class="find-online-btn" style="display:none;" onclick="autoFillField('assetEmail')">Find Online</button>
+                        <span class="contact-instruction">Please provide the email for Ongoing Account Management.</span>
+                        <span style="font-size:11px; color:var(--text-muted); display:block; margin-bottom:8px; font-weight: 500; line-height: 1.4;"><i class="fas fa-info-circle"></i> Don't have a corporate email? A standard personal address works perfectly.</span>
+                        <input type="email" id="assetEmail" class="form-input" placeholder="e.g. design@business.com" oninput="runValidation();">
+                        
+                        <div class="sub-q-group" style="margin-top:10px;">
+                            <label class="sub-q-label">Is this the same email for Invoicing & Billing?</label>
+                            <div class="yes-no-group">
+                                <input type="radio" id="billEmailYes" name="billEmail" value="Yes" onclick="toggleBillInput(false)"><label for="billEmailYes" class="yes-no-label">Yes</label>
+                                <input type="radio" id="billEmailNo" name="billEmail" value="No" onclick="toggleBillInput(true)"><label for="billEmailNo" class="yes-no-label">No</label>
+                            </div>
+                            <input type="email" id="billEmailInput" class="form-input" style="margin-top:10px; display:none;" placeholder="Enter Billing Email" oninput="runValidation();">
                         </div>
-                        <div id="q-dashEmail" style="display:none;">
-                            <div class="sub-q-group"><label class="sub-q-label">Is this the same email for your Public Dashboard?</label><div class="yes-no-group"><input type="radio" id="dashEmailYes" name="dashEmail" value="Yes" onclick="toggleDashInput(false)"><label for="dashEmailYes" class="yes-no-label">Yes</label><input type="radio" id="dashEmailNo" name="dashEmail" value="No" onclick="toggleDashInput(true)"><label for="dashEmailNo" class="yes-no-label">No</label></div><input type="email" id="dashEmailInput" class="form-input" style="margin-top:5px; display:none;" placeholder="Enter Public Dashboard Email" oninput="runValidation();"></div>
-                        </div>
-                        <div id="q-billEmail" style="display:none;">
-                            <div class="sub-q-group"><label class="sub-q-label">Is this the same email for Invoicing & Management?</label><div class="yes-no-group"><input type="radio" id="billEmailYes" name="billEmail" value="Yes" onclick="toggleBillInput(false)"><label for="billEmailYes" class="yes-no-label">Yes</label><input type="radio" id="billEmailNo" name="billEmail" value="No" onclick="toggleBillInput(true)"><label for="billEmailNo" class="yes-no-label">No</label></div><input type="email" id="billEmailInput" class="form-input" style="margin-top:5px; display:none;" placeholder="Enter Billing Email" oninput="runValidation();"></div>
+
+                        <div class="sub-q-group" style="margin-top:10px;">
+                            <label class="sub-q-label">Is this the same email for your Public Dashboard?</label>
+                            <div class="yes-no-group">
+                                <input type="radio" id="dashEmailYes" name="dashEmail" value="Yes" onclick="toggleDashInput(false)"><label for="dashEmailYes" class="yes-no-label">Yes</label>
+                                <input type="radio" id="dashEmailNo" name="dashEmail" value="No" onclick="toggleDashInput(true)"><label for="dashEmailNo" class="yes-no-label">No</label>
+                            </div>
+                            <input type="email" id="dashEmailInput" class="form-input" style="margin-top:10px; display:none;" placeholder="Enter Public Dashboard Email" oninput="runValidation();">
                         </div>
                     </div>
                 </div>
@@ -588,34 +619,7 @@
                     <div class="compliance-box" id="compBox"><strong>Consumer Protection Regulations:</strong> To comply with UK trading laws, your name must be displayed to prove you are a legitimate trader.</div>
                     <div class="yes-no-group" style="margin-top:10px;"><input type="radio" id="ownerYes" name="isOwner" value="Yes" onclick="toggleOwnerField(true)"><label for="ownerYes" class="yes-no-label">Yes</label><input type="radio" id="ownerNo" name="isOwner" value="No" onclick="toggleOwnerField(false)"><label for="ownerNo" class="yes-no-label">No</label></div>
                     <div id="ownerYesMsg" style="display:none; color:#333; font-size:11px; font-weight:700; margin-top:5px;"><i class="fas fa-check-circle"></i> Perfect. Ensure your Full Name is entered above.</div>
-                    <div id="ownerNoField" style="display:none; margin-top:10px;"><label>Enter Owner's Full Name</label><input type="text" id="ownerDetails" class="form-input" placeholder="e.g. Sarah Jones" oninput="document.getElementById('q-billing3').style.display='block'; runValidation();"></div>
-                </div>
-            </div>
-
-            <div id="q-billing3" style="display:none;">
-                <div id="billingSection">
-                    <div class="input-group" style="margin-top:15px;">
-                        <label>Billing & Account Email Address</label>
-                        <input type="email" id="userEmail" class="form-input" placeholder="e.g. accounts@email.com" oninput="document.getElementById('waPublicToggle').style.display='block'; runValidation();">
-                    </div>
-                    <div id="waPublicToggle" style="display:none;">
-                        <div class="sub-q-group">
-                            <label class="sub-q-label">Display this email publicly on your Dashboard?</label>
-                            <div class="yes-no-group">
-                                <input type="radio" id="waPublicYes" name="waPublicEmailOpt" value="Yes" onclick="toggleWaPublicEmail(false)">
-                                <label for="waPublicYes" class="yes-no-label">Yes</label>
-                                <input type="radio" id="waPublicNo" name="waPublicEmailOpt" value="No" onclick="toggleWaPublicEmail(true)">
-                                <label for="waPublicNo" class="yes-no-label">No</label>
-                            </div>
-                            <div id="waPublicEmailWrapper" style="display:none; margin-top:10px;">
-                                <label style="font-size:11px; font-weight:700; color:#555; display:block; margin-bottom:5px;">Public Email Address</label>
-                                <div style="display:flex; align-items:center;">
-                                    <input type="email" id="waPublicEmailInput" class="form-input" placeholder="e.g. info@business.com" oninput="runValidation();">
-                                    <button type="button" id="waPublicEmailFindBtn" class="find-online-btn" style="display:none;" onclick="autoFillField('waPublicEmailInput')">Find Online</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <div id="ownerNoField" style="display:none; margin-top:10px;"><label>Enter Owner's Full Name</label><input type="text" id="ownerDetails" class="form-input" placeholder="e.g. Sarah Jones" oninput="runValidation();"></div>
                 </div>
             </div>
 
@@ -766,8 +770,10 @@
             
             document.getElementById('assetEmail').placeholder = emailPlaceholder;
             document.getElementById('entEmail').placeholder = emailPlaceholder;
-            document.getElementById('billEmailInput').placeholder = billPlaceholder;
-            document.getElementById('waPublicEmailInput').placeholder = emailPlaceholder;
+            if(document.getElementById('billEmailInput')) document.getElementById('billEmailInput').placeholder = billPlaceholder;
+            if(document.getElementById('userEmail')) document.getElementById('userEmail').placeholder = billPlaceholder;
+            if(document.getElementById('dashEmailInput')) document.getElementById('dashEmailInput').placeholder = emailPlaceholder;
+            if(document.getElementById('waPublicEmailInput')) document.getElementById('waPublicEmailInput').placeholder = emailPlaceholder;
             
             runValidation();
         }
@@ -942,8 +948,12 @@
                 const entEmail = document.getElementById('entEmail');
                 const entPhone = document.getElementById('entPhone');
 
-                const storedEmail = document.getElementById('assetEmail').value || document.getElementById('billEmailInput').value;
-                const storedPhone = document.getElementById('assetPhone').value;
+                // Try to grab the email from whichever field is currently visible/filled
+                let storedEmail = "";
+                if (document.getElementById('assetEmail') && document.getElementById('assetEmail').value) storedEmail = document.getElementById('assetEmail').value;
+                else if (document.getElementById('userEmail') && document.getElementById('userEmail').value) storedEmail = document.getElementById('userEmail').value;
+                
+                const storedPhone = document.getElementById('assetPhone') ? document.getElementById('assetPhone').value : "";
 
                 // Only auto-fill if empty to prevent overriding user edits
                 if (storedEmail && !entEmail.value) {
@@ -1027,11 +1037,13 @@
         }
 
         function toggleDashInput(show) { 
-            document.getElementById('q-billEmail').style.display = 'block';
-            document.getElementById('dashEmailInput').style.display = show ? 'block' : 'none'; 
+            if(document.getElementById('dashEmailInput')) document.getElementById('dashEmailInput').style.display = show ? 'block' : 'none'; 
             runValidation(); 
         }
-        function toggleBillInput(show) { document.getElementById('billEmailInput').style.display = show ? 'block' : 'none'; runValidation(); }
+        function toggleBillInput(show) { 
+            if(document.getElementById('billEmailInput')) document.getElementById('billEmailInput').style.display = show ? 'block' : 'none'; 
+            runValidation(); 
+        }
 
         function updateModel(type, preventScroll = false) {
             currentModel = type; 
@@ -1255,7 +1267,6 @@
             document.getElementById('q-crn').style.display = 'none';
             document.getElementById('q-poc').style.display = 'none';
             document.getElementById('q-owner').style.display = 'none';
-            document.getElementById('q-billing3').style.display = 'none';
 
             if(type === 'Limited'){ 
                 if (!isDigital || !isPricingVisible) {
@@ -1277,33 +1288,18 @@
         function handlePocInput() {
             if(getRadioVal('entityType') === 'Sole Trader') {
                 document.getElementById('q-owner').style.display = 'block';
-            } else {
-                document.getElementById('q-billing3').style.display = 'block';
-            }
+            } 
             runValidation();
         }
 
         function toggleOwnerField(isOwner) { 
             document.getElementById('ownerYesMsg').style.display = isOwner ? 'block' : 'none'; 
             document.getElementById('ownerNoField').style.display = isOwner ? 'none' : 'block'; 
-            
-            if (isOwner) {
-                document.getElementById('q-billing3').style.display = 'block';
-            } else {
-                document.getElementById('q-billing3').style.display = 'none';
-            }
             runValidation(); 
         }
 
         function toggleWaPublicEmail(show) {
             document.getElementById('waPublicEmailWrapper').style.display = show ? 'block' : 'none';
-            
-            if (show && isDigital && isPricingVisible) {
-                document.getElementById('waPublicEmailFindBtn').style.display = 'inline-block';
-            } else {
-                document.getElementById('waPublicEmailFindBtn').style.display = 'none';
-            }
-            
             runValidation();
         }
 
@@ -1333,8 +1329,8 @@
                 Pricing_Visible: "N/A",
                 Website_URL: document.getElementById('onlineLink').value,
                 Comms_Preference: getRadioVal('assetMethod'),
-                Initial_Setup_Email: document.getElementById('assetEmail').value,
-                Initial_WhatsApp: document.getElementById('assetPhone').value,
+                Initial_Setup_Email: document.getElementById('assetEmail') ? document.getElementById('assetEmail').value : "",
+                Initial_WhatsApp: document.getElementById('assetPhone') ? document.getElementById('assetPhone').value : "",
                 
                 Contact_Name: document.getElementById('entName').value,
                 Business_Name: document.getElementById('shopName').value, 
@@ -1360,14 +1356,15 @@
             btn.classList.remove('submit-ready'); 
 
             const assetMethod = getRadioVal('assetMethod');
-            let finalBillingEmail = assetMethod === 'Email' ? 
-                (getRadioVal('billEmail') === 'Yes' ? document.getElementById('assetEmail').value : document.getElementById('billEmailInput').value) 
-                : document.getElementById('userEmail').value;
-
+            
+            let finalBillingEmail = "";
             let publicDashEmail = "";
+
             if (assetMethod === 'Email') {
+                finalBillingEmail = (getRadioVal('billEmail') === 'Yes') ? document.getElementById('assetEmail').value : document.getElementById('billEmailInput').value;
                 publicDashEmail = (getRadioVal('dashEmail') === 'Yes') ? document.getElementById('assetEmail').value : document.getElementById('dashEmailInput').value;
             } else {
+                finalBillingEmail = document.getElementById('userEmail').value;
                 publicDashEmail = (getRadioVal('waPublicEmailOpt') === 'Yes') ? document.getElementById('userEmail').value : document.getElementById('waPublicEmailInput').value;
             }
             
@@ -1375,9 +1372,9 @@
 
             // --- DATA SCRUBBER START ---
             const finalStructure = getRadioVal('entityType');
-            let finalCRN = document.getElementById('companyRegNum').value;
+            let finalCRN = document.getElementById('companyRegNum') ? document.getElementById('companyRegNum').value : "";
             let finalIsOwner = getRadioVal('isOwner');
-            let finalOwnerOverride = document.getElementById('ownerDetails').value;
+            let finalOwnerOverride = document.getElementById('ownerDetails') ? document.getElementById('ownerDetails').value : "";
 
             if (finalStructure === 'Limited Company') {
                 finalIsOwner = "";
@@ -1403,8 +1400,8 @@
                 Pricing_Visible: getRadioVal('priceVis'),
                 Website_URL: document.getElementById('onlineLink').value,
                 Comms_Preference: assetMethod,
-                WhatsApp_Number: document.getElementById('assetPhone').value,
-                Setup_Email: document.getElementById('assetEmail').value,
+                WhatsApp_Number: document.getElementById('assetPhone') ? document.getElementById('assetPhone').value : "",
+                Setup_Email: document.getElementById('assetEmail') ? document.getElementById('assetEmail').value : "",
                 Billing_Email: finalBillingEmail,
                 Public_Dashboard_Email: publicDashEmail,
                 
